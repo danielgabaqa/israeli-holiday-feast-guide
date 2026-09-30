@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e5f74">
+  <title>Israeli Holiday Feast Guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --teal: #1e5f74;
+      --teal-deep: #154454;
+      --honey: #e6a135;
+      --olive: #4a6b53;
+      --cream: #faf6f0;
+      --paper: #fffdf9;
+      --ink: #203238;
+      --muted: #647176;
+      --line: #e9e1d6;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--cream);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; background: var(--cream); }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible { outline: 3px solid #e6a135; outline-offset: 3px; }
+    .masthead { color: #fffdf9; background: var(--teal); position: relative; overflow: hidden; }
+    .masthead::after { content: ""; position: absolute; inset-inline-end: -5rem; top: -8rem; width: 28rem; height: 28rem; border: 1px solid #ffffff2b; border-radius: 50%; box-shadow: 0 0 0 2.5rem #ffffff0c, 0 0 0 5rem #ffffff08; pointer-events: none; }
+    .topbar, .hero, main, footer { width: min(1200px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar { height: 72px; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; border-bottom: 1px solid #ffffff26; }
+    .brand { display: flex; gap: 10px; align-items: center; font-weight: 700; letter-spacing: .02em; }
+    .brand-mark { display: grid; place-items: center; width: 34px; aspect-ratio: 1; border-radius: 50%; color: var(--teal); background: var(--honey); font-size: 18px; }
+    .top-actions { display: flex; align-items: center; gap: 14px; }
+    .language-button { border: 1px solid #ffffff76; border-radius: 999px; color: #fff; background: transparent; padding: 8px 14px; font-size: 12px; font-weight: 700; }
+    .hero { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(250px, .6fr); gap: 40px; align-items: end; padding-block: 52px 48px; }
+    .eyebrow { color: #f4c571; text-transform: uppercase; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+    h1 { max-width: 700px; margin: 12px 0 14px; font: 500 clamp(38px, 5vw, 64px)/1.04 var(--serif); }
+    .hero-copy { max-width: 600px; margin: 0; color: #e2eef0; line-height: 1.65; font-size: 15px; }
+    .hero-note { justify-self: end; width: min(100%, 290px); border-inline-start: 2px solid var(--honey); padding: 10px 18px; color: #e2eef0; font: 18px/1.45 var(--serif); }
+    main { padding-block: 30px 70px; }
+    .control-row { display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: center; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .control-group { display: flex; gap: 12px; align-items: center; }
+    .control-label { color: var(--muted); font-size: 12px; font-weight: 700; }
+    .mode-control { display: flex; align-items: center; gap: 9px; color: var(--ink); font-size: 13px; font-weight: 700; }
+    .mode-control .mode-fit { color: var(--olive); }
+    .switch { appearance: none; width: 42px; height: 24px; border-radius: 20px; background: #c5d1ca; position: relative; transition: background .2s ease; margin: 0; cursor: pointer; }
+    .switch::after { content: ""; position: absolute; width: 18px; height: 18px; top: 3px; inset-inline-start: 3px; background: white; border-radius: 50%; transition: transform .2s ease; box-shadow: 0 1px 3px #0002; }
+    .switch:checked { background: var(--honey); }
+    .switch:checked::after { transform: translateX(18px); }
+    [dir="rtl"] .switch:checked::after { transform: translateX(-18px); }
+    .guest-stepper { display: flex; align-items: center; border: 1px solid var(--line); background: var(--paper); border-radius: 5px; overflow: hidden; }
+    .step-button { width: 37px; height: 36px; border: 0; background: transparent; color: var(--teal); font-size: 20px; }
+    .guest-input { width: 44px; height: 36px; border: 0; text-align: center; font-weight: 700; color: var(--ink); background: transparent; appearance: textfield; }
+    .guest-input::-webkit-inner-spin-button, .guest-input::-webkit-outer-spin-button { appearance: none; margin: 0; }
+    .guest-suffix { padding-inline: 0 12px; color: var(--muted); font-size: 12px; }
+    .shopping-open { display: inline-flex; align-items: center; gap: 9px; border: 0; border-radius: 4px; padding: 11px 16px; background: var(--teal); color: white; font-weight: 700; font-size: 13px; transition: background .2s ease; }
+    .shopping-open:hover { background: var(--teal-deep); }
+    .secondary-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px; background: var(--paper); color: var(--teal); font-weight: 700; font-size: 12px; }
+    .secondary-action:hover { border-color: var(--teal); background: #f0f5f2; }
+    .overview-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; }
+    .share-status { min-height: 1em; margin: 5px 0 0; color: var(--olive); font-size: 11px; }
+    .shopping-count { display: inline-grid; min-width: 20px; height: 20px; padding-inline: 5px; place-items: center; border-radius: 50%; background: var(--honey); color: var(--ink); font-size: 11px; }
+    .holiday-nav-wrap { padding-block: 25px 18px; }
+    .section-kicker { margin: 0 0 12px; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+    .holiday-nav { display: flex; gap: 8px; overflow-x: auto; padding: 2px 0 9px; scrollbar-width: thin; }
+    .holiday-tab { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); color: var(--ink); padding: 10px 13px; font-size: 12px; font-weight: 700; transition: border-color .18s ease, background .18s ease, color .18s ease; }
+    .holiday-tab[aria-selected="true"] { border-color: var(--teal); background: var(--teal); color: white; }
+    .holiday-icon { font-size: 16px; }
+    .occasion-strip { display: flex; align-items: center; justify-content: space-between; gap: 18px; border-block: 1px solid var(--line); padding-block: 17px; }
+    .occasion-title { margin: 0; font: 500 27px/1.2 var(--serif); color: var(--teal-deep); }
+    .occasion-subtitle { margin: 5px 0 0; font-size: 13px; color: var(--muted); }
+    .category-filters { display: flex; flex-wrap: wrap; gap: 5px; }
+    .category-filter { border: 0; background: transparent; border-radius: 3px; color: var(--muted); padding: 9px 12px; font-size: 12px; font-weight: 700; }
+    .category-filter[aria-pressed="true"] { background: #e4ece7; color: var(--olive); }
+    .overview { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-block: 25px 15px; }
+    .overview h2 { margin: 0; font: 500 23px var(--serif); }
+    .macro-summary { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; color: var(--muted); font-size: 11px; }
+    .macro-summary span { padding: 6px 9px; border-radius: 3px; background: #efe9de; }
+    .recipe-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
+    .recipe-card { min-width: 0; border: 1px solid var(--line); border-radius: 5px; background: var(--paper); overflow: hidden; animation: card-in .35s both; }
+    .recipe-card { cursor: pointer; }
+    .recipe-card:focus-visible { outline: 3px solid var(--honey); outline-offset: 3px; }
+    @keyframes card-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    .recipe-art { min-height: 114px; display: flex; align-items: flex-end; justify-content: space-between; padding: 15px; background: linear-gradient(115deg, #e9d6b8, #f3ead9 52%, #cdddcf); }
+    .recipe-card:nth-child(3n+2) .recipe-art { background: linear-gradient(115deg, #d7e3dc, #eef0e3 55%, #e9c98e); }
+    .recipe-card:nth-child(3n) .recipe-art { background: linear-gradient(115deg, #efdfce, #edd4ca 50%, #c8ded9); }
+    .recipe-emoji { font-size: 42px; filter: drop-shadow(0 2px 1px #6b564333); }
+    .recipe-category { border-radius: 3px; background: #fffdf9d9; color: var(--teal-deep); padding: 6px 9px; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+    .recipe-content { padding: 15px 16px 14px; }
+    .recipe-title { min-height: 48px; margin: 0; font: 500 20px/1.2 var(--serif); color: var(--teal-deep); }
+    .recipe-description { min-height: 39px; margin: 8px 0 12px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .recipe-stats { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; }
+    .recipe-calories, .macro-pill { border-radius: 3px; padding: 5px 7px; background: #f1eee7; color: var(--ink); font-size: 10px; font-weight: 700; }
+    .recipe-calories { background: #f5e6c9; color: #724a0d; }
+    .ingredient-list { display: grid; gap: 6px; padding: 11px 0 12px; margin: 0; border-top: 1px solid var(--line); list-style: none; }
+    .ingredient-line { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 11px; }
+    .ingredient-quantity { flex: 0 0 auto; color: var(--ink); font-weight: 700; }
+    .recipe-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); padding-top: 11px; }
+    .serving-note { color: var(--muted); font-size: 10px; }
+    .add-recipe { display: inline-flex; align-items: center; gap: 7px; color: var(--olive); font-size: 11px; font-weight: 800; cursor: pointer; }
+    .add-recipe input { accent-color: var(--olive); width: 15px; height: 15px; margin: 0; }
+    .empty-state { grid-column: 1 / -1; padding: 45px 20px; text-align: center; color: var(--muted); }
+    footer { padding-block: 20px 35px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .drawer-backdrop { position: fixed; inset: 0; z-index: 5; display: none; background: #102d33a3; }
+    .drawer-backdrop.open { display: block; }
+    .shopping-drawer { position: fixed; z-index: 6; inset-block: 0; inset-inline-end: 0; width: min(440px, 100%); padding: 24px; overflow-y: auto; background: var(--paper); box-shadow: 0 0 35px #102d3330; transform: translateX(105%); visibility: hidden; transition: transform .25s ease, visibility .25s; }
+    [dir="rtl"] .shopping-drawer { transform: translateX(-105%); }
+    .shopping-drawer.open { transform: translateX(0); visibility: visible; }
+    .recipe-open { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 8px; border: 0; padding: 0; background: transparent; color: var(--teal-deep); text-align: start; font: inherit; cursor: pointer; user-select: none; }
+    .recipe-open:hover .recipe-title-text { text-decoration: underline; text-decoration-color: var(--honey); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+    .recipe-arrow { flex: 0 0 auto; color: var(--honey); font: 16px var(--sans); }
+    .recipe-share-button { flex: 0 0 auto; width: 30px; height: 30px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--teal); font-size: 16px; }
+    .recipe-share-button:hover { border-color: var(--teal); background: #f0f5f2; }
+    .recipe-backdrop { position: fixed; inset: 0; z-index: 8; display: none; align-items: center; justify-content: center; padding: 18px; background: #102d33a8; }
+    .recipe-backdrop.open { display: flex; }
+    .recipe-dialog { position: relative; width: min(780px, 100%); max-height: min(92vh, 900px); overflow-y: auto; border-radius: 6px; background: var(--paper); box-shadow: 0 20px 70px #102d3355; animation: card-in .2s ease-out; }
+    .recipe-dialog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding: 25px 28px 18px; border-bottom: 1px solid var(--line); }
+    .recipe-dialog-header h2 { margin: 7px 0 0; color: var(--teal-deep); font: 500 32px/1.15 var(--serif); }
+    .recipe-dialog-description { margin: 10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .recipe-dialog-content { padding: 20px 28px 28px; }
+    .recipe-dialog-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .recipe-dialog-facts span { padding: 7px 10px; border-radius: 3px; background: #efe9de; color: var(--ink); font-size: 11px; font-weight: 700; }
+    .recipe-dialog-columns { display: grid; grid-template-columns: minmax(190px, .75fr) minmax(0, 1.25fr); gap: 28px; }
+    .recipe-dialog-columns h3 { margin: 0 0 12px; color: var(--teal); font: 500 21px var(--serif); }
+    .detail-ingredients, .recipe-method { margin: 0; padding: 0; list-style: none; }
+    .detail-ingredient { display: flex; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .detail-ingredient-quantity { flex: 0 0 auto; color: var(--ink); font-weight: 700; }
+    .recipe-method { counter-reset: method-step; }
+    .recipe-method li { position: relative; counter-increment: method-step; padding: 0 0 17px 36px; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    [dir="rtl"] .recipe-method li { padding: 0 36px 17px 0; }
+    .recipe-method li::before { content: counter(method-step, decimal-leading-zero); position: absolute; inset-inline-start: 0; top: 0; color: var(--olive); font-size: 11px; font-weight: 800; }
+    .recipe-dialog-close { flex: 0 0 auto; border: 0; background: transparent; color: var(--teal); width: 38px; height: 38px; font-size: 26px; }
+    .drawer-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; border-bottom: 1px solid var(--line); padding-bottom: 16px; }
+    .drawer-heading h2 { margin: 0; font: 500 27px var(--serif); color: var(--teal-deep); }
+    .drawer-close { border: 0; background: transparent; color: var(--teal); font-size: 25px; width: 36px; height: 36px; }
+    .drawer-meta { color: var(--muted); font-size: 12px; margin: 13px 0 20px; }
+    .shopping-group { margin-block: 17px 23px; }
+    .shopping-group h3 { margin: 0 0 10px; color: var(--olive); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .shopping-item { display: flex; gap: 10px; align-items: flex-start; border-bottom: 1px solid #eee8df; padding: 10px 2px; font-size: 13px; }
+    .shopping-item input { margin: 2px 0 0; accent-color: var(--olive); }
+    .shopping-item.checked .shopping-name { text-decoration: line-through; color: #8a9692; }
+    .shopping-quantity { margin-inline-start: auto; color: var(--teal); font-weight: 700; white-space: nowrap; }
+    .shopping-empty { padding: 25px 0; text-align: center; color: var(--muted); font-size: 13px; }
+    .manual-product-form { padding: 16px 0 12px; border-bottom: 1px solid var(--line); }
+    .manual-product-form > label { display: block; margin-bottom: 8px; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .manual-product-fields { display: grid; grid-template-columns: minmax(0, 1fr) 66px 76px; gap: 7px; }
+    .manual-product-fields input, .manual-product-fields select { min-width: 0; height: 38px; border: 1px solid var(--line); border-radius: 3px; padding: 0 9px; background: white; color: var(--ink); font-size: 12px; }
+    .manual-product-fields button { grid-column: 1 / -1; justify-self: start; }
+    .manual-products-heading { margin: 17px 0 10px; color: var(--olive); font-size: 12px; text-transform: uppercase; }
+    .drawer-actions, .recipe-dialog-actions { display: flex; align-items: center; gap: 8px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 850px) { .recipe-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero { grid-template-columns: 1fr; gap: 20px; } .hero-note { justify-self: start; } }
+    @media (max-width: 600px) { .topbar, .hero, main, footer { width: min(100% - 30px, 1200px); } .topbar { height: 60px; } .brand { font-size: 12px; } .hero { padding-block: 34px 31px; } h1 { font-size: 43px; } .hero-copy { font-size: 14px; } .control-row { align-items: flex-start; gap: 16px; } .control-group { flex-wrap: wrap; } .shopping-open { margin-inline-start: auto; } .occasion-strip { align-items: flex-start; flex-direction: column; } .category-filters { width: 100%; overflow-x: auto; flex-wrap: nowrap; } .category-filter { flex: 0 0 auto; } .overview { align-items: flex-start; flex-direction: column; } .macro-summary { justify-content: flex-start; } .recipe-grid { grid-template-columns: 1fr; } .recipe-art { min-height: 100px; } .recipe-title { min-height: unset; } .recipe-description { min-height: unset; } }
+    @media (max-width: 600px) { .recipe-dialog-header { padding: 20px 18px 16px; } .recipe-dialog-header h2 { font-size: 27px; } .recipe-dialog-content { padding: 17px 18px 22px; } .recipe-dialog-columns { grid-template-columns: 1fr; gap: 22px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span data-i18n="brand">The Holiday Table</span></div>
+      <div class="top-actions"><button type="button" class="language-button" data-testid="lang-toggle" aria-label="Switch language">עברית · HE</button></div>
+    </div>
+    <div class="hero">
+      <div>
+        <div class="eyebrow" data-i18n="eyebrow">A year of Israeli celebrations</div>
+        <h1 data-testid="header-title" data-i18n="headline">Gather around the holiday table.</h1>
+        <p class="hero-copy" data-i18n="heroCopy">Recipes for the rituals, flavors and generous tables that bring us together, from the first spring barbecue to a honey-sweet new year.</p>
+      </div>
+      <div class="hero-note" data-i18n="heroNote">“Good food is the beginning of every good story.”</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="control-row" aria-label="Recipe controls">
+      <div class="control-group">
+        <span class="control-label" data-i18n="moodLabel">THE TABLE MOOD</span>
+        <label class="mode-control"><span class="mode-fit" data-i18n="fitMode">Fit &amp; Festive</span><input class="switch" type="checkbox" role="switch" data-testid="mode-switch" aria-label="Full Feast Mode"><span data-i18n="feastMode">Full Feast</span></label>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="guest-count" data-i18n="guestsLabel">GUESTS</label>
+        <div class="guest-stepper">
+          <button type="button" class="step-button" data-testid="guest-decrement" aria-label="Remove one guest">−</button>
+          <input id="guest-count" class="guest-input" data-testid="guest-counter-input" type="number" min="1" max="20" value="2" aria-label="Number of guests">
+          <button type="button" class="step-button" data-testid="guest-increment" aria-label="Add one guest">+</button>
+          <span class="guest-suffix" data-i18n="people">people</span>
+        </div>
+      </div>
+      <button type="button" class="secondary-action" data-testid="add-all-recipes"><span aria-hidden="true">＋</span><span data-i18n="addAllShown">Add all shown to list</span></button>
+      <button type="button" class="shopping-open" data-testid="shopping-list-btn"><span aria-hidden="true">▤</span><span data-i18n="shoppingButton">Shopping list</span><span class="shopping-count" data-testid="shopping-count">0</span></button>
+    </section>
+
+    <section class="holiday-nav-wrap" aria-label="Holiday selection">
+      <p class="section-kicker" data-i18n="chooseHoliday">CHOOSE A HOLIDAY</p>
+      <nav class="holiday-nav" data-testid="holiday-navigation" aria-label="Israeli holidays"></nav>
+    </section>
+
+    <section class="occasion-strip">
+      <div><h2 class="occasion-title" data-testid="holiday-heading"></h2><p class="occasion-subtitle" data-testid="holiday-subtitle"></p></div>
+      <div class="category-filters" data-testid="category-filters" aria-label="Recipe category filters"></div>
+    </section>
+
+    <section aria-labelledby="recipe-section-title">
+      <div class="overview">
+        <h2 id="recipe-section-title" data-i18n="recipeHeading">Recipes for your table</h2>
+        <div class="overview-tools"><button type="button" class="secondary-action" data-testid="share-menu-btn"><span aria-hidden="true">↗</span><span data-i18n="shareMenu">Share menu</span></button><div class="macro-summary" data-testid="macro-summary" aria-live="polite"></div></div>
+      </div>
+      <p class="share-status" data-testid="share-status" role="status" aria-live="polite"></p>
+      <div class="recipe-grid" data-testid="recipe-grid"></div>
+    </section>
+  </main>
+
+  <footer><span data-i18n="footer">Made for long meals, open doors and one more helping.</span></footer>
+  <div class="drawer-backdrop" data-testid="shopping-backdrop"></div>
+  <aside class="shopping-drawer" data-testid="shopping-list-drawer" aria-hidden="true" aria-labelledby="shopping-title" role="dialog">
+    <div class="drawer-heading"><h2 id="shopping-title" data-i18n="shoppingTitle">Your shopping list</h2><div class="drawer-actions"><button type="button" class="secondary-action" data-testid="shopping-share-btn"><span aria-hidden="true">↗</span><span data-i18n="shareList">Share list</span></button><button type="button" class="drawer-close" data-testid="shopping-drawer-close" aria-label="Close shopping list">×</button></div></div>
+    <p class="drawer-meta" data-testid="shopping-meta"></p>
+    <form class="manual-product-form" data-testid="manual-product-form">
+      <label for="manual-product-input" data-i18n="manualProduct">Add a product</label>
+      <div class="manual-product-fields"><input id="manual-product-input" data-testid="manual-product-input" type="text" maxlength="80" required placeholder="e.g. paper napkins"><input data-testid="manual-product-quantity" type="number" min="0.1" max="999" step="0.1" value="1" aria-label="Quantity"><select data-testid="manual-product-unit" aria-label="Unit"><option value="pc" data-i18n="unitPieces">pcs</option><option value="g" data-i18n="unitGrams">g</option><option value="ml" data-i18n="unitMilliliters">ml</option><option value="pack" data-i18n="unitPacks">packs</option></select><button type="submit" class="secondary-action" data-testid="manual-product-add"><span aria-hidden="true">＋</span><span data-i18n="addManual">Add product</span></button></div>
+    </form>
+    <p class="share-status" data-testid="shopping-share-status" role="status" aria-live="polite"></p>
+    <div data-testid="shopping-items"></div>
+  </aside>
+  <div class="recipe-backdrop" data-testid="recipe-backdrop" aria-hidden="true">
+    <section class="recipe-dialog" data-testid="recipe-dialog" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="recipe-detail-title" tabindex="-1">
+      <div data-testid="recipe-detail-content"></div>
+    </section>
+  </div>
+
+  <script>
+    const translations = {
+      en: { brand: "The Holiday Table", eyebrow: "A year of Israeli celebrations", headline: "Gather around the holiday table.", heroCopy: "Recipes for the rituals, flavors and generous tables that bring us together, from the first spring barbecue to a honey-sweet new year.", heroNote: "“Good food is the beginning of every good story.”", moodLabel: "THE TABLE MOOD", fitMode: "Fit & Festive", feastMode: "Full Feast", guestsLabel: "GUESTS", people: "people", shoppingButton: "Shopping list", chooseHoliday: "CHOOSE A HOLIDAY", recipeHeading: "Recipes for your table", footer: "Made for long meals, open doors and one more helping.", shoppingTitle: "Your shopping list", emptyShopping: "Choose a recipe to start your list.", emptyRecipes: "No recipes in this category yet.", add: "Add to list", added: "Added", starters: "Starters", mains: "Mains", desserts: "Desserts", drinks: "Drinks & Cocktails", all: "All recipes", perServing: "per serving", perGuest: "Per guest", total: "Total for", calories: "kcal", protein: "Protein", carbs: "Carbs", fat: "Fat", healthy: "Light, bright and nourishing", rich: "Traditional and generous", ingredients: "Ingredients", serving: "Scaled for", item: "item", items: "items", checked: "checked", shoppingFor: "Shopping for", recipeCount: "recipes", from: "From", languageButton: "עברית · HE", close: "Close shopping list", allCategories: "All", languageName: "English" },
+      he: { brand: "שולחן החג", eyebrow: "שנה של חגיגות ישראליות", headline: "מתכנסים סביב שולחן החג.", heroCopy: "מתכונים למסורות, לטעמים ולשולחנות הנדיבים שמחברים בינינו, מהברביקיו הראשון של האביב ועד לשנה טובה ומתוקה בדבש.", heroNote: "״אוכל טוב הוא התחלה של כל סיפור טוב.״", moodLabel: "האווירה בשולחן", fitMode: "קליל וחגיגי", feastMode: "סעודה מלאה", guestsLabel: "סועדים", people: "אנשים", shoppingButton: "רשימת קניות", chooseHoliday: "בחרו חג", recipeHeading: "מתכונים לשולחן שלכם", footer: "לארוחות ארוכות, לדלת פתוחה ולעוד מנה אחת.", shoppingTitle: "רשימת הקניות שלכם", emptyShopping: "בחרו מתכון כדי להתחיל את הרשימה.", emptyRecipes: "אין עדיין מתכונים בקטגוריה הזו.", add: "הוספה לרשימה", added: "נוסף", starters: "ראשונות", mains: "עיקריות", desserts: "קינוחים", drinks: "משקאות וקוקטיילים", all: "כל המתכונים", perServing: "למנה", perGuest: "לאורח", total: "סה״כ ל־", calories: "קלוריות", protein: "חלבון", carbs: "פחמימות", fat: "שומן", healthy: "קליל, רענן ומזין", rich: "מסורתי ונדיב", ingredients: "מצרכים", serving: "מותאם ל־", item: "פריט", items: "פריטים", checked: "סומנו", shoppingFor: "רשימת קניות ל־", recipeCount: "מתכונים", from: "מתוך", languageButton: "EN · English", close: "סגירת רשימה", allCategories: "הכול", languageName: "עברית" }
+    };
+    const detailLabels = {
+      en: { open: "View full recipe", method: "Method", prep: "Prep", cook: "Cook", serves: "Serves", close: "Close recipe" },
+      he: { open: "למתכון המלא", method: "אופן ההכנה", prep: "הכנה", cook: "בישול", serves: "מנות", close: "סגירת המתכון" }
+    };
+    const featureTranslations = {
+      en: { addAllShown: "Add all shown to list", shareMenu: "Share menu", shareList: "Share list", shareRecipe: "Share recipe", manualProduct: "Add a product", productPlaceholder: "e.g. paper napkins", addManual: "Add product", unitPieces: "pcs", unitGrams: "g", unitMilliliters: "ml", unitPacks: "packs", manualItems: "Manual items", shareCopied: "Share link copied", shareDone: "Ready to share", shareUnavailable: "Could not share this item", addAllDone: "Visible recipes added", manualRequired: "Enter a product name" },
+      he: { addAllShown: "הוספת כל המנות לרשימה", shareMenu: "שיתוף התפריט", shareList: "שיתוף הרשימה", shareRecipe: "שיתוף המתכון", manualProduct: "הוספת מוצר", productPlaceholder: "למשל: מפיות נייר", addManual: "הוספת מוצר", unitPieces: "יח׳", unitGrams: "גרם", unitMilliliters: "מ״ל", unitPacks: "אריזות", manualItems: "מוצרים ידניים", shareCopied: "קישור השיתוף הועתק", shareDone: "מוכן לשיתוף", shareUnavailable: "לא ניתן לשתף כרגע", addAllDone: "המנות שמוצגות נוספו", manualRequired: "יש להזין שם מוצר" }
+    };
+    const holidayData = [
+      { id: "rosh-hashanah", icon: "🍎", en: "Rosh Hashanah", he: "ראש השנה", subEn: "Pomegranate, honey and a sweet beginning to the year.", subHe: "רימון, דבש והתחלה מתוקה לשנה החדשה." },
+      { id: "sukkot", icon: "🌿", en: "Sukkot", he: "סוכות", subEn: "Stuffed favorites and outdoor dishes made for sharing.", subHe: "ממולאים אהובים ומנות חוץ שכיף לחלוק." },
+      { id: "hanukkah", icon: "🕎", en: "Hanukkah", he: "חנוכה", subEn: "Golden latkes, sufganiyot and eight nights of light.", subHe: "לביבות זהובות, סופגניות ושמונה לילות של אור." },
+      { id: "tu-bishvat", icon: "🍇", en: "Tu BiShvat", he: "ט״ו בשבט", subEn: "A celebration of trees, dried fruit, nuts and grains.", subHe: "חג לאילנות, לפירות יבשים, לאגוזים ולדגנים." },
+      { id: "purim", icon: "🎭", en: "Purim", he: "פורים", subEn: "Carnival treats, hamantaschen and a toast to joy.", subHe: "ממתקי חגיגה, אוזני המן ולחיים לשמחה." },
+      { id: "pesach", icon: "🫓", en: "Pesach", he: "פסח", subEn: "Passover-friendly dishes with matzah and spring produce.", subHe: "מנות כשרות לפסח עם מצה ותוצרת אביבית." },
+      { id: "yom-haatzmaut", icon: "🔥", en: "Yom Ha'atzmaut", he: "יום העצמאות", subEn: "Open-air grills, bright salads and a table that keeps growing.", subHe: "גריל פתוח, סלטים רעננים ושולחן שרק הולך ומתמלא." },
+      { id: "shavuot", icon: "🧀", en: "Shavuot", he: "שבועות", subEn: "Fresh dairy, golden bakes and the first fruits of the season.", subHe: "מוצרי חלב טריים, מאפים זהובים וביכורי העונה." },
+      { id: "tu-bav", icon: "♡", en: "Tu B'Av", he: "ט״ו באב", subEn: "A little romance, something sparkling and dessert for two.", subHe: "קצת רומנטיקה, משהו מבעבע וקינוח לשניים." }
+    ];
+    const categoryKeys = ["starters", "mains", "desserts", "drinks"];
+    const regularMenuTitles = {
+      "yom-haatzmaut": { starters: ["Creamy hummus with whole chickpeas & olive oil", "Israeli cucumber & tomato salad"], mains: ["Israeli-style chicken & beef parghiot skewers", "Grilled kebabs with Middle Eastern spices"], desserts: ["Watermelon slices with Bulgarian feta"], drinks: ["Limonana (fresh mint lemonade)"] },
+      "tu-bav": { starters: ["Israeli boutique cheese board with dried figs, grapes & sourdough"], mains: ["Pan-seared sea bass with herbs & roasted cherry tomatoes"], desserts: ["Strawberry & cream tartlet"], drinks: ["Chilled Israeli rosé wine"] },
+      "rosh-hashanah": { starters: ["Gefilte fish with horseradish", "Moroccan spicy fish (chraime)", "Sliced apples with honey"], mains: ["Honey & pomegranate roast chicken with root vegetables"], desserts: ["Traditional honey cake (lekach)"], drinks: ["Apple cider punch"] },
+      "sukkot": { starters: ["Moroccan carrot salad with cumin & garlic", "Fresh challah & dip platter"], mains: ["Stuffed bell peppers with beef & rice"], desserts: ["Harvest plum & almond cake"], drinks: ["Mint & citrus iced tea"] },
+      "hanukkah": { starters: ["Classic potato latkes with sour cream & applesauce"], mains: ["Moroccan fried chicken with spiced couscous"], desserts: ["Strawberry jelly sufganiyot"], drinks: ["Hot spiced cider"] },
+      "purim": { starters: ["Assorted potato, cheese & spinach burekas"], mains: ["Persian sabzi stew", "Moroccan chicken pastilla"], desserts: ["Oznei Haman (poppy seed or chocolate hamantaschen)"], drinks: ["Pomegranate-mint cocktail"] },
+      "pesach": { starters: ["Ashkenazi matzah ball soup", "Moroccan spicy fish"], mains: ["Passover braised beef brisket with carrots & potatoes"], desserts: ["Flourless chocolate cake"], drinks: ["Traditional four cups of Passover wine"] },
+      "shavuot": { starters: ["Caprese with Israeli basil & fresh focaccia"], mains: ["Spinach & feta boureka pie (or quiche)"], desserts: ["Classic Israeli baked cheesecake"], drinks: ["Iced milk coffee (Afoch) or mint tea"] },
+      "tu-bishvat": { starters: ["Israeli wheatberry & barley salad with cranberries, walnuts & mint"], mains: ["Roast chicken with dried figs, apricots & silan over couscous"], desserts: ["Dried fruit & nut loaf cake"], drinks: ["Fresh pomegranate & orange juice"] }
+    };
+    const feastMenuTitles = {
+      "yom-haatzmaut": { starters: ["Fire-roasted eggplant with silan & tahini", "Spicy matbucha salad", "Falafel balls with amba sauce"], mains: ["Slow-grilled lamb chops", "Moroccan merguez sausages", "American-Jewish smoked BBQ brisket"], desserts: ["Fire-grilled banana with halva & chocolate", "Pareve coconut malabi with rosewater"], drinks: ["Israeli Goldstar or Maccabi craft beer", "Arak-grapefruit summer cocktail"] },
+      "tu-bav": { starters: ["Roasted beetroot with goat cheese & pistachios", "Fresh salmon carpaccio with capers & olive oil"], mains: ["Ricotta & spinach ravioli in sage butter", "Beef tenderloin in red wine reduction"], desserts: ["Rich chocolate fondue with fresh berries", "Halva & honey lava cake"], drinks: ["Pomegranate-cranberry sparkler", "Vintage Cabernet Sauvignon from the Golan or Judean Hills"] },
+      "rosh-hashanah": { starters: ["Chicken liver pâté with honey onions", "Braised leeks with silan", "Pomegranate & arugula salad"], mains: ["Ashkenazi roast beef brisket with tzimmes", "Moroccan lamb shank with dried fruit & almonds"], desserts: ["Apple-cinnamon strudel with vanilla ice cream", "Dates & walnut baked apples"], drinks: ["Sweet Kiddush wine", "Honey-arak cocktail with lemon"] },
+      "sukkot": { starters: ["Stuffed grape leaves with tahini", "Herb-stuffed zucchini (kousa mahshi)", "Chopped liver on challah"], mains: ["Moroccan stuffed cabbage rolls (holishkes)", "Slow-cooked beef & squash stew"], desserts: ["American-Jewish apple & fig cobbler", "Date & walnut baklava"], drinks: ["Warm spiced apple punch", "Israeli Merlot"] },
+      "hanukkah": { starters: ["Zucchini & feta fritters", "Moroccan sfenj with honey", "Smoked salmon latke bites"], mains: ["Slow-braised beef short ribs", "Crispy duck breast with cherry sauce"], desserts: ["Nutella & dulce de leche sufganiyot", "Fried cinnamon-sugar rugelach"], drinks: ["Espresso martini", "Creamy chocolate-whiskey cocktail"] },
+      "purim": { starters: ["Moroccan beef cigar pastries", "Mini meat pies (piroshki)", "Stuffed pita pockets (arayes)"], mains: ["American-Jewish roast turkey with cranberry-silan", "Slow-cooked Persian ghormeh sabzi"], desserts: ["Date & pistachio hamantaschen", "Halva-filled puff pastries", "Colorful carnival cupcakes"], drinks: ["Arak over ice", "Bourbon & apple cider sangria", "Israeli Cabernet Sauvignon"] },
+      "pesach": { starters: ["Ashkenazi, Moroccan & Italian charoset trio", "Herbed fried matzah brei"], mains: ["Moroccan lamb tagine with apricots & prunes", "Lemon-herb chicken over matzah stuffing"], desserts: ["Coconut macaroons", "Matzah toffee crunch"], drinks: ["Israeli Syrah or Shiraz", "Grape juice & ginger ale cooler"] },
+      "shavuot": { starters: ["Ashkenazi cheese & herb blintzes", "Roasted goat cheese crostini with honey", "Israeli salad with tzatziki"], mains: ["Creamy mushroom & herb cheese lasagna", "Potato & cheese pierogi"], desserts: ["Chocolate cheese babka", "Cold mango panna cotta", "Berry pavlova"], drinks: ["Chilled Sauvignon Blanc or Chardonnay", "Rum & cinnamon milk punch"] },
+      "tu-bishvat": { starters: ["Roasted fig & goat cheese salad", "Pine-nut hummus with whole-wheat pita"], mains: ["Moroccan lamb & beef stew with prunes", "Freekeh risotto with wild mushrooms & squash"], desserts: ["Almond-paste dates with dark chocolate", "Warm almond-apple crisp with pistachios"], drinks: ["Mulled wine with dried fruit", "Israeli citrus & grape sangria"] }
+    };
+    const categoryIcons = ["🥗", "🍽️", "🍰", "🍹"];
+    const recipeSeeds = [];
+    holidayData.forEach((holiday) => {
+      categoryKeys.forEach((category, categoryIndex) => {
+        const titles = [
+          ...(regularMenuTitles[holiday.id][category] || []).map((title) => ({ title, feastOnly: false })),
+          ...(feastMenuTitles[holiday.id][category] || []).map((title) => ({ title, feastOnly: true }))
+        ];
+        titles.forEach(({ title, feastOnly }, recipeIndex) => {
+          const profile = recipeProfileFor(title, category);
+          recipeSeeds.push({
+            id: `${holiday.id}-${category}${recipeIndex === 0 ? "" : `-${recipeIndex + 1}`}`,
+            holidayId: holiday.id, category, feastOnly,
+            title: { en: title, he: localizeTitle(holiday.id, category, title) },
+            description: { en: categoryIndex === 0 ? `${title}, prepared as a fresh first bite with bright seasonal flavor.` : categoryIndex === 1 ? `${title}, a generous centerpiece for a celebratory table.` : categoryIndex === 2 ? `${title}, a sweet finish made for sharing.` : `${title}, served chilled or over ice for a festive toast.`, he: "מנה חגיגית עם טעמים ים־תיכוניים, תוצרת העונה והרבה נדיבות." },
+            icon: categoryIcons[categoryIndex], fitCalories: profile.fitCalories,
+            feastCalories: profile.feastCalories,
+            macros: profile.macros, ingredients: profile.ingredients, methodKey: profile.methodKey,
+            prepMinutes: profile.prepMinutes, cookMinutes: profile.cookMinutes
+          });
+        });
+      });
+    });
+    function recipeProfileFor(title, category) {
+      const name = title.toLowerCase();
+      const match = (pattern) => pattern.test(name);
+      let methodKey = category;
+      let prepMinutes = 15;
+      let cookMinutes = 20;
+      let fitCalories = 220;
+      let feastCalories = 450;
+      let macros = [12, 25, 10];
+      let items;
+
+      if (match(/hummus/)) {
+        methodKey = "hummus"; prepMinutes = 15; cookMinutes = 45; fitCalories = 240; feastCalories = 380; macros = [10, 28, 14];
+        items = [["dried chickpeas", "גרגירי חומוס יבשים", 120, "g"], ["tahini", "טחינה", 40, "g"], ["lemon juice", "מיץ לימון", 25, "ml"], ["garlic", "שום", 1, "clove"], ["olive oil", "שמן זית", 15, "ml"]];
+      } else if (match(/israeli cucumber|israeli salad|chopped salad/)) {
+        methodKey = "chopped-salad"; prepMinutes = 10; cookMinutes = 0; fitCalories = 110; feastCalories = 180; macros = [2, 10, 7];
+        items = [["cucumbers", "מלפפונים", 2, "pc"], ["ripe tomatoes", "עגבניות בשלות", 2, "pc"], ["red onion", "בצל סגול", 0.5, "pc"], ["lemon juice", "מיץ לימון", 20, "ml"], ["olive oil", "שמן זית", 15, "ml"], ["parsley", "פטרוזיליה", 10, "g"]];
+      } else if (match(/eggplant|babaganoush/)) {
+        methodKey = "roasted-eggplant"; prepMinutes = 10; cookMinutes = 30; fitCalories = 130; feastCalories = 220; macros = [3, 12, 9];
+        items = [["eggplant", "חציל", 1, "large"], ["tahini", "טחינה", 35, "g"], ["silan", "סילאן", 15, "ml"], ["garlic", "שום", 1, "clove"], ["lemon juice", "מיץ לימון", 15, "ml"]];
+      } else if (match(/matbucha/)) {
+        methodKey = "matbucha"; prepMinutes = 15; cookMinutes = 45; fitCalories = 120; feastCalories = 200; macros = [2, 14, 8];
+        items = [["ripe tomatoes", "עגבניות בשלות", 400, "g"], ["red bell pepper", "פלפל אדום", 1, "pc"], ["garlic", "שום", 3, "clove"], ["sweet paprika", "פפריקה מתוקה", 5, "g"], ["olive oil", "שמן זית", 20, "ml"]];
+      } else if (match(/falafel/)) {
+        methodKey = "falafel"; prepMinutes = 20; cookMinutes = 15; fitCalories = 210; feastCalories = 360; macros = [9, 32, 12];
+        items = [["dried chickpeas", "גרגירי חומוס יבשים", 150, "g"], ["parsley", "פטרוזיליה", 20, "g"], ["cilantro", "כוסברה", 15, "g"], ["onion", "בצל", 0.5, "pc"], ["cumin", "כמון", 3, "g"], ["oil for frying", "שמן לטיגון", 300, "ml"]];
+      } else if (match(/cheese board/)) {
+        methodKey = "cheese-board"; prepMinutes = 10; cookMinutes = 0; fitCalories = 280; feastCalories = 480; macros = [16, 22, 24];
+        items = [["boutique cheeses", "גבינות בוטיק", 140, "g"], ["dried figs", "תאנים מיובשות", 40, "g"], ["red grapes", "ענבים אדומים", 80, "g"], ["sourdough", "לחם מחמצת", 2, "slice"], ["walnuts", "אגוזי מלך", 20, "g"]];
+      } else if (match(/beetroot|goat cheese/)) {
+        methodKey = "roasted-produce-salad"; prepMinutes = 15; cookMinutes = 30; fitCalories = 160; feastCalories = 290; macros = [7, 18, 12];
+        items = [["beetroots or figs", "סלקים או תאנים", 250, "g"], ["goat cheese", "גבינת עזים", 60, "g"], ["pistachios", "פיסטוקים", 20, "g"], ["arugula", "רוקט", 30, "g"], ["balsamic vinegar", "חומץ בלסמי", 10, "ml"]];
+      } else if (match(/carpaccio/)) {
+        methodKey = "fish"; prepMinutes = 15; cookMinutes = 0; fitCalories = 170; feastCalories = 260; macros = [22, 2, 14];
+        items = [["fresh salmon fillet", "פילה סלמון טרי", 160, "g"], ["capers", "צלפים", 15, "g"], ["olive oil", "שמן זית", 15, "ml"], ["lemon juice", "מיץ לימון", 15, "ml"], ["parmesan or sea salt", "פרמזן או מלח ים", 10, "g"]];
+      } else if (match(/gefilte fish/)) {
+        methodKey = "gefilte-fish"; prepMinutes = 25; cookMinutes = 45; fitCalories = 140; feastCalories = 220; macros = [18, 12, 4];
+        items = [["white fish fillets", "פילה דג לבן", 250, "g"], ["carrot", "גזר", 1, "pc"], ["onion", "בצל", 0.5, "pc"], ["egg", "ביצה", 1, "pc"], ["matzo meal", "קמח מצה", 20, "g"], ["horseradish", "חזרת", 15, "g"]];
+      } else if (match(/chraime|spicy fish/)) {
+        methodKey = "fish"; prepMinutes = 15; cookMinutes = 25; fitCalories = 220; feastCalories = 380; macros = [28, 12, 16];
+        items = [["white fish fillets", "פילה דג לבן", 300, "g"], ["crushed tomatoes", "עגבניות מרוסקות", 200, "g"], ["garlic", "שום", 4, "clove"], ["sweet & hot paprika", "פפריקה מתוקה וחריפה", 8, "g"], ["olive oil", "שמן זית", 20, "ml"]];
+      } else if (match(/liver pâté|chopped liver/)) {
+        methodKey = "liver-pate"; prepMinutes = 15; cookMinutes = 20; fitCalories = 230; feastCalories = 410; macros = [20, 8, 22];
+        items = [["chicken livers", "כבדי עוף", 250, "g"], ["onion", "בצל", 1, "pc"], ["butter or chicken fat", "חמאה או שומן עוף", 35, "g"], ["hard-boiled egg", "ביצה קשה", 1, "pc"], ["brandy", "ברנדי", 15, "ml"]];
+      } else if (match(/carrot salad/)) {
+        methodKey = "carrot-salad"; prepMinutes = 10; cookMinutes = 10; fitCalories = 90; feastCalories = 160; macros = [2, 14, 6];
+        items = [["carrots", "גזרים", 250, "g"], ["garlic", "שום", 2, "clove"], ["cumin", "כמון", 3, "g"], ["lemon juice", "מיץ לימון", 20, "ml"], ["olive oil", "שמן זית", 12, "ml"]];
+      } else if (match(/latkes|latke/)) {
+        methodKey = "crispy-fritters"; prepMinutes = 15; cookMinutes = 15; fitCalories = 210; feastCalories = 380; macros = [4, 30, 16];
+        items = [["potatoes", "תפוחי אדמה", 350, "g"], ["onion", "בצל", 0.5, "pc"], ["egg", "ביצה", 1, "pc"], ["matzo meal", "קמח מצה", 25, "g"], ["oil for frying", "שמן לטיגון", 50, "ml"]];
+      } else if (match(/burekas|bureka/)) {
+        methodKey = "savory-pastry"; prepMinutes = 15; cookMinutes = 25; fitCalories = 260; feastCalories = 450; macros = [8, 32, 24];
+        items = [["puff pastry", "בצק עלים", 180, "g"], ["feta or potato filling", "מלית פטה או תפוח אדמה", 120, "g"], ["egg for wash", "ביצה להברשה", 1, "pc"], ["sesame seeds", "שומשום", 5, "g"]];
+      } else if (match(/matzah ball soup/)) {
+        methodKey = "matzah-soup"; prepMinutes = 20; cookMinutes = 35; fitCalories = 160; feastCalories = 270; macros = [10, 22, 6];
+        items = [["matzo meal", "קמח מצה", 80, "g"], ["eggs", "ביצים", 2, "pc"], ["chicken stock", "ציר עוף", 600, "ml"], ["carrots", "גזרים", 1, "pc"], ["dill", "שמיר", 5, "g"]];
+      } else if (match(/caprese/)) {
+        methodKey = "caprese"; prepMinutes = 10; cookMinutes = 0; fitCalories = 180; feastCalories = 320; macros = [12, 6, 20];
+        items = [["fresh mozzarella", "מוצרלה טרייה", 125, "g"], ["ripe tomatoes", "עגבניות בשלות", 2, "pc"], ["fresh basil", "בזיליקום טרי", 10, "g"], ["olive oil", "שמן זית", 15, "ml"], ["balsamic vinegar", "חומץ בלסמי", 8, "ml"]];
+      } else if (match(/wheatberry|barley salad/)) {
+        methodKey = "grain-salad"; prepMinutes = 15; cookMinutes = 30; fitCalories = 190; feastCalories = 310; macros = [6, 36, 8];
+        items = [["pearl barley & wheatberries", "גריסי פנינה וחיטה", 100, "g"], ["dried cranberries", "חמוציות מיובשות", 30, "g"], ["walnuts", "אגוזי מלך", 20, "g"], ["fresh mint", "נענע טרייה", 8, "g"], ["olive oil & lemon", "שמן זית ולימון", 20, "ml"]];
+      } else if (match(/parghiot|chicken skewers/)) {
+        methodKey = "grilled-chicken"; prepMinutes = 15; cookMinutes = 15; fitCalories = 320; feastCalories = 520; macros = [36, 4, 18];
+        items = [["boneless chicken thighs (parghiot)", "פרגיות (ירכי עוף ללא עצם)", 320, "g"], ["olive oil", "שמן זית", 15, "ml"], ["lemon juice", "מיץ לימון", 15, "ml"], ["garlic", "שום", 2, "clove"], ["sweet paprika", "פפריקה מתוקה", 4, "g"]];
+      } else if (match(/kebab/)) {
+        methodKey = "spiced-beef"; prepMinutes = 15; cookMinutes = 12; fitCalories = 340; feastCalories = 560; macros = [32, 3, 22];
+        items = [["ground beef & lamb", "בשר בקר וטלה טחון", 300, "g"], ["onion", "בצל", 0.5, "pc"], ["parsley", "פטרוזיליה", 15, "g"], ["cumin & coriander", "כמון וכוסברה", 5, "g"]];
+      } else if (match(/lamb chops/)) {
+        methodKey = "grilled-lamb"; prepMinutes = 10; cookMinutes = 12; fitCalories = 380; feastCalories = 620; macros = [34, 1, 26];
+        items = [["lamb chops", "צלעות טלה", 320, "g"], ["rosemary", "רוזמרין", 5, "g"], ["garlic", "שום", 2, "clove"], ["olive oil", "שמן זית", 15, "ml"]];
+      } else if (match(/brisket|roast beef/)) {
+        methodKey = "slow-beef"; prepMinutes = 20; cookMinutes = 150; fitCalories = 390; feastCalories = 680; macros = [42, 14, 28];
+        items = [["beef brisket", "חזה בקר (בריסקט)", 350, "g"], ["carrots", "גזרים", 2, "pc"], ["onion", "בצל", 1, "pc"], ["red wine", "יין אדום", 100, "ml"], ["beef stock", "ציר בקר", 250, "ml"]];
+      } else if (match(/sea bass/)) {
+        methodKey = "fish"; prepMinutes = 10; cookMinutes = 15; fitCalories = 260; feastCalories = 420; macros = [32, 4, 12];
+        items = [["sea bass fillets", "פילה לברק", 300, "g"], ["cherry tomatoes", "עגבניות שרי", 150, "g"], ["olive oil", "שמן זית", 15, "ml"], ["garlic & herbs", "שום ועשבי תיבול", 10, "g"]];
+      } else if (match(/tenderloin/)) {
+        methodKey = "seared-tenderloin"; prepMinutes = 10; cookMinutes = 12; fitCalories = 350; feastCalories = 580; macros = [38, 4, 20];
+        items = [["beef tenderloin medallions", "מדליוני פילה בקר", 300, "g"], ["red wine", "יין אדום", 80, "ml"], ["shallot", "שאלוט", 1, "pc"], ["butter", "חמאה", 20, "g"]];
+      } else if (match(/roast chicken|fried chicken/)) {
+        methodKey = match(/fried chicken/) ? "fried-chicken" : "roast-chicken"; prepMinutes = 15; cookMinutes = match(/fried chicken/) ? 25 : 45; fitCalories = 340; feastCalories = 550; macros = [35, 8, 18];
+        items = [["chicken thighs or quarters", "כרעי עוף", 380, "g"], ["honey or silan", "דבש או סילאן", 20, "g"], ["pomegranate molasses", "רכז רימונים", 15, "ml"], ["olive oil", "שמן זית", 15, "ml"]];
+      } else if (match(/lamb shank|lamb tagine/)) {
+        methodKey = "lamb-braise"; prepMinutes = 20; cookMinutes = 110; fitCalories = 410; feastCalories = 690; macros = [38, 18, 28];
+        items = [["lamb shank or shoulder", "שוק או כתף טלה", 350, "g"], ["dried apricots & prunes", "משמשים ושזיפים מיובשים", 50, "g"], ["onion", "בצל", 1, "pc"], ["cinnamon & spices", "קינמון ותבלינים", 5, "g"]];
+      } else if (match(/stuffed bell peppers|stuffed cabbage|holishkes/)) {
+        methodKey = "stuffed-vegetables"; prepMinutes = 25; cookMinutes = 50; fitCalories = 290; feastCalories = 480; macros = [20, 36, 12];
+        items = [["bell peppers or cabbage", "פלפלים או כרוב", 3, "pc"], ["ground beef", "בשר בקר טחון", 200, "g"], ["rice", "אורז", 80, "g"], ["tomato sauce", "רוטב עגבניות", 200, "g"]];
+      } else if (match(/pastilla/)) {
+        methodKey = "chicken-pastilla"; prepMinutes = 30; cookMinutes = 35; fitCalories = 360; feastCalories = 590; macros = [24, 42, 22];
+        items = [["shredded chicken", "עוף מפורק", 220, "g"], ["filo pastry", "בצק פילו", 120, "g"], ["almonds", "שקדים", 30, "g"], ["cinnamon & powdered sugar", "קינמון ואבקת סוכר", 10, "g"]];
+      } else if (match(/sabzi|ghormeh/)) {
+        methodKey = "persian-herb-stew"; prepMinutes = 20; cookMinutes = 90; fitCalories = 310; feastCalories = 490; macros = [28, 18, 16];
+        items = [["beef chuck", "כתף בקר", 250, "g"], ["kidney beans", "שעועית אדומה", 100, "g"], ["fresh herbs", "עשבי תיבול טריים", 100, "g"], ["dried lime", "ליים מיובש", 1, "pc"]];
+      } else if (match(/spinach & feta|quiche/)) {
+        methodKey = "spinach-quiche"; prepMinutes = 15; cookMinutes = 35; fitCalories = 280; feastCalories = 460; macros = [14, 26, 22];
+        items = [["spinach", "תרד", 150, "g"], ["feta cheese", "גבינת פטה", 100, "g"], ["eggs", "ביצים", 2, "pc"], ["heavy cream", "שמנת להקצפה", 80, "ml"], ["pie crust", "בצק פריך", 150, "g"]];
+      } else if (match(/lasagna|ravioli|pierogi/)) {
+        methodKey = "pasta-bake"; prepMinutes = 25; cookMinutes = 30; fitCalories = 340; feastCalories = 570; macros = [18, 48, 20];
+        items = [["pasta or dough", "פסטה או בצק", 200, "g"], ["ricotta or farmer cheese", "ריקוטה או גבינת טוב טעם", 120, "g"], ["mushrooms or spinach", "פטריות או תרד", 100, "g"], ["butter or sauce", "חמאה או רוטב", 30, "g"]];
+      } else if (match(/watermelon/)) {
+        methodKey = "watermelon-feta"; prepMinutes = 5; cookMinutes = 0; fitCalories = 110; feastCalories = 180; macros = [4, 20, 5];
+        items = [["watermelon", "אבטיח", 350, "g"], ["Bulgarian feta", "פטה בולגרית", 60, "g"], ["fresh mint", "נענע טרייה", 5, "g"]];
+      } else if (match(/honey cake|lekach/)) {
+        methodKey = "fruit-bake"; prepMinutes = 15; cookMinutes = 40; fitCalories = 210; feastCalories = 360; macros = [4, 48, 10];
+        items = [["flour", "קמח", 150, "g"], ["honey", "דבש", 70, "g"], ["eggs", "ביצים", 2, "pc"], ["warm spices & tea", "תבלינים ותה", 5, "g"]];
+      } else if (match(/sufganiyot|sfenj/)) {
+        methodKey = "filled-sufganiyot"; prepMinutes = 30; cookMinutes = 15; fitCalories = 260; feastCalories = 460; macros = [6, 52, 18];
+        items = [["flour", "קמח", 200, "g"], ["yeast", "שמרים", 5, "g"], ["jam or nutella", "ריבה או נוטלה", 60, "g"], ["oil for frying", "שמן לטיגון", 200, "ml"]];
+      } else if (match(/hamantaschen|oznei haman/)) {
+        methodKey = "hamantaschen"; prepMinutes = 20; cookMinutes = 14; fitCalories = 190; feastCalories = 320; macros = [3, 38, 12];
+        items = [["flour", "קמח", 150, "g"], ["butter", "חמאה", 60, "g"], ["poppy seed or chocolate filling", "מלית פרג או שוקולד", 60, "g"], ["sugar", "סוכר", 40, "g"]];
+      } else if (match(/flourless chocolate cake/)) {
+        methodKey = "flourless-chocolate-cake"; prepMinutes = 15; cookMinutes = 25; fitCalories = 240; feastCalories = 430; macros = [6, 32, 22];
+        items = [["dark chocolate", "שוקולד מריר", 120, "g"], ["eggs", "ביצים", 3, "pc"], ["butter", "חמאה", 70, "g"], ["sugar", "סוכר", 50, "g"]];
+      } else if (match(/cheesecake/)) {
+        methodKey = "baked-cheesecake"; prepMinutes = 20; cookMinutes = 50; fitCalories = 250; feastCalories = 440; macros = [8, 30, 22];
+        items = [["cream cheese", "גבינת שמנת", 250, "g"], ["sour cream", "שמנת חמוצה", 100, "g"], ["eggs", "ביצים", 2, "pc"], ["sugar", "סוכר", 60, "g"], ["biscuit base", "בסיס ביסקוויטים", 60, "g"]];
+      } else if (match(/babka/)) {
+        methodKey = "cheese-babka"; prepMinutes = 30; cookMinutes = 35; fitCalories = 270; feastCalories = 480; macros = [7, 54, 20];
+        items = [["flour", "קמח", 180, "g"], ["butter", "חמאה", 50, "g"], ["chocolate or cheese filling", "מלית שוקולד או גבינה", 90, "g"], ["yeast", "שמרים", 5, "g"]];
+      } else if (match(/panna cotta|malabi/)) {
+        methodKey = "set-dessert"; prepMinutes = 10; cookMinutes = 5; fitCalories = 160; feastCalories = 280; macros = [4, 26, 12];
+        items = [["milk or cream", "חלב או שמנת", 250, "ml"], ["cornstarch or gelatin", "קורנפלור או ג׳לטין", 15, "g"], ["rosewater or mango purée", "מי ורדים או מחית מנגו", 40, "g"], ["syrup & nuts", "סירופ ואגוזים", 20, "g"]];
+      } else if (match(/baklava|puff pastries/)) {
+        methodKey = "dessert-pastry"; prepMinutes = 20; cookMinutes = 25; fitCalories = 230; feastCalories = 420; macros = [5, 42, 20];
+        items = [["phyllo dough", "בצק פילו", 120, "g"], ["pistachios & walnuts", "פיסטוקים ואגוזים", 50, "g"], ["butter", "חמאה", 40, "g"], ["honey syrup", "סירופ דבש", 40, "ml"]];
+      } else if (match(/tartlet|cobbler|strudel/)) {
+        methodKey = "strawberry-tart"; prepMinutes = 20; cookMinutes = 25; fitCalories = 220; feastCalories = 390; macros = [4, 40, 16];
+        items = [["flour or crust", "קמח או קלתית", 140, "g"], ["seasonal fruit", "פירות טריים", 150, "g"], ["butter", "חמאה", 45, "g"], ["sugar", "סוכר", 30, "g"]];
+      } else if (match(/limonana/)) {
+        methodKey = "citrus-drink"; prepMinutes = 5; cookMinutes = 0; fitCalories = 80; feastCalories = 140; macros = [0, 20, 0];
+        items = [["lemons", "לימונים", 2, "pc"], ["fresh mint", "נענע טרייה", 15, "g"], ["water & ice", "מים וקרח", 400, "ml"], ["sugar or honey", "סוכר או דבש", 25, "g"]];
+      } else if (match(/arak/)) {
+        methodKey = "arak-grapefruit"; prepMinutes = 3; cookMinutes = 0; fitCalories = 120; feastCalories = 210; macros = [0, 8, 0];
+        items = [["arak", "ערק", 60, "ml"], ["grapefruit juice or ice", "מיץ אשכוליות או קרח", 120, "ml"], ["mint or thyme", "נענע או תימין", 2, "g"]];
+      } else if (match(/wine|rosé|merlot|cabernet|syrah|sauvignon/)) {
+        methodKey = "wine-service"; prepMinutes = 2; cookMinutes = 0; fitCalories = 120; feastCalories = 190; macros = [0, 4, 0];
+        items = [["Israeli wine", "יין ישראלי", 200, "ml"]];
+      } else if (match(/cider|punch/)) {
+        methodKey = "apple-cider"; prepMinutes = 5; cookMinutes = 15; fitCalories = 110; feastCalories = 180; macros = [0, 28, 0];
+        items = [["apple cider or juice", "סיידר או מיץ תפוחים", 350, "ml"], ["cinnamon & spices", "קינמון ותבלינים", 5, "g"], ["orange slices", "פרוסות תפוז", 2, "slice"]];
+      } else if (match(/sangria|cocktail|sparkler|martini/)) {
+        methodKey = "cocktail"; prepMinutes = 5; cookMinutes = 0; fitCalories = 140; feastCalories = 240; macros = [0, 16, 0];
+        items = [["pomegranate juice or spirits", "מיץ רימונים או אלכוהול", 150, "ml"], ["sparkling wine or soda", "יין מבעבע או סודה", 100, "ml"], ["fruit garnish & ice", "פירות לקישוט וקרח", 30, "g"]];
+      } else if (match(/coffee|tea|afoch/)) {
+        methodKey = "tea-coffee"; prepMinutes = 3; cookMinutes = 3; fitCalories = 60; feastCalories = 150; macros = [3, 8, 4];
+        items = [["espresso or tea", "אספרסו או תה", 120, "ml"], ["milk", "חלב", 100, "ml"]];
+      } else {
+        const fallback = legacyRecipeProfileFor(title, category);
+        methodKey = fallback.methodKey;
+        prepMinutes = fallback.prepMinutes;
+        cookMinutes = fallback.cookMinutes;
+        items = fallback.ingredients.map((ingredient) => [ingredient.en, ingredient.he, ingredient.qty, ingredient.unit]);
+      }
+      return { methodKey, prepMinutes, cookMinutes, fitCalories, feastCalories, macros, ingredients: items.map(([en, he, qty, unit]) => ({ en, he, qty, unit })) };
+    }
+    function legacyRecipeProfileFor(title, category) {
+      const name = title.toLowerCase();
+      const match = (pattern) => pattern.test(name);
+      let methodKey = category;
+      let prepMinutes = 15;
+      let cookMinutes = 20;
+      let items;
+      if (match(/nutella.*sufganiyot|sufganiyot.*nutella/)) {
+        methodKey = "filled-sufganiyot"; cookMinutes = 25;
+        items = [["flour", "קמח", 240, "g"], ["dry yeast", "שמרים יבשים", 5, "g"], ["milk", "חלב", 120, "ml"], ["eggs", "ביצים", 1, "pc"], ["nutella", "ממרח אגוזי לוז ושוקולד", 70, "g"], ["dulce de leche", "ריבת חלב", 40, "g"]];
+      } else if (match(/chocolate cheese babka/)) {
+        methodKey = "cheese-babka"; cookMinutes = 35;
+        items = [["bread flour", "קמח לחם", 220, "g"], ["yeast", "שמרים", 5, "g"], ["cream cheese", "גבינת שמנת", 90, "g"], ["dark chocolate", "שוקולד מריר", 60, "g"], ["butter", "חמאה", 55, "g"]];
+      } else if (match(/classic israeli baked cheesecake/)) {
+        methodKey = "baked-cheesecake"; cookMinutes = 55;
+        items = [["cream cheese", "גבינת שמנת", 300, "g"], ["eggs", "ביצים", 2, "pc"], ["sugar", "סוכר", 80, "g"], ["sour cream", "שמנת חמוצה", 100, "g"], ["butter biscuits", "עוגיות חמאה", 90, "g"]];
+      } else if (match(/flourless chocolate cake/)) {
+        methodKey = "flourless-chocolate-cake"; cookMinutes = 28;
+        items = [["dark chocolate", "שוקולד מריר", 150, "g"], ["eggs", "ביצים", 3, "pc"], ["butter", "חמאה", 90, "g"], ["sugar", "סוכר", 75, "g"], ["cocoa powder", "אבקת קקאו", 20, "g"]];
+      } else if (match(/almond-paste dates/)) {
+        methodKey = "stuffed-dates"; cookMinutes = 0;
+        items = [["medjool dates", "תמרי מג׳הול", 6, "pc"], ["almond paste", "מרציפן", 45, "g"], ["dark chocolate", "שוקולד מריר", 35, "g"], ["pistachios", "פיסטוקים", 15, "g"]];
+      } else if (match(/colorful carnival cupcakes/)) {
+        methodKey = "cupcakes"; cookMinutes = 20;
+        items = [["all-purpose flour", "קמח לבן", 120, "g"], ["eggs", "ביצים", 1, "pc"], ["butter", "חמאה", 55, "g"], ["sugar", "סוכר", 70, "g"], ["sprinkles", "סוכריות צבעוניות", 20, "g"]];
+      } else if (match(/cold mango panna cotta/)) {
+        methodKey = "mango-panna-cotta"; cookMinutes = 6;
+        items = [["mango purée", "מחית מנגו", 140, "g"], ["heavy cream", "שמנת להקצפה", 160, "ml"], ["gelatin", "ג׳לטין", 4, "g"], ["sugar", "סוכר", 25, "g"], ["lime zest", "גרידת ליים", 1, "g"]];
+      } else if (match(/honey-arak cocktail/)) {
+        methodKey = "honey-arak"; cookMinutes = 0;
+        items = [["arak", "ערק", 60, "ml"], ["fresh lemon juice", "מיץ לימון טרי", 25, "ml"], ["honey syrup", "סירופ דבש", 20, "ml"], ["soda water", "סודה", 100, "ml"], ["ice", "קרח", 100, "g"]];
+      } else if (match(/arak over ice/)) {
+        methodKey = "arak-service"; cookMinutes = 0;
+        items = [["arak", "ערק", 60, "ml"], ["ice", "קרח", 100, "g"], ["lemon", "לימון", 1, "wedge"]];
+      } else if (match(/citrus party punch/)) {
+        methodKey = "citrus-punch"; cookMinutes = 0;
+        items = [["orange juice", "מיץ תפוזים", 220, "ml"], ["lemon juice", "מיץ לימון", 60, "ml"], ["ginger ale", "ג׳ינג׳ר אייל", 250, "ml"], ["orange slices", "פרוסות תפוז", 3, "pc"], ["ice", "קרח", 100, "g"]];
+      } else if (match(/pine-nut hummus/)) {
+        methodKey = "hummus"; cookMinutes = 45;
+        items = [["chickpeas", "חומוס", 220, "g"], ["tahini", "טחינה", 45, "g"], ["pine nuts", "צנוברים", 25, "g"], ["whole-wheat pita", "פיתה מחיטה מלאה", 1, "pc"], ["lemon juice", "מיץ לימון", 25, "ml"]];
+      } else if (match(/cheese board|boutique cheese board/)) {
+        methodKey = "cheese-board"; cookMinutes = 5;
+        items = [["Israeli boutique cheeses", "גבינות בוטיק ישראליות", 150, "g"], ["dried figs", "תאנים מיובשות", 40, "g"], ["red grapes", "ענבים אדומים", 80, "g"], ["sourdough", "לחם מחמצת", 2, "slice"], ["toasted walnuts", "אגוזי מלך קלויים", 20, "g"]];
+      } else if (match(/caprese/)) {
+        methodKey = "caprese"; cookMinutes = 0;
+        items = [["ripe tomatoes", "עגבניות בשלות", 2, "pc"], ["fresh mozzarella", "מוצרלה טרייה", 125, "g"], ["Israeli basil", "בזיליקום ישראלי", 10, "g"], ["olive oil", "שמן זית", 15, "ml"], ["balsamic vinegar", "חומץ בלסמי", 8, "ml"]];
+      } else if (match(/spinach.*feta.*boureka|quiche/)) {
+        methodKey = "spinach-quiche"; cookMinutes = 35;
+        items = [["spinach", "תרד", 150, "g"], ["feta cheese", "גבינת פטה", 100, "g"], ["eggs", "ביצים", 3, "pc"], ["cream", "שמנת", 100, "ml"], ["puff pastry", "בצק עלים", 180, "g"]];
+      } else if (match(/hamantaschen/)) {
+        methodKey = "hamantaschen"; cookMinutes = 14;
+        items = [["flour", "קמח", 180, "g"], ["butter", "חמאה", 75, "g"], ["egg", "ביצה", 1, "pc"], ["poppy seed or chocolate filling", "מלית פרג או שוקולד", 70, "g"], ["sugar", "סוכר", 45, "g"]];
+      } else if (match(/apple & fig cobbler|apple and fig cobbler|cobbler/)) {
+        methodKey = "fruit-cobbler"; cookMinutes = 40;
+        items = [["apples", "תפוחים", 2, "pc"], ["fresh figs", "תאנים טריות", 120, "g"], ["flour", "קמח", 120, "g"], ["butter", "חמאה", 60, "g"], ["almonds", "שקדים", 25, "g"]];
+      } else if (match(/fire-grilled banana/)) {
+        methodKey = "grilled-banana"; cookMinutes = 8;
+        items = [["bananas", "בננות", 2, "pc"], ["halva", "חלבה", 35, "g"], ["dark chocolate", "שוקולד מריר", 30, "g"], ["butter", "חמאה", 10, "g"], ["sesame seeds", "שומשום", 5, "g"]];
+      } else if (match(/chocolate-whiskey cocktail/)) {
+        methodKey = "chocolate-whiskey-cocktail"; cookMinutes = 0;
+        items = [["whiskey", "וויסקי", 60, "ml"], ["coffee liqueur", "ליקר קפה", 25, "ml"], ["dark chocolate", "שוקולד מריר", 20, "g"], ["heavy cream", "שמנת להקצפה", 40, "ml"], ["ice", "קרח", 100, "g"]];
+      } else if (match(/roast turkey/)) {
+        methodKey = "roast-turkey"; cookMinutes = 90;
+        items = [["turkey breast", "חזה הודו", 350, "g"], ["cranberries", "חמוציות", 60, "g"], ["silan", "סילאן", 25, "ml"], ["orange juice", "מיץ תפוזים", 40, "ml"], ["fresh sage", "מרווה טרייה", 4, "g"]];
+      } else if (match(/duck breast/)) {
+        methodKey = "duck-breast"; cookMinutes = 20;
+        items = [["duck breast", "חזה ברווז", 300, "g"], ["cherries", "דובדבנים", 100, "g"], ["red wine vinegar", "חומץ יין אדום", 15, "ml"], ["honey", "דבש", 10, "g"], ["thyme", "תימין", 2, "g"]];
+      } else if (match(/beef tenderloin/)) {
+        methodKey = "seared-tenderloin"; cookMinutes = 12;
+        items = [["beef tenderloin medallions", "מדליוני פילה בקר", 300, "g"], ["red wine", "יין אדום", 100, "ml"], ["shallot", "בצל שאלוט", 1, "pc"], ["butter", "חמאה", 20, "g"], ["thyme", "תימין", 2, "g"]];
+      } else if (match(/beef & squash stew|beef and squash stew/)) {
+        methodKey = "beef-squash-stew"; cookMinutes = 100;
+        items = [["beef chuck", "כתף בקר", 280, "g"], ["butternut squash", "דלורית", 250, "g"], ["yellow onion", "בצל לבן", 1, "pc"], ["beef stock", "ציר בקר", 400, "ml"], ["cumin", "כמון", 2, "g"]];
+      } else if (match(/ricotta.*ravioli|mushroom.*lasagna/)) {
+        methodKey = "pasta-bake"; cookMinutes = 30;
+        items = [["fresh pasta sheets", "דפי פסטה טריים", 180, "g"], ["ricotta", "ריקוטה", 120, "g"], ["spinach", "תרד", 100, "g"], ["mushrooms", "פטריות", 100, "g"], ["sage butter", "חמאת מרווה", 30, "g"]];
+      } else if (match(/potato & cheese pierogi/)) {
+        methodKey = "pierogi"; cookMinutes = 18;
+        items = [["potatoes", "תפוחי אדמה", 200, "g"], ["farmer cheese", "גבינת טוב טעם", 100, "g"], ["flour", "קמח", 160, "g"], ["egg", "ביצה", 1, "pc"], ["yellow onion", "בצל לבן", 0.5, "pc"]];
+      } else if (match(/halva-filled puff pastries|baklava/)) {
+        methodKey = "dessert-pastry"; cookMinutes = 28;
+        items = [["phyllo pastry", "בצק פילו", 180, "g"], ["pistachios", "פיסטוקים", 45, "g"], ["halva", "חלבה", 60, "g"], ["honey syrup", "סירופ דבש", 35, "ml"], ["butter", "חמאה", 35, "g"]];
+      } else if (match(/coconut macaroons/)) {
+        methodKey = "macaroons"; cookMinutes = 18;
+        items = [["shredded coconut", "קוקוס טחון", 140, "g"], ["egg whites", "חלבוני ביצה", 2, "pc"], ["sugar", "סוכר", 65, "g"], ["vanilla", "וניל", 2, "ml"], ["dark chocolate", "שוקולד מריר", 30, "g"]];
+      } else if (match(/matzah toffee/)) {
+        methodKey = "matzah-toffee"; cookMinutes = 12;
+        items = [["matzah", "מצה", 2, "sheet"], ["butter", "חמאה", 90, "g"], ["brown sugar", "סוכר חום", 90, "g"], ["dark chocolate", "שוקולד מריר", 100, "g"], ["flaky salt", "מלח גס", 1, "g"]];
+      } else if (match(/rum & cinnamon milk punch/)) {
+        methodKey = "milk-punch"; cookMinutes = 5;
+        items = [["whole milk", "חלב מלא", 240, "ml"], ["dark rum", "רום כהה", 45, "ml"], ["cinnamon", "קינמון", 2, "g"], ["vanilla", "וניל", 2, "ml"], ["nutmeg", "אגוז מוסקט", 1, "g"]];
+      } else if (match(/warm spiced apple punch/)) {
+        methodKey = "apple-punch"; cookMinutes = 20;
+        items = [["apple juice", "מיץ תפוחים", 350, "ml"], ["apple", "תפוח", 1, "pc"], ["cinnamon stick", "מקל קינמון", 1, "pc"], ["cloves", "ציפורן", 2, "pc"], ["orange", "תפוז", 0.5, "pc"]];
+      } else if (match(/mulled wine/)) {
+        methodKey = "mulled-wine"; cookMinutes = 20;
+        items = [["red wine", "יין אדום", 300, "ml"], ["dried figs", "תאנים מיובשות", 25, "g"], ["orange", "תפוז", 0.5, "pc"], ["cinnamon stick", "מקל קינמון", 1, "pc"], ["cloves", "ציפורן", 2, "pc"]];
+      } else if (match(/pomegranate & arugula salad/)) {
+        methodKey = "pomegranate-arugula"; cookMinutes = 0;
+        items = [["pomegranate seeds", "גרגירי רימון", 80, "g"], ["baby arugula", "עלי רוקט", 50, "g"], ["toasted almonds", "שקדים קלויים", 20, "g"], ["lemon juice", "מיץ לימון", 18, "ml"], ["olive oil", "שמן זית", 15, "ml"]];
+      } else if (match(/watermelon/)) {
+        methodKey = "watermelon-feta"; cookMinutes = 0;
+        items = [["watermelon", "אבטיח", 350, "g"], ["Bulgarian feta", "פטה בולגרית", 80, "g"], ["fresh mint", "נענע טרייה", 5, "g"], ["lime", "ליים", 0.5, "pc"]];
+      } else if (match(/chicken liver pâté|chicken liver pate/)) {
+        methodKey = "liver-pate"; cookMinutes = 18;
+        items = [["chicken livers", "כבדי עוף", 250, "g"], ["yellow onion", "בצל לבן", 1, "pc"], ["butter", "חמאה", 45, "g"], ["brandy", "ברנדי", 20, "ml"], ["thyme", "תימין", 3, "g"]];
+      } else if (match(/chopped liver/)) {
+        methodKey = "chopped-liver"; cookMinutes = 22;
+        items = [["chicken livers", "כבדי עוף", 250, "g"], ["hard-boiled eggs", "ביצים קשות", 2, "pc"], ["yellow onion", "בצל לבן", 1, "pc"], ["chicken fat", "שומן עוף", 25, "g"], ["challah", "חלה", 2, "slice"]];
+      } else if (match(/roasted beetroot|roasted fig/)) {
+        methodKey = "roasted-produce-salad"; cookMinutes = 35;
+        items = [["beetroots or figs", "סלק או תאנים", 250, "g"], ["goat cheese", "גבינת עזים", 70, "g"], ["pistachios", "פיסטוקים", 20, "g"], ["baby arugula", "עלי רוקט", 35, "g"], ["balsamic vinegar", "חומץ בלסמי", 12, "ml"]];
+      } else if (match(/wheatberry|barley salad|seven species/)) {
+        methodKey = "grain-salad"; cookMinutes = 35;
+        items = [["wheat berries", "גרגרי חיטה", 80, "g"], ["pearl barley", "גריסי פנינה", 60, "g"], ["dried cranberries", "חמוציות מיובשות", 35, "g"], ["walnuts", "אגוזי מלך", 25, "g"], ["fresh mint", "נענע טרייה", 8, "g"]];
+      } else if (match(/sliced apples with honey/)) {
+        methodKey = "apples-honey"; cookMinutes = 0;
+        items = [["crisp apples", "תפוחים פריכים", 2, "pc"], ["honey", "דבש", 35, "g"], ["lemon juice", "מיץ לימון", 5, "ml"], ["chopped walnuts", "אגוזי מלך קצוצים", 20, "g"]];
+      } else if (match(/baked apples/)) {
+        methodKey = "baked-apples"; cookMinutes = 35;
+        items = [["baking apples", "תפוחים לאפייה", 2, "pc"], ["dates", "תמרים", 35, "g"], ["walnuts", "אגוזי מלך", 25, "g"], ["cinnamon", "קינמון", 2, "g"], ["butter", "חמאה", 15, "g"]];
+      } else if (match(/braised leeks/)) {
+        methodKey = "braised-leeks"; cookMinutes = 28;
+        items = [["leeks", "כרישה", 2, "pc"], ["silan", "סילאן", 20, "ml"], ["vegetable stock", "ציר ירקות", 120, "ml"], ["olive oil", "שמן זית", 15, "ml"], ["lemon", "לימון", 0.5, "pc"]];
+      } else if (match(/charoset/)) {
+        methodKey = "charoset"; cookMinutes = 0;
+        items = [["apples", "תפוחים", 1, "pc"], ["dates", "תמרים", 60, "g"], ["walnuts", "אגוזי מלך", 35, "g"], ["sweet red wine", "יין אדום מתוק", 30, "ml"], ["cinnamon", "קינמון", 1, "g"]];
+      } else if (match(/matzah brei/)) {
+        methodKey = "matzah-brei"; cookMinutes = 8;
+        items = [["matzah", "מצה", 2, "sheet"], ["eggs", "ביצים", 2, "pc"], ["milk", "חלב", 30, "ml"], ["fresh dill", "שמיר טרי", 5, "g"], ["butter", "חמאה", 15, "g"]];
+      } else if (match(/sabzi|ghormeh/)) {
+        methodKey = "persian-herb-stew"; cookMinutes = 100;
+        items = [["beef chuck", "כתף בקר", 250, "g"], ["kidney beans", "שעועית אדומה", 120, "g"], ["parsley", "פטרוזיליה", 25, "g"], ["spinach", "תרד", 20, "g"], ["dried lime", "ליים מיובש", 1, "pc"]];
+      } else if (match(/pastilla/)) {
+        methodKey = "chicken-pastilla"; cookMinutes = 35;
+        items = [["chicken thighs", "ירכי עוף", 250, "g"], ["warqa or filo pastry", "עלי וורקה או פילו", 180, "g"], ["toasted almonds", "שקדים קלויים", 35, "g"], ["cinnamon", "קינמון", 2, "g"], ["powdered sugar", "אבקת סוכר", 12, "g"]];
+      } else if (match(/hummus/)) {
+        methodKey = "hummus"; cookMinutes = 45;
+        items = [["dried chickpeas", "גרגירי חומוס יבשים", 240, "g"], ["tahini", "טחינה", 60, "g"], ["lemon juice", "מיץ לימון", 35, "ml"], ["garlic", "שום", 2, "clove"], ["olive oil", "שמן זית", 20, "ml"]];
+      } else if (match(/eggplant|babaganoush/)) {
+        methodKey = "roasted-eggplant"; cookMinutes = 30;
+        items = [["eggplant", "חציל", 1, "large"], ["tahini", "טחינה", 40, "g"], ["silan", "סילאן", 15, "ml"], ["garlic", "שום", 1, "clove"], ["lemon juice", "מיץ לימון", 20, "ml"]];
+      } else if (match(/falafel/)) {
+        methodKey = "falafel"; cookMinutes = 20;
+        items = [["dried chickpeas", "גרגירי חומוס יבשים", 220, "g"], ["parsley", "פטרוזיליה", 25, "g"], ["cilantro", "כוסברה", 15, "g"], ["yellow onion", "בצל לבן", 0.5, "pc"], ["cumin", "כמון", 3, "g"], ["neutral oil", "שמן לטיגון", 400, "ml"]];
+      } else if (match(/matbucha/)) {
+        methodKey = "matbucha"; cookMinutes = 50;
+        items = [["ripe tomatoes", "עגבניות בשלות", 500, "g"], ["red bell pepper", "פלפל אדום", 1, "pc"], ["garlic", "שום", 4, "clove"], ["sweet paprika", "פפריקה מתוקה", 5, "g"], ["olive oil", "שמן זית", 30, "ml"]];
+      } else if (match(/carrot salad/)) {
+        methodKey = "carrot-salad"; cookMinutes = 12;
+        items = [["carrots", "גזרים", 300, "g"], ["garlic", "שום", 2, "clove"], ["ground cumin", "כמון טחון", 3, "g"], ["lemon juice", "מיץ לימון", 25, "ml"], ["cilantro", "כוסברה", 12, "g"]];
+      } else if (match(/israeli cucumber|israeli salad|tomato salad/)) {
+        methodKey = "chopped-salad"; cookMinutes = 0;
+        items = [["cucumbers", "מלפפונים", 2, "pc"], ["ripe tomatoes", "עגבניות בשלות", 2, "pc"], ["red onion", "בצל סגול", 0.25, "pc"], ["lemon juice", "מיץ לימון", 20, "ml"], ["parsley", "פטרוזיליה", 10, "g"]];
+      } else if (match(/fried chicken/)) {
+        methodKey = "fried-chicken"; cookMinutes = 25;
+        items = [["bone-in chicken pieces", "נתחי עוף עם עצם", 350, "g"], ["flour", "קמח", 50, "g"], ["garlic", "שום", 2, "clove"], ["smoked paprika", "פפריקה מעושנת", 4, "g"], ["neutral oil", "שמן לטיגון", 500, "ml"]];
+      } else if (match(/roast chicken|chicken over/)) {
+        methodKey = "roast-chicken"; cookMinutes = 55;
+        items = [["chicken thighs", "ירכי עוף", 350, "g"], ["root vegetables", "ירקות שורש", 250, "g"], ["pomegranate molasses", "רכז רימונים", 25, "ml"], ["honey", "דבש", 20, "g"], ["olive oil", "שמן זית", 18, "ml"]];
+      } else if (match(/parghiot|chicken skewers|chicken pastilla/)) {
+        methodKey = "grilled-chicken"; cookMinutes = 25;
+        items = [["boneless chicken thighs", "ירכי עוף ללא עצם", 300, "g"], ["lemon juice", "מיץ לימון", 25, "ml"], ["garlic", "שום", 2, "clove"], ["sweet paprika", "פפריקה מתוקה", 4, "g"], ["olive oil", "שמן זית", 20, "ml"]];
+      } else if (match(/kebab|merguez|arayes|beef cigar/)) {
+        methodKey = "spiced-beef"; cookMinutes = 20;
+        items = [["ground beef", "בשר בקר טחון", 300, "g"], ["yellow onion", "בצל לבן", 0.5, "pc"], ["cumin", "כמון", 3, "g"], ["ground coriander", "כוסברה טחונה", 3, "g"], ["parsley", "פטרוזיליה", 12, "g"]];
+      } else if (match(/lamb chops|grilled lamb/)) {
+        methodKey = "grilled-lamb"; cookMinutes = 12;
+        items = [["lamb chops", "צלעות טלה", 320, "g"], ["rosemary", "רוזמרין", 5, "g"], ["garlic", "שום", 2, "clove"], ["lemon", "לימון", 0.5, "pc"], ["olive oil", "שמן זית", 18, "ml"]];
+      } else if (match(/lamb|tagine/)) {
+        methodKey = "lamb-braise"; cookMinutes = 110;
+        items = [["lamb shoulder", "כתף טלה", 320, "g"], ["dried apricots", "משמשים מיובשים", 60, "g"], ["red onion", "בצל סגול", 1, "pc"], ["cinnamon", "קינמון", 2, "g"], ["chicken stock", "ציר עוף", 250, "ml"]];
+      } else if (match(/brisket|roast beef|short ribs|tenderloin/)) {
+        methodKey = "slow-beef"; cookMinutes = 150;
+        items = [["beef brisket", "חזה בקר", 350, "g"], ["carrots", "גזרים", 2, "pc"], ["yellow onion", "בצל לבן", 1, "pc"], ["beef stock", "ציר בקר", 300, "ml"], ["red wine", "יין אדום", 120, "ml"]];
+      } else if (match(/gefilte fish/)) {
+        methodKey = "gefilte-fish"; cookMinutes = 55;
+        items = [["white fish fillets", "פילה דג לבן", 350, "g"], ["carrot", "גזר", 1, "pc"], ["yellow onion", "בצל לבן", 0.5, "pc"], ["egg", "ביצה", 1, "pc"], ["matzo meal", "קמח מצה", 20, "g"], ["horseradish", "חזרת", 15, "g"]];
+      } else if (match(/sea bass|salmon|chraime|fish|carpaccio/)) {
+        methodKey = "fish"; cookMinutes = 18;
+        items = [["fish fillets", "פילה דג", 300, "g"], ["cherry tomatoes", "עגבניות שרי", 150, "g"], ["lemon", "לימון", 1, "pc"], ["garlic", "שום", 2, "clove"], ["olive oil", "שמן זית", 20, "ml"]];
+      } else if (match(/grape leaves|dolmas/)) {
+        methodKey = "grape-leaves"; cookMinutes = 45;
+        items = [["vine leaves", "עלי גפן", 12, "pc"], ["short-grain rice", "אורז עגול", 100, "g"], ["dried currants", "צימוקים", 25, "g"], ["dill", "שמיר", 8, "g"], ["lemon juice", "מיץ לימון", 30, "ml"]];
+      } else if (match(/stuffed|dolma|kousa|holishkes/)) {
+        methodKey = "stuffed-vegetables"; cookMinutes = 55;
+        items = [["bell peppers", "פלפלים", 2, "pc"], ["ground beef", "בשר בקר טחון", 220, "g"], ["long-grain rice", "אורז ארוך", 100, "g"], ["crushed tomatoes", "עגבניות מרוסקות", 250, "g"], ["parsley", "פטרוזיליה", 12, "g"]];
+      } else if (match(/freekeh|risotto/)) {
+        methodKey = "hearty-stew"; cookMinutes = 90;
+        items = [["brown lentils", "עדשים חומות", 150, "g"], ["beef chuck", "כתף בקר", 250, "g"], ["yellow onion", "בצל לבן", 1, "pc"], ["dried lime", "ליים מיובש", 1, "pc"], ["vegetable stock", "ציר ירקות", 500, "ml"]];
+      } else if (match(/latke|fritter/)) {
+        methodKey = "crispy-fritters"; cookMinutes = 20;
+        items = [["potatoes", "תפוחי אדמה", 400, "g"], ["yellow onion", "בצל לבן", 0.5, "pc"], ["egg", "ביצה", 1, "pc"], ["matzo meal", "קמח מצה", 30, "g"], ["neutral oil", "שמן לטיגון", 60, "ml"]];
+      } else if (match(/matzah ball soup/)) {
+        methodKey = "matzah-soup"; cookMinutes = 40;
+        items = [["matzo meal", "קמח מצה", 100, "g"], ["eggs", "ביצים", 2, "pc"], ["chicken stock", "ציר עוף", 750, "ml"], ["carrots", "גזרים", 2, "pc"], ["fresh dill", "שמיר טרי", 8, "g"]];
+      } else if (match(/challah|pita|focaccia|sourdough/)) {
+        methodKey = "fresh-bread"; cookMinutes = 28;
+        items = [["bread dough", "בצק לחם", 250, "g"], ["olive oil", "שמן זית", 15, "ml"], ["za'atar", "זעתר", 8, "g"], ["sesame seeds", "שומשום", 8, "g"]];
+      } else if (match(/caprese/)) {
+        methodKey = "caprese"; cookMinutes = 0;
+        items = [["ripe tomatoes", "עגבניות בשלות", 2, "pc"], ["fresh mozzarella", "מוצרלה טרייה", 125, "g"], ["Israeli basil", "בזיליקום ישראלי", 10, "g"], ["olive oil", "שמן זית", 15, "ml"], ["balsamic vinegar", "חומץ בלסמי", 8, "ml"]];
+      } else if (match(/bureka|burekas|pastry|piroshki|pastilla/)) {
+        methodKey = "savory-pastry"; cookMinutes = 28;
+        items = [["puff pastry", "בצק עלים", 250, "g"], ["feta cheese", "גבינת פטה", 120, "g"], ["spinach", "תרד", 100, "g"], ["egg", "ביצה", 1, "pc"], ["sesame seeds", "שומשום", 8, "g"]];
+      } else if (match(/cheese board|labneh|caprese|goat cheese|cheese & herb|cheese crostini|tzatziki/)) {
+        methodKey = "cheese-board"; cookMinutes = 5;
+        items = [["soft goat cheese", "גבינת עזים רכה", 100, "g"], ["dried figs", "תאנים מיובשות", 50, "g"], ["red grapes", "ענבים אדומים", 80, "g"], ["pistachios", "פיסטוקים", 20, "g"], ["sourdough", "לחם מחמצת", 2, "slice"]];
+      } else if (match(/tartlet/)) {
+        methodKey = "strawberry-tart"; cookMinutes = 22;
+        items = [["flour", "קמח", 200, "g"], ["strawberries", "תותים", 150, "g"], ["cream", "שמנת", 120, "ml"], ["sugar", "סוכר", 30, "g"], ["butter", "חמאה", 60, "g"]];
+      } else if (match(/fondue|lava cake|chocolate|brownie/)) {
+        methodKey = "chocolate-dessert"; cookMinutes = 18;
+        items = [["dark chocolate", "שוקולד מריר", 140, "g"], ["heavy cream", "שמנת להקצפה", 120, "ml"], ["butter", "חמאה", 50, "g"], ["fresh berries", "פירות יער טריים", 120, "g"], ["eggs", "ביצים", 2, "pc"]];
+      } else if (match(/sufganiyot|sfenj|rugelach|hamantaschen|babka/)) {
+        methodKey = "fried-pastry"; cookMinutes = 25;
+        items = [["flour", "קמח", 250, "g"], ["dry yeast", "שמרים יבשים", 5, "g"], ["milk", "חלב", 120, "ml"], ["egg", "ביצה", 1, "pc"], ["fruit jam", "ריבה", 60, "g"]];
+      } else if (match(/malabi|panna cotta/)) {
+        methodKey = "set-dessert"; cookMinutes = 8;
+        items = [["milk", "חלב", 300, "ml"], ["cornstarch", "קורנפלור", 25, "g"], ["rosewater", "מי ורדים", 8, "ml"], ["sugar", "סוכר", 35, "g"], ["pomegranate seeds", "גרגירי רימון", 30, "g"]];
+      } else if (match(/cake|torte|lekach|galette|strudel|crumble|crisp|loaf|pavlova/)) {
+        methodKey = "fruit-bake"; cookMinutes = 38;
+        items = [["all-purpose flour", "קמח לבן", 180, "g"], ["seasonal fruit", "פירות העונה", 220, "g"], ["eggs", "ביצים", 2, "pc"], ["honey", "דבש", 50, "g"], ["butter", "חמאה", 70, "g"]];
+      } else if (match(/apple cider punch|hot spiced cider/)) {
+        methodKey = "apple-cider"; cookMinutes = 18;
+        items = [["apple cider", "סיידר תפוחים", 500, "ml"], ["apple", "תפוח", 1, "pc"], ["cinnamon stick", "מקל קינמון", 1, "pc"], ["star anise", "כוכב אניס", 1, "pc"], ["orange peel", "קליפת תפוז", 2, "strip"]];
+      } else if (match(/grape juice.*ginger ale|ginger ale.*grape juice/)) {
+        methodKey = "grape-cooler"; cookMinutes = 0;
+        items = [["grape juice", "מיץ ענבים", 240, "ml"], ["ginger ale", "ג׳ינג׳ר אייל", 240, "ml"], ["lime", "ליים", 0.5, "pc"], ["ice", "קרח", 120, "g"]];
+      } else if (match(/pomegranate.*orange juice|orange juice|pomegranate juice/)) {
+        methodKey = "fresh-juice"; cookMinutes = 0;
+        items = [["pomegranate", "רימון", 1, "pc"], ["oranges", "תפוזים", 2, "pc"], ["fresh ginger", "ג׳ינג׳ר טרי", 3, "g"]];
+      } else if (match(/arak.*grapefruit/)) {
+        methodKey = "arak-grapefruit"; cookMinutes = 0;
+        items = [["arak", "ערק", 90, "ml"], ["pink grapefruit", "אשכולית ורודה", 1, "pc"], ["soda water", "סודה", 180, "ml"], ["fresh thyme", "תימין טרי", 2, "g"], ["ice", "קרח", 120, "g"]];
+      } else if (match(/pomegranate.*cranberry.*sparkler/)) {
+        methodKey = "sparkling-cocktail"; cookMinutes = 0;
+        items = [["pomegranate juice", "מיץ רימונים", 120, "ml"], ["sparkling wine", "יין מבעבע", 180, "ml"], ["cranberries", "חמוציות", 35, "g"], ["orange", "תפוז", 0.5, "pc"], ["ice", "קרח", 100, "g"]];
+      } else if (match(/pomegranate-mint cocktail/)) {
+        methodKey = "pomegranate-cocktail"; cookMinutes = 0;
+        items = [["pomegranate juice", "מיץ רימונים", 150, "ml"], ["vodka", "וודקה", 45, "ml"], ["lime juice", "מיץ ליים", 20, "ml"], ["fresh mint", "נענע טרייה", 5, "g"], ["soda water", "סודה", 100, "ml"]];
+      } else if (match(/espresso martini/)) {
+        methodKey = "espresso-martini"; cookMinutes = 0;
+        items = [["vodka", "וודקה", 90, "ml"], ["espresso", "אספרסו", 60, "ml"], ["coffee liqueur", "ליקר קפה", 30, "ml"], ["ice", "קרח", 120, "g"]];
+      } else if (match(/bourbon.*sangria/)) {
+        methodKey = "sangria"; cookMinutes = 0;
+        items = [["red wine", "יין אדום", 300, "ml"], ["bourbon", "בורבון", 45, "ml"], ["apple", "תפוח", 1, "pc"], ["orange", "תפוז", 1, "pc"], ["cinnamon", "קינמון", 1, "g"]];
+      } else if (match(/limonana|lemonade/)) {
+        methodKey = "citrus-drink"; cookMinutes = 0;
+        items = [["lemons", "לימונים", 3, "pc"], ["fresh mint", "נענע טרייה", 12, "g"], ["cold water", "מים קרים", 500, "ml"], ["sugar", "סוכר", 35, "g"], ["ice", "קרח", 150, "g"]];
+      } else if (match(/cocktail|spritz|sangria|arak|martini|sparkler/)) {
+        methodKey = "cocktail"; cookMinutes = 0;
+        items = [["pomegranate juice", "מיץ רימונים", 120, "ml"], ["sparkling wine", "יין מבעבע", 180, "ml"], ["fresh cranberries", "חמוציות טריות", 40, "g"], ["orange", "תפוז", 0.5, "pc"], ["ice", "קרח", 100, "g"]];
+      } else if (match(/wine|cabernet|merlot|sauvignon|syrah|shiraz|beer|goldstar|maccabi|rosé/)) {
+        methodKey = "wine-service"; cookMinutes = 0;
+        items = [["Israeli wine or beer", "יין או בירה ישראליים", 300, "ml"], ["grapes", "ענבים", 80, "g"], ["crackers", "קרקרים", 40, "g"]];
+      } else if (match(/tea|coffee|afoch/)) {
+        methodKey = "tea-coffee"; cookMinutes = 5;
+        items = [["strong coffee or tea", "קפה חזק או תה", 240, "ml"], ["milk", "חלב", 120, "ml"], ["sugar", "סוכר", 15, "g"], ["fresh mint", "נענע טרייה", 4, "g"]];
+      } else {
+        methodKey = "seasonal-salad"; cookMinutes = 0;
+        items = [["seasonal vegetables", "ירקות עונתיים", 220, "g"], ["olive oil", "שמן זית", 18, "ml"], ["lemon juice", "מיץ לימון", 20, "ml"], ["fresh herbs", "עשבי תיבול", 10, "g"]];
+      }
+      return { methodKey, prepMinutes, cookMinutes, ingredients: items.map(([en, he, qty, unit]) => ({ en, he, qty, unit })) };
+    }
+    function localizeTitle(holidayId, category, fallback) {
+      const hebrewNames = {
+        "yom-haatzmaut": { starters: ["חומוס קרמי עם גרגרים ושמן זית", "סלט ישראלי קצוץ"], mains: ["שיפודי פרגית ובקר", "קבבים בתבלינים מזרח־תיכוניים"], desserts: ["אבטיח עם גבינה בולגרית"], drinks: ["לימונענע"] },
+        "tu-bav": { starters: ["מגש גבינות בוטיק, תאנים וענבים"], mains: ["דג ים צרוב עם עשבי תיבול"], desserts: ["טארטלט תותים ושמנת"], drinks: ["יין רוזה ישראלי מצונן"] },
+        "rosh-hashanah": { starters: ["גפילטע פיש עם חזרת", "דג חריימה מרוקאי", "תפוחים פרוסים בדבש"], mains: ["עוף צלוי בדבש וברימון"], desserts: ["עוגת דבש מסורתית"], drinks: ["פונץ׳ סיידר תפוחים"] },
+        "sukkot": { starters: ["סלט גזר מרוקאי עם כמון", "חלה טרייה ומטבלים"], mains: ["פלפלים ממולאים בבשר ואורז"], desserts: ["עוגת שזיפים ושקדים"], drinks: ["תה קר עם נענע והדרים"] },
+        "hanukkah": { starters: ["לביבות תפוחי אדמה עם שמנת ותפוחים"], mains: ["עוף מרוקאי עם קוסקוס"], desserts: ["סופגניות במילוי תות"], drinks: ["סיידר חם ומתובל"] },
+        "purim": { starters: ["בורקס תפוחי אדמה, גבינה ותרד"], mains: ["תבשיל סבזי פרסי", "פסטייה מרוקאית עם עוף"], desserts: ["אוזני המן"], drinks: ["קוקטייל רימונים ונענע"] },
+        "pesach": { starters: ["מרק קניידלעך אשכנזי", "דג חריף מרוקאי"], mains: ["בריסקט לפסח עם ירקות שורש"], desserts: ["עוגת שוקולד ללא קמח"], drinks: ["ארבע כוסות יין לפסח"] },
+        "shavuot": { starters: ["קפרזה עם בזיליקום ופוקצ׳ה"], mains: ["פשטידת גבינה ותרד"], desserts: ["עוגת גבינה ישראלית"], drinks: ["קפה קר או תה נענע"] },
+        "tu-bishvat": { starters: ["סלט חיטה ושעורה עם חמוציות"], mains: ["עוף עם פירות יבשים וסילאן"], desserts: ["עוגת פירות יבשים ואגוזים"], drinks: ["מיץ רימונים ותפוזים"] }
+      };
+      const index = regularMenuTitles[holidayId][category].indexOf(fallback);
+      return index >= 0 ? hebrewNames[holidayId]?.[category]?.[index] || fallback : fallback;
+    }
+    const recipeMethodSteps = {
+      hummus: { en: ["Soak chickpeas overnight, then simmer in fresh water until very soft, 35–45 minutes. Drain and reserve a little cooking liquid.", "Blend chickpeas with tahini, lemon, garlic and salt. Add cooking liquid a spoonful at a time until smooth and airy.", "Spread into a shallow bowl, make a well, then finish with olive oil and whole chickpeas."], he: ["משרים את גרגירי החומוס ללילה ומבשלים במים נקיים עד לריכוך מלא, כ־35–45 דקות. מסננים ושומרים מעט ממי הבישול.", "טוחנים עם טחינה, לימון, שום ומלח. מוסיפים ממי הבישול בהדרגה עד לקבלת מרקם חלק ואוורירי.", "מורחים בצלחת, יוצרים שקע ומסיימים בשמן זית ובגרגירים שלמים."] },
+      "chopped-salad": { en: ["Dice cucumber, tomato and red onion into small, even pieces; finely chop the parsley.", "Toss with lemon juice, olive oil and salt just before serving so the vegetables stay crisp.", "Taste, adjust the seasoning and serve immediately."], he: ["חותכים מלפפון, עגבנייה ובצל סגול לקוביות קטנות ואחידות וקוצצים דק פטרוזיליה.", "מערבבים עם לימון, שמן זית ומלח ממש לפני ההגשה כדי לשמור על פריכות הירקות.", "טועמים, מתקנים תיבול ומגישים מיד."] },
+      "grilled-chicken": { en: ["Mix lemon, garlic, paprika, olive oil and salt. Coat the chicken and marinate for 30 minutes or overnight.", "Thread onto skewers and grill over medium-high heat, turning until browned and cooked through, about 10–12 minutes.", "Rest for five minutes and serve with the pan juices and fresh herbs."], he: ["מערבבים לימון, שום, פפריקה, שמן זית ומלח. מצפים את העוף ומשרים חצי שעה או לילה במקרר.", "משפדים וצולים על גריל בחום בינוני־גבוה, תוך כדי סיבוב, עד להשחמה ולבישול מלא, כ־10–12 דקות.", "מניחים לחמש דקות ומגישים עם מיצי הצלייה ועשבי תיבול טריים."] },
+      "spiced-beef": { en: ["Finely grate the onion and squeeze out excess liquid. Combine with beef, cumin, coriander, parsley, salt and pepper.", "Shape firmly around skewers or into small patties. Chill for 15 minutes so they hold together.", "Grill or sear over high heat, turning once, until browned and cooked to your preference."], he: ["מגררים את הבצל וסוחטים את הנוזלים. מערבבים עם בקר, כמון, כוסברה, פטרוזיליה, מלח ופלפל.", "יוצרים קבבים סביב שיפודים או קציצות קטנות. מקררים 15 דקות כדי שיתייצבו.", "צולים או צורבים בחום גבוה, הופכים פעם אחת ומבשלים עד למידת העשייה הרצויה."] },
+      "lamb-braise": { en: ["Brown the lamb on all sides in a heavy pot with a little oil. Remove and soften the onion in the same pot.", "Return the lamb; add apricots, cinnamon and stock. Cover and simmer gently until fork-tender, about 1½–2 hours.", "Uncover for the last 10 minutes to reduce the sauce. Serve with couscous or rice."], he: ["משחימים את הטלה מכל הצדדים בסיר כבד עם מעט שמן. מוציאים ומרככים את הבצל באותו סיר.", "מחזירים את הטלה ומוסיפים משמשים, קינמון וציר. מכסים ומבשלים בעדינות עד לריכוך, כשעה וחצי עד שעתיים.", "מסירים מכסה לעשר הדקות האחרונות לצמצום הרוטב. מגישים עם קוסקוס או אורז."] },
+      "slow-beef": { en: ["Season the beef and sear it in a hot Dutch oven until deeply browned. Transfer to a plate.", "Soften onion and carrots, then add stock and wine. Return the beef and cover tightly.", "Braise at 160°C (325°F) until very tender, 2½–3 hours. Rest, slice across the grain and spoon over the sauce."], he: ["מתבלים את הבקר וצורבים בסיר חם עד להשחמה עמוקה. מעבירים לצלחת.", "מרככים בצל וגזר, מוסיפים ציר ויין ומחזירים את הבשר. מכסים היטב.", "מבשלים בתנור ב־160 מעלות עד לריכוך מלא, כשעתיים וחצי עד שלוש. ממתינים, פורסים נגד כיוון הסיבים ומגישים עם הרוטב."] },
+      fish: { en: ["Pat the fish dry and season with salt and pepper. Warm olive oil with sliced garlic and cherry tomatoes in a skillet.", "Add the fish and cook gently, turning once, until opaque and just flaky; spoon the tomato oil over it.", "Finish with lemon and herbs. For a chraime-style sauce, simmer the fish gently in the spiced tomato sauce instead."], he: ["מייבשים את הדג ומתבלים במלח ופלפל. מחממים שמן זית עם שום פרוס ועגבניות שרי במחבת.", "מוסיפים את הדג ומבשלים בעדינות, הופכים פעם אחת, עד שהוא אטום ומתפרק לפתיתים. יוצקים עליו משמן העגבניות.", "מסיימים בלימון ובעשבי תיבול. לגרסת חריימה מבשלים בעדינות את הדג בתוך רוטב העגבניות המתובל."] },
+      "stuffed-vegetables": { en: ["Mix beef with rinsed rice, chopped herbs, salt and pepper. Core the peppers without breaking their walls.", "Fill each pepper only three-quarters full so the rice has room to expand. Arrange upright in a snug pot.", "Pour crushed tomatoes and stock around the peppers, cover and simmer until the rice is tender, about 45–55 minutes."], he: ["מערבבים בקר עם אורז שטוף, עשבי תיבול קצוצים, מלח ופלפל. מרוקנים את הפלפלים בלי לפגוע בדפנות.", "ממלאים עד שלושה רבעים בלבד כדי להשאיר מקום לאורז. מסדרים בצפיפות בסיר.", "יוצקים עגבניות מרוסקות וציר מסביב, מכסים ומבשלים עד שהאורז רך, כ־45–55 דקות."] },
+      "hearty-stew": { en: ["Brown the beef and onion in a heavy pot. Add lentils, stock, spices and dried lime.", "Bring to a boil, skim if needed, then cover and simmer gently until the meat and lentils are tender, about 75–90 minutes.", "Adjust salt and acidity, remove the dried lime and serve hot with rice or flatbread."], he: ["משחימים בקר ובצל בסיר כבד. מוסיפים עדשים, ציר, תבלינים וליים מיובש.", "מביאים לרתיחה, מסירים קצף במידת הצורך, מכסים ומבשלים בעדינות עד שהבשר והעדשים רכים, כ־75–90 דקות.", "מתקנים מלח וחמיצות, מוציאים את הליים ומגישים חם עם אורז או לחם שטוח."] },
+      "crispy-fritters": { en: ["Coarsely grate the potatoes and onion. Squeeze very dry in a clean towel, then mix with egg, matzo meal, salt and pepper.", "Heat a thin layer of oil in a skillet. Drop in small mounds and flatten; fry until deeply golden, 3–4 minutes per side.", "Drain on a rack or paper towel and serve immediately with sour cream or applesauce."], he: ["מגררים גס תפוחי אדמה ובצל וסוחטים היטב במגבת נקייה. מערבבים עם ביצה, קמח מצה, מלח ופלפל.", "מחממים שכבה דקה של שמן במחבת. מניחים תלוליות קטנות ומשטחים; מטגנים עד להזהבה עמוקה, 3–4 דקות מכל צד.", "מעבירים לרשת או לנייר סופג ומגישים מיד עם שמנת חמוצה או רסק תפוחים."] },
+      "matzah-soup": { en: ["Whisk eggs with a little oil and seasoning; fold in matzo meal until a soft dough forms. Chill for 20 minutes.", "With wet hands, shape small balls. Drop into gently simmering salted water, cover and cook until fluffy, about 30 minutes.", "Serve the dumplings in hot chicken stock with sliced carrots and dill."], he: ["טורפים ביצים עם מעט שמן ותיבול ומקפלים פנימה קמח מצה עד לקבלת בצק רך. מקררים 20 דקות.", "בידיים רטובות יוצרים כדורים קטנים. מכניסים למים מומלחים ברתיחה עדינה, מכסים ומבשלים עד לאווריריות, כ־30 דקות.", "מגישים את הקניידלעך בציר עוף חם עם גזר פרוס ושמיר."] },
+      "savory-pastry": { en: ["Thaw the pastry while cold. Cook the spinach until wilted, cool, squeeze dry and crumble with feta.", "Cut pastry into squares, add a spoonful of filling and seal the edges. Brush with beaten egg and sprinkle with sesame.", "Bake at 200°C (400°F) until puffed and golden, about 20–25 minutes."], he: ["מפשירים את הבצק כשהוא עדיין קר. מאדים תרד עד לריכוך, מצננים, סוחטים ומפוררים עם פטה.", "חותכים ריבועי בצק, מניחים כפית מילוי וסוגרים היטב. מברישים בביצה טרופה ומפזרים שומשום.", "אופים ב־200 מעלות עד לתפיחה ולהזהבה, כ־20–25 דקות."] },
+      "cheese-board": { en: ["Bring cheeses to room temperature for 20 minutes so their flavors open up.", "Toast the sourdough until crisp and arrange it with cheese, figs, grapes and pistachios.", "Finish with a little honey or olive oil and serve as a shared board; no cooking is needed."], he: ["מוציאים את הגבינות לטמפרטורת החדר 20 דקות כדי לפתוח את הטעמים.", "קולים את לחם המחמצת עד לפריכות ומסדרים עם גבינות, תאנים, ענבים ופיסטוקים.", "מסיימים במעט דבש או שמן זית ומגישים כמגש לחלוקה; אין צורך בבישול."] },
+      "strawberry-tart": { en: ["Rub cold butter into flour and sugar until sandy. Press into tartlet tins and chill for 15 minutes.", "Blind-bake at 180°C (350°F) with baking weights until the shell is golden, about 18–22 minutes; cool completely.", "Whip the cream to soft peaks, fill the shells and top with sliced strawberries just before serving."], he: ["מפוררים חמאה קרה לתוך קמח וסוכר עד למרקם פירורי. מהדקים לתבניות טארטלט ומקררים 15 דקות.", "אופים אפייה עיוורת ב־180 מעלות עם משקולות עד שהקליפה זהובה, כ־18–22 דקות, ומצננים לגמרי.", "מקציפים שמנת לקצף רך, ממלאים את הקלתיות ומסדרים תותים פרוסים ממש לפני ההגשה."] },
+      "chocolate-dessert": { en: ["Warm cream until steaming and pour it over chopped chocolate. Rest for one minute, then stir smooth.", "For fondue, keep the ganache warm and dip berries into it. For lava cakes, fold in eggs and bake in buttered ramekins at 220°C for 8–10 minutes.", "Serve immediately with fresh berries; the cake centers should remain soft."], he: ["מחממים שמנת עד לאדים ויוצקים על שוקולד קצוץ. ממתינים דקה ומערבבים לקרם חלק.", "לפונדו שומרים את הגנאש חם וטובלים בו פירות יער. לעוגות לבה מקפלים פנימה ביצים ואופים בכלים משומנים ב־220 מעלות 8–10 דקות.", "מגישים מיד עם פירות יער; מרכז העוגות צריך להישאר רך."] },
+      "fried-pastry": { en: ["Mix flour, yeast, warm milk and egg into a soft dough. Knead until elastic, cover and let rise until doubled.", "Roll and cut the dough, then fry in 170°C (340°F) oil in small batches until golden on both sides.", "Drain briefly, fill with jam while warm and dust with sugar."], he: ["מערבבים קמח, שמרים, חלב חמים וביצה לבצק רך. לשים עד לגמישות, מכסים ומתפיחים עד להכפלת הנפח.", "מרדדים וחותכים את הבצק, ומטגנים בקבוצות קטנות בשמן של 170 מעלות עד להזהבה משני הצדדים.", "מסננים מעט, ממלאים בריבה כשהמאפה חמים ומפזרים אבקת סוכר."] },
+      "set-dessert": { en: ["Whisk cornstarch with a little cold milk until smooth. Warm the remaining milk with sugar and rosewater.", "Whisk in the starch slurry and cook, stirring constantly, until thick and glossy, 3–5 minutes.", "Pour into small glasses, chill until set and top with pomegranate seeds."], he: ["טורפים קורנפלור עם מעט חלב קר עד שאין גושים. מחממים את יתרת החלב עם סוכר ומי ורדים.", "מוסיפים את תערובת הקורנפלור תוך כדי טריפה ומבשלים עד להסמכה ולברק, 3–5 דקות.", "מוזגים לכוסות קטנות, מקררים עד להתייצבות ומקשטים בגרגירי רימון."] },
+      "fruit-bake": { en: ["Heat the oven to 180°C (350°F). Toss the sliced fruit with honey and arrange it in a buttered baking dish.", "Whisk eggs, melted butter and flour into a smooth batter; pour over the fruit and scatter any crumb topping.", "Bake until the center is set and the top is golden, about 35–40 minutes. Rest before slicing."], he: ["מחממים תנור ל־180 מעלות. מערבבים פרי פרוס עם דבש ומסדרים בתבנית משומנת.", "טורפים ביצים, חמאה מומסת וקמח לבלילה חלקה; יוצקים על הפרי ומפזרים פירורים אם רוצים.", "אופים עד שהמרכז יציב והחלק העליון זהוב, כ־35–40 דקות. מצננים מעט לפני הפריסה."] },
+      "citrus-drink": { en: ["Juice the lemons and dissolve the sugar into the juice with a splash of warm water.", "Bruise the mint leaves, add cold water and chill the lemonade for at least 20 minutes.", "Pour over ice and garnish with fresh mint; adjust sweetness with water to taste."], he: ["סוחטים את הלימונים וממיסים את הסוכר במיץ עם מעט מים חמימים.", "מועכים בעדינות את עלי הנענע, מוסיפים מים קרים ומקררים לפחות 20 דקות.", "מוזגים על קרח ומקשטים בנענע טרייה; מדללים במים לפי הטעם."] },
+      cocktail: { en: ["Chill the glassware. Add juice, citrus and ice to a shaker and shake briefly until cold.", "Strain into glasses and top with sparkling wine or soda immediately before serving.", "Garnish with cranberries or an orange twist. For a non-alcoholic version, replace wine with sparkling water."], he: ["מקררים את הכוסות. שמים מיץ, הדרים וקרח בשייקר ומנערים קצרות עד לקירור.", "מסננים לכוסות ומוסיפים יין מבעבע או סודה ממש לפני ההגשה.", "מקשטים בחמוציות או בקליפת תפוז. לגרסה ללא אלכוהול מחליפים את היין בסודה."] },
+      "wine-service": { en: ["Chill white wine and beer well; serve red wine slightly below room temperature.", "Open the bottle shortly before pouring and let bold reds breathe for 20–30 minutes.", "Pour modest tasting portions and serve with grapes and crackers. This is a serving guide, not a mixed drink recipe."], he: ["מקררים היטב יין לבן ובירה; מגישים יין אדום מעט מתחת לטמפרטורת החדר.", "פותחים את הבקבוק סמוך למזיגה ומאווררים יינות אדומים עשירים 20–30 דקות.", "מוזגים מנות טעימה ומגישים עם ענבים וקרקרים. זהו מדריך הגשה, לא מתכון למשקה מעורבב."] },
+      "tea-coffee": { en: ["Brew strong coffee or steep tea to your preferred strength. Strain loose leaves if needed.", "Warm or froth the milk separately; sweeten the drink while hot so the sugar dissolves.", "Pour into chilled glasses for iced coffee or serve warm with a sprig of mint."], he: ["מכינים קפה חזק או חולטים תה לפי החוזק הרצוי. מסננים עלים אם צריך.", "מחממים או מקציפים את החלב בנפרד; ממתיקים כשהמשקה חם כדי שהסוכר יימס.", "מוזגים לכוסות קרות לקפה קר או מגישים חם עם ענף נענע."] },
+      "seasonal-salad": { en: ["Wash and thoroughly dry the vegetables and herbs. Cut firm vegetables thinly and delicate leaves just before serving.", "Whisk lemon juice with olive oil, salt and pepper to make a sharp dressing.", "Toss lightly, add herbs and crunchy toppings last, then serve immediately."], he: ["שוטפים ומייבשים היטב ירקות ועשבי תיבול. פורסים דק ירקות קשים וקוצצים עלים עדינים סמוך להגשה.", "טורפים מיץ לימון עם שמן זית, מלח ופלפל לרוטב חד.", "מערבבים בעדינות, מוסיפים עשבי תיבול ותוספות פריכות בסוף ומגישים מיד."] },
+      "roasted-eggplant": { en: ["Prick the eggplant and roast over a flame or under a hot broiler, turning until the skin is charred and the flesh collapses.", "Cool, split and scoop out the flesh; drain briefly, then fold through tahini, lemon and crushed garlic.", "Season with salt, drizzle with silan and tahini, and serve at room temperature."], he: ["מחוררים את החציל וצולים מעל להבה או תחת גריל חזק, תוך כדי סיבוב, עד שהקליפה חרוכה והבשר רך.", "מצננים, חוצים ומוציאים את התוכן. מסננים מעט ומערבבים עם טחינה, לימון ושום כתוש.", "מתבלים במלח, מזלפים סילאן וטחינה ומגישים בטמפרטורת החדר."] },
+      falafel: { en: ["Soak dried chickpeas overnight; drain well and pulse with herbs, onion, cumin and salt until coarse, not puréed.", "Chill the mixture for 30 minutes, then shape into small balls. Add a little chickpea flour if it will not hold.", "Fry in 175°C (350°F) oil until crisp and deep golden, about 3–4 minutes. Drain and serve with amba."], he: ["משרים חומוס יבש ללילה ומסננים היטב. טוחנים בפולסים עם עשבי תיבול, בצל, כמון ומלח למרקם גס.", "מקררים 30 דקות ויוצרים כדורים קטנים. מוסיפים מעט קמח חומוס אם התערובת לא מתגבשת.", "מטגנים בשמן של 175 מעלות עד לפריכות ולהזהבה עמוקה, כ־3–4 דקות. מסננים ומגישים עם עמבה."] },
+      matbucha: { en: ["Blister the pepper, peel it and dice. Score the tomatoes, blanch briefly, peel and chop.", "Slowly cook garlic in olive oil; add paprika, tomatoes and pepper. Simmer uncovered, stirring often, until jammy.", "Season with salt and chili, cool, then serve with bread."], he: ["קולים את הפלפל עד להשחרה, קולפים וקוצצים. חורצים את העגבניות, חולטים קצרות, קולפים וקוצצים.", "מטגנים שום בעדינות בשמן זית, מוסיפים פפריקה, עגבניות ופלפל. מבשלים ללא מכסה תוך ערבוב עד לצמצום סמיך.", "מתבלים במלח ובצ׳ילי, מצננים ומגישים עם לחם."] },
+      "carrot-salad": { en: ["Peel and slice the carrots on a diagonal. Steam or boil until just tender, then drain.", "Warm olive oil with garlic and cumin until fragrant; toss the carrots through the spiced oil.", "Add lemon, chopped cilantro and salt. Chill briefly so the flavors settle, then serve."], he: ["קולפים ופורסים את הגזרים באלכסון. מאדים או מבשלים עד לריכוך קל ומסננים.", "מחממים שמן זית עם שום וכמון עד שעולה ריח, ומערבבים פנימה את הגזר.", "מוסיפים לימון, כוסברה קצוצה ומלח. מקררים מעט לאיחוד הטעמים ומגישים."] },
+      "fried-chicken": { en: ["Season the chicken and coat lightly in flour mixed with paprika and garlic. Rest on a rack for 10 minutes.", "Fry in 170°C (340°F) oil, turning occasionally, until crisp and the thickest piece reaches 74°C (165°F).", "Drain on a rack and rest for five minutes before serving."], he: ["מתבלים את העוף ומצפים קלות בקמח מעורבב עם פפריקה ושום. מניחים על רשת לעשר דקות.", "מטגנים בשמן של 170 מעלות והופכים מדי פעם, עד לפריכות וחום פנימי של 74 מעלות בחלק העבה.", "מסננים על רשת וממתינים חמש דקות לפני ההגשה."] },
+      "roast-chicken": { en: ["Heat the oven to 200°C (400°F). Toss root vegetables with oil and arrange in a roasting pan.", "Rub chicken with pomegranate molasses, honey, salt and pepper; place over the vegetables.", "Roast until the skin is burnished and the thickest part reaches 74°C (165°F), about 45–55 minutes. Rest before serving."], he: ["מחממים תנור ל־200 מעלות. מערבבים ירקות שורש עם שמן ומסדרים בתבנית.", "מורחים את העוף ברכז רימונים, דבש, מלח ופלפל ומניחים מעל הירקות.", "צולים עד שהעור שחום והחלק העבה מגיע ל־74 מעלות, כ־45–55 דקות. ממתינים לפני ההגשה."] },
+      "grilled-lamb": { en: ["Pat the chops dry. Rub with olive oil, chopped rosemary, garlic, lemon zest, salt and pepper; rest for 20 minutes.", "Grill over high heat for 3–5 minutes per side, depending on thickness and desired doneness.", "Rest loosely covered for five minutes, then finish with lemon juice."], he: ["מייבשים את הצלעות. משפשפים בשמן זית, רוזמרין קצוץ, שום, גרידת לימון, מלח ופלפל וממתינים 20 דקות.", "צולים על גריל חם 3–5 דקות מכל צד, לפי העובי ומידת העשייה הרצויה.", "מניחים לחמש דקות בכיסוי רופף ומסיימים במיץ לימון."] },
+      "gefilte-fish": { en: ["Pulse the fish with onion, carrot, egg, matzo meal, salt and white pepper until just combined.", "Shape into oval quenelles with wet hands. Poach gently in seasoned fish stock with carrot slices for 35–40 minutes.", "Cool in the stock, then serve chilled with grated horseradish."], he: ["טוחנים בפולסים דג עם בצל, גזר, ביצה, קמח מצה, מלח ופלפל לבן עד לאיחוד.", "בידיים רטובות יוצרים קציצות אובליות. מבשלים בעדינות בציר דגים מתובל עם פרוסות גזר 35–40 דקות.", "מצננים בתוך הציר ומגישים קר עם חזרת מגוררת."] },
+      "grape-leaves": { en: ["Rinse the vine leaves. Mix rice with currants, dill, lemon zest, olive oil, salt and pepper.", "Place a little filling on each leaf, fold in the sides and roll snugly. Arrange seam-side down in a pot.", "Cover with lemon water and a plate to keep rolls submerged; simmer gently until tender, about 40–45 minutes."], he: ["שוטפים את עלי הגפן. מערבבים אורז עם צימוקים, שמיר, גרידת לימון, שמן זית, מלח ופלפל.", "מניחים מעט מילוי בכל עלה, מקפלים את הצדדים ומגלגלים היטב. מסדרים בסיר כשהתפר כלפי מטה.", "מכסים במי לימון ובצלחת שתשמור שהגלילים יישארו שקועים. מבשלים בעדינות עד לריכוך, כ־40–45 דקות."] },
+      "fresh-bread": { en: ["Let the dough rise until doubled. Divide, shape into small rolls or a flat loaf, and rest for 20 minutes.", "Brush with olive oil and sprinkle with za'atar and sesame. Bake at 220°C (425°F) until deeply golden.", "Cool on a rack for at least 10 minutes before tearing and serving."], he: ["מתפיחים את הבצק עד להכפלת הנפח. מחלקים, יוצרים לחמניות קטנות או כיכר שטוחה וממתינים 20 דקות.", "מברישים בשמן זית ומפזרים זעתר ושומשום. אופים ב־220 מעלות עד להזהבה עמוקה.", "מצננים על רשת לפחות עשר דקות לפני הבציעה וההגשה."] },
+      caprese: { en: ["Slice the tomatoes and mozzarella into similar thicknesses. Arrange them alternating on a platter.", "Tuck basil leaves between the slices, then season with flaky salt and black pepper.", "Drizzle with olive oil and balsamic just before serving; pair with focaccia."], he: ["פורסים עגבניות ומוצרלה בעובי דומה ומסדרים לסירוגין בצלחת.", "משלבים עלי בזיליקום בין הפרוסות ומתבלים במלח גס ובפלפל שחור.", "מזלפים שמן זית ובלסמי ממש לפני ההגשה; מגישים עם פוקצ׳ה."] },
+      "persian-herb-stew": { en: ["Brown the beef and onion, then stir in chopped parsley, spinach and kidney beans.", "Add stock and dried lime; cover and simmer until the beef is tender and the herbs are dark and fragrant, about 90 minutes.", "Remove the dried lime, season with salt and serve with steamed rice."], he: ["משחימים בקר ובצל ומערבבים פנימה פטרוזיליה קצוצה, תרד ושעועית אדומה.", "מוסיפים ציר וליים מיובש, מכסים ומבשלים עד שהבשר רך והעשבים כהים וריחניים, כ־90 דקות.", "מוציאים את הליים, מתקנים תיבול ומגישים עם אורז מאודה."] },
+      "chicken-pastilla": { en: ["Simmer chicken with onion, cinnamon and warm spices until tender; shred the meat and reduce the cooking liquid.", "Layer filo with the spiced chicken and toasted almonds, folding the edges inward to seal the pie.", "Brush with oil and bake at 190°C (375°F) until crisp and golden. Finish with cinnamon and powdered sugar."], he: ["מבשלים עוף עם בצל, קינמון ותבלינים עד לריכוך. מפרקים את הבשר ומצמצמים את נוזלי הבישול.", "מרפדים פילו, ממלאים בעוף המתובל ובשקדים קלויים ומקפלים את השוליים לסגירת הפשטידה.", "מברישים בשמן ואופים ב־190 מעלות עד לפריכות ולהזהבה. מסיימים בקינמון ובאבקת סוכר."] },
+      "apple-cider": { en: ["Pour cider into a saucepan with sliced apple, cinnamon, star anise and orange peel.", "Warm gently for 15–20 minutes without boiling so the spices infuse without cooking off the fruit aroma.", "Strain into heatproof glasses and serve warm."], he: ["מוזגים סיידר לסיר עם תפוח פרוס, קינמון, אניס וקליפת תפוז.", "מחממים בעדינות 15–20 דקות בלי להרתיח, כדי שהתבלינים ייפתחו בלי לאבד את ניחוח הפרי.", "מסננים לכוסות חסינות חום ומגישים חם."] },
+      "grape-cooler": { en: ["Chill the grape juice and ginger ale separately.", "Pour equal parts over ice and squeeze in fresh lime.", "Stir once and serve immediately while the ginger ale is still lively."], he: ["מקררים בנפרד את מיץ הענבים ואת הג׳ינג׳ר אייל.", "מוזגים חלקים שווים על קרח וסוחטים פנימה ליים טרי.", "מערבבים פעם אחת ומגישים מיד כשהמשקה עדיין תוסס."] },
+      "fresh-juice": { en: ["Cut the pomegranate and release the seeds into a bowl of water; discard the floating pith.", "Juice the oranges and press the pomegranate seeds through a fine sieve or juicer.", "Stir together with a little grated ginger and serve cold; do not add water unless desired."], he: ["חותכים את הרימון ומפרידים את הגרגירים בקערת מים; מסירים את הקרומים שצפים.", "סוחטים תפוזים ומעבירים את גרגירי הרימון במסחטה או דרך מסננת דקה.", "מערבבים עם מעט ג׳ינג׳ר מגורר ומגישים קר; אין צורך להוסיף מים אלא אם רוצים."] },
+      "arak-grapefruit": { en: ["Fill a tall glass with ice and add arak and freshly squeezed grapefruit juice.", "Top with chilled soda water and stir gently to keep the bubbles.", "Garnish with thyme and a grapefruit wedge; adjust the arak-to-soda ratio to taste."], he: ["ממלאים כוס גבוהה בקרח ומוסיפים ערק ומיץ אשכולית סחוט טרי.", "משלימים בסודה קרה ומערבבים בעדינות כדי לשמור על הבועות.", "מקשטים בתימין ובפלח אשכולית ומתאימים את היחס לפי הטעם."] },
+      "sparkling-cocktail": { en: ["Add pomegranate juice and a few cranberries to a chilled flute.", "Top slowly with sparkling wine so it does not foam over.", "Garnish with an orange twist and serve immediately."], he: ["מוזגים מיץ רימונים ומוסיפים כמה חמוציות לכוס שמפניה קרה.", "מוזגים יין מבעבע באיטיות כדי שלא יגלוש.", "מקשטים בקליפת תפוז ומגישים מיד."] },
+      "pomegranate-cocktail": { en: ["Clap the mint gently between your palms and add it to a shaker with pomegranate and lime juice.", "Add vodka and ice; shake until the outside of the shaker is frosty.", "Strain over fresh ice, top with soda and garnish with mint."], he: ["טופחים קלות על הנענע בין כפות הידיים ומוסיפים לשייקר עם מיץ רימונים וליים.", "מוסיפים וודקה וקרח ומנערים עד שהשייקר מתכסה אדים.", "מסננים על קרח טרי, משלימים בסודה ומקשטים בנענע."] },
+      "espresso-martini": { en: ["Pull a fresh espresso shot and let it cool for a minute.", "Shake vodka, espresso, coffee liqueur and plenty of ice hard for 15 seconds to build foam.", "Double-strain into a chilled coupe and garnish with three coffee beans."], he: ["מכינים מנת אספרסו טרייה ומניחים לה להתקרר דקה.", "מנערים וודקה, אספרסו, ליקר קפה והרבה קרח בעוצמה 15 שניות ליצירת קצף.", "מסננים פעמיים לכוס קופה קרה ומקשטים בשלושה פולי קפה."] },
+      sangria: { en: ["Slice the apple and orange and place them in a pitcher with red wine, bourbon and cinnamon.", "Cover and chill for at least two hours so the fruit infuses the wine.", "Stir before pouring over ice; top each glass with a splash of soda if desired."], he: ["פורסים תפוח ותפוז ומכניסים לקנקן עם יין אדום, בורבון וקינמון.", "מכסים ומקררים לפחות שעתיים כדי שהפרי ייתן את טעמו ליין.", "מערבבים לפני המזיגה על קרח; אפשר להוסיף מעט סודה לכל כוס."] }
+    };
+    Object.assign(recipeMethodSteps, {
+      "watermelon-feta": { en: ["Cut the chilled watermelon into thick wedges and remove any seeds.", "Arrange with crumbled Bulgarian feta and torn mint leaves on a cool platter.", "Finish with lime juice and serve immediately while cold."], he: ["חותכים את האבטיח הקר לפלחים עבים ומסירים גרעינים אם יש.", "מסדרים עם פטה בולגרית מפוררת ועלי נענע קרועים בצלחת קרה.", "מסיימים במיץ ליים ומגישים מיד כשהמנה קרה."] },
+      "liver-pate": { en: ["Soften sliced onion in butter over low heat. Add thyme and chicken livers; sear until browned outside but still slightly pink inside.", "Deglaze with brandy and simmer until the livers are cooked through. Cool briefly, then blend until smooth.", "Chill until spreadable and serve with toast."], he: ["מרככים בצל פרוס בחמאה על אש נמוכה. מוסיפים תימין וכבדי עוף וצורבים עד להשחמה מבחוץ.", "מוסיפים ברנדי ומבשלים עד שהכבדים עשויים. מצננים מעט וטוחנים למרקם חלק.", "מקררים עד למריחה ומגישים עם טוסט."] },
+      "chopped-liver": { en: ["Sauté onion in chicken fat until deeply golden; set aside. Sear the livers until cooked through and cool.", "Finely chop the livers and hard-boiled eggs by hand or pulse briefly, then fold in the onion and pan drippings.", "Season with salt and pepper, chill, and serve on challah."], he: ["מטגנים בצל בשומן עוף עד להזהבה עמוקה ומוציאים. צורבים כבדים עד לבישול מלא ומצננים.", "קוצצים דק את הכבדים והביצים הקשות או טוחנים בפולסים קצרים, ומקפלים פנימה את הבצל ונוזלי המחבת.", "מתבלים במלח ופלפל, מקררים ומגישים על חלה."] },
+      "roasted-produce-salad": { en: ["Roast beetroot wrapped in foil at 200°C (400°F) until tender, or roast figs briefly until just softened.", "Cool and slice the produce; arrange over arugula with goat cheese and pistachios.", "Dress with olive oil and balsamic just before serving."], he: ["צולים סלק עטוף בנייר כסף ב־200 מעלות עד לריכוך, או תאנים לזמן קצר עד לריכוך קל.", "מצננים ופורסים; מסדרים על רוקט עם גבינת עזים ופיסטוקים.", "מתבלים בשמן זית ובלסמי ממש לפני ההגשה."] },
+      "grain-salad": { en: ["Rinse wheat berries and barley, then simmer separately in salted water until tender but chewy. Drain and cool.", "Fold in cranberries, toasted walnuts and chopped mint.", "Dress with lemon juice and olive oil; serve at room temperature."], he: ["שוטפים חיטה ושעורה ומבשלים בנפרד במים מומלחים עד לריכוך עם נגיסה. מסננים ומצננים.", "מקפלים פנימה חמוציות, אגוזי מלך קלויים ונענע קצוצה.", "מתבלים בלימון ובשמן זית ומגישים בטמפרטורת החדר."] },
+      "apples-honey": { en: ["Slice the apples just before serving and toss with a little lemon juice to prevent browning.", "Arrange on a platter with walnuts and a small bowl of honey for dipping.", "Serve fresh; no cooking is needed."], he: ["פורסים את התפוחים סמוך להגשה ומערבבים במעט לימון כדי למנוע השחרה.", "מסדרים בצלחת עם אגוזי מלך וקערית דבש לטבילה.", "מגישים טרי; אין צורך בבישול."] },
+      "baked-apples": { en: ["Core the apples without cutting through the base. Mix chopped dates, walnuts and cinnamon with softened butter.", "Pack the filling into the apples and place in a small baking dish with a splash of water.", "Bake at 180°C (350°F) until tender but holding their shape, about 30–35 minutes."], he: ["מוציאים את ליבת התפוחים בלי לחתוך את התחתית. מערבבים תמרים ואגוזים קצוצים עם קינמון וחמאה רכה.", "ממלאים את התפוחים ומניחים בתבנית קטנה עם מעט מים.", "אופים ב־180 מעלות עד לריכוך תוך שמירה על הצורה, כ־30–35 דקות."] },
+      "braised-leeks": { en: ["Trim and wash the leeks carefully, keeping them in long pieces. Sear lightly in olive oil.", "Add vegetable stock and silan, cover and braise gently until tender, about 20 minutes.", "Uncover to reduce the glaze; finish with lemon."], he: ["גוזמים ושוטפים היטב את הכרישה ומשאירים חתיכות ארוכות. צורבים קלות בשמן זית.", "מוסיפים ציר ירקות וסילאן, מכסים ומבשלים בעדינות עד לריכוך, כ־20 דקות.", "מסירים מכסה לצמצום הזיגוג ומסיימים בלימון."] },
+      charoset: { en: ["Finely dice the apples and dates; chop the walnuts to a coarse texture.", "Fold together with cinnamon and sweet red wine until the mixture holds together but is not wet.", "Chill for 20 minutes and serve with matzah."], he: ["חותכים דק תפוחים ותמרים וקוצצים את אגוזי המלך גס.", "מערבבים עם קינמון ויין אדום מתוק עד שהתערובת מתגבשת אך אינה רטובה.", "מקררים 20 דקות ומגישים עם מצה."] },
+      "matzah-brei": { en: ["Break matzah into bite-size pieces and briefly soak in milk; drain off excess.", "Whisk eggs with dill, fold in the matzah and season lightly.", "Pan-fry in butter over medium heat, turning once, until golden and set."], he: ["שוברים מצה לחתיכות בגודל ביס ומשרים קצרות בחלב; מסננים עודפים.", "טורפים ביצים עם שמיר, מקפלים פנימה את המצה ומתבלים בעדינות.", "מטגנים בחמאה על חום בינוני, הופכים פעם אחת ומבשלים עד להזהבה ולהתייצבות."] }
+    });
+    Object.assign(recipeMethodSteps, {
+      "filled-sufganiyot": { en: ["Prepare and proof the enriched dough until doubled, then divide into small balls and proof again until puffy.", "Fry in 170°C (340°F) oil, turning once, until evenly golden; drain on a rack.", "Pipe in Nutella and dulce de leche while warm, then dust with sugar."], he: ["מכינים ומתפיחים בצק עשיר עד להכפלת הנפח, מחלקים לכדורים ומתפיחים שוב עד לאווריריות.", "מטגנים בשמן של 170 מעלות, הופכים פעם אחת עד להזהבה אחידה ומסננים על רשת.", "מזלפים פנימה נוטלה וריבת חלב כשהסופגניות חמימות ומפזרים סוכר."] },
+      "cheese-babka": { en: ["Knead flour, yeast, milk, egg and butter into a soft dough; let rise until doubled.", "Roll into a rectangle, spread cream cheese and chocolate, then roll and twist into a loaf.", "Proof until puffy and bake at 180°C (350°F) until deep golden, about 30–35 minutes."], he: ["לשים קמח, שמרים, חלב, ביצה וחמאה לבצק רך ומתפיחים עד להכפלת הנפח.", "מרדדים למלבן, מורחים גבינת שמנת ושוקולד, מגלגלים ומלפפים לכיכר.", "מתפיחים עד לאווריריות ואופים ב־180 מעלות עד להזהבה עמוקה, כ־30–35 דקות."] },
+      "baked-cheesecake": { en: ["Press crushed butter biscuits into the base of a springform tin and chill.", "Beat cream cheese and sugar until smooth; add eggs one at a time and fold in sour cream.", "Bake in a water bath at 160°C (320°F) until the edge is set and center slightly wobbles. Cool slowly."], he: ["מהדקים פירורי עוגיות חמאה לבסיס תבנית קפיצית ומקררים.", "טורפים גבינת שמנת וסוכר עד לחלקות, מוסיפים ביצים אחת־אחת ומקפלים פנימה שמנת חמוצה.", "אופים באמבט מים ב־160 מעלות עד שהשוליים יציבים והמרכז רוטט מעט. מצננים באיטיות."] },
+      "flourless-chocolate-cake": { en: ["Melt chocolate and butter together, then cool until warm rather than hot.", "Whisk eggs with sugar until pale; fold in cocoa and the chocolate mixture.", "Bake in a lined tin at 170°C (340°F) until the edge is set but the center remains fudgy, about 25–28 minutes."], he: ["ממיסים שוקולד וחמאה יחד ומצננים עד שהם חמימים ולא חמים.", "טורפים ביצים עם סוכר עד להבהרה ומקפלים פנימה קקאו ותערובת שוקולד.", "אופים בתבנית מרופדת ב־170 מעלות עד שהשוליים יציבים והמרכז פאדג׳י, כ־25–28 דקות."] },
+      "stuffed-dates": { en: ["Slit each date lengthwise and remove the pit while keeping the date intact.", "Fill with almond paste and press closed; chill briefly so the filling firms.", "Dip halfway in melted dark chocolate, sprinkle with pistachios and let set."], he: ["חורצים כל תמר לאורכו ומוציאים את הגלעין בלי לפרק את התמר.", "ממלאים במרציפן וסוגרים; מקררים מעט כדי שהמלית תתייצב.", "טובלים חצי תמר בשוקולד מריר מומס, מפזרים פיסטוקים ומניחים להתייצבות."] },
+      cupcakes: { en: ["Cream softened butter and sugar until fluffy; beat in the egg.", "Fold in flour just until combined, divide among cupcake liners and bake at 180°C (350°F) until springy.", "Cool completely, frost if desired and finish with colorful sprinkles."], he: ["מקציפים חמאה רכה וסוכר עד לאווריריות וטורפים פנימה ביצה.", "מקפלים קמח רק עד לאיחוד, מחלקים למנג׳טים ואופים ב־180 מעלות עד שהעוגות קפיציות.", "מצננים לגמרי, מצפים בקרם אם רוצים ומקשטים בסוכריות צבעוניות."] },
+      "mango-panna-cotta": { en: ["Bloom gelatin in cold water. Warm cream and sugar until the sugar dissolves, then remove from the heat.", "Whisk in gelatin until dissolved, cool slightly and stir in mango purée and lime zest.", "Pour into glasses and chill for at least four hours until softly set."], he: ["משרים ג׳לטין במים קרים. מחממים שמנת וסוכר עד להמסה ומסירים מהאש.", "טורפים פנימה ג׳לטין עד להמסה, מצננים מעט ומערבבים מחית מנגו וגרידת ליים.", "מוזגים לכוסות ומקררים לפחות ארבע שעות עד להתייצבות רכה."] },
+      "honey-arak": { en: ["Shake arak, lemon juice, honey syrup and ice until very cold.", "Strain over fresh ice in a short glass and top with a small splash of soda.", "Garnish with a thin lemon wheel and serve immediately."], he: ["מנערים ערק, מיץ לימון, סירופ דבש וקרח עד לקירור מלא.", "מסננים על קרח טרי בכוס נמוכה ומשלימים במעט סודה.", "מקשטים בפרוסת לימון דקה ומגישים מיד."] },
+      "arak-service": { en: ["Chill the arak and a small glass before serving.", "Pour a modest measure over a large ice cube or serve the ice on the side.", "Offer a lemon wedge; no mixing or cooking is required."], he: ["מקררים את הערק ואת הכוס הקטנה לפני ההגשה.", "מוזגים מנה קטנה על קוביית קרח גדולה או מגישים את הקרח בצד.", "מגישים עם פלח לימון; אין צורך בערבוב או בבישול."] },
+      "citrus-punch": { en: ["Combine orange and lemon juice in a chilled punch bowl.", "Add orange slices and ice, then pour in ginger ale just before guests arrive.", "Stir gently once and serve cold."], he: ["מערבבים מיץ תפוזים ולימון בקערת פונץ׳ קרה.", "מוסיפים פרוסות תפוז וקרח, ואז מוזגים ג׳ינג׳ר אייל סמוך להגעת האורחים.", "מערבבים בעדינות פעם אחת ומגישים קר."] },
+      "spinach-quiche": { en: ["Wilt the spinach in a pan, cool and squeeze dry; crumble the feta.", "Whisk eggs with cream, fold in spinach and feta, and pour into the pastry-lined tin.", "Bake at 190°C (375°F) until the center is set and the pastry is golden, about 30–35 minutes."], he: ["מאדים תרד, מצננים וסוחטים היטב; מפוררים את הפטה.", "טורפים ביצים עם שמנת, מקפלים פנימה תרד ופטה ויוצקים לתבנית מרופדת בצק.", "אופים ב־190 מעלות עד שהמרכז יציב והבצק זהוב, כ־30–35 דקות."] },
+      hamantaschen: { en: ["Cream butter and sugar, mix in egg and flour, then chill the dough until firm.", "Roll out, cut circles and place a small spoonful of filling in each center. Fold into triangles, pinching corners closed.", "Bake at 180°C (350°F) until the edges are just golden, about 12–14 minutes; cool before serving."], he: ["מקציפים חמאה וסוכר, מוסיפים ביצה וקמח ומקררים את הבצק עד שיתייצב.", "מרדדים, קורצים עיגולים ומניחים מעט מלית במרכז. מקפלים למשולשים ומהדקים את הפינות.", "אופים ב־180 מעלות עד ששולי העוגיות מזהיבים קלות, כ־12–14 דקות. מצננים לפני ההגשה."] },
+      "fruit-cobbler": { en: ["Toss sliced apples and figs with a little sugar and arrange in a buttered baking dish.", "Rub butter into flour until crumbly, stir in chopped almonds and scatter over the fruit.", "Bake at 180°C (350°F) until the fruit bubbles and the topping is golden, about 35–40 minutes."], he: ["מערבבים תפוחים ותאנים פרוסים עם מעט סוכר ומסדרים בתבנית משומנת.", "מפוררים חמאה לתוך קמח עד לקבלת פירורים, מוסיפים שקדים קצוצים ומפזרים מעל הפרי.", "אופים ב־180 מעלות עד שהפרי מבעבע והציפוי זהוב, כ־35–40 דקות."] },
+      "grilled-banana": { en: ["Split the bananas lengthwise without removing the peel and brush the cut sides with melted butter.", "Grill cut-side down until caramelized, then turn briefly to warm through.", "Top with chopped halva, dark chocolate and sesame; let the chocolate melt before serving."], he: ["חוצים את הבננות לאורכן בלי להסיר את הקליפה ומברישים את הצד החתוך בחמאה מומסת.", "צולים כשהצד החתוך כלפי מטה עד לקרמול, הופכים לזמן קצר לחימום.", "מוסיפים חלבה קצוצה, שוקולד מריר ושומשום וממתינים שהשוקולד יימס לפני ההגשה."] },
+      "chocolate-whiskey-cocktail": { en: ["Stir whiskey with coffee liqueur over ice until chilled.", "Strain over a large ice cube and float lightly whipped cream on top.", "Grate dark chocolate over the drink and serve immediately."], he: ["מערבבים וויסקי עם ליקר קפה על קרח עד לקירור.", "מסננים על קוביית קרח גדולה ומניחים מעל שכבת שמנת מוקצפת קלות.", "מגררים שוקולד מריר מעל ומגישים מיד."] },
+      "roast-turkey": { en: ["Pat the turkey dry, season well and roast at 190°C (375°F) until the center reaches 74°C (165°F), about 60–75 minutes for a small breast.", "Simmer cranberries with silan, orange juice and a splash of water until glossy.", "Rest turkey for 15 minutes, slice and spoon the cranberry-silan sauce over it."], he: ["מייבשים את ההודו, מתבלים היטב וצולים ב־190 מעלות עד שחום הליבה מגיע ל־74 מעלות, כשעה עד שעה ורבע לחזה קטן.", "מבשלים חמוציות עם סילאן, מיץ תפוזים ומעט מים עד לקבלת רוטב מבריק.", "ממתינים 15 דקות, פורסים ומגישים עם רוטב החמוציות והסילאן."] },
+      "duck-breast": { en: ["Score the duck skin without cutting the meat. Start skin-side down in a cold pan and render slowly until crisp.", "Turn and sear the flesh side briefly; finish in a 190°C (375°F) oven until cooked to preference.", "Rest while reducing cherries, vinegar and honey into a glossy sauce; slice and serve."], he: ["חורצים את עור הברווז בלי לחתוך את הבשר. מניחים עם העור כלפי מטה במחבת קרה וממיסים שומן באיטיות עד לפריכות.", "הופכים וצורבים קצרות את הצד השני; מסיימים בתנור ב־190 מעלות למידת העשייה הרצויה.", "מניחים לבשר לנוח ומצמצמים דובדבנים, חומץ ודבש לרוטב מבריק. פורסים ומגישים."] },
+      "seared-tenderloin": { en: ["Pat the medallions dry, season and sear in a very hot pan for 2–3 minutes per side. Rest under foil.", "Soften shallot in the pan, add red wine and reduce by half; whisk in cold butter and thyme.", "Return the beef briefly to coat in the sauce and serve immediately."], he: ["מייבשים את המדליונים, מתבלים וצורבים במחבת חמה מאוד 2–3 דקות מכל צד. מניחים לנוח בכיסוי רופף.", "מרככים שאלוט במחבת, מוסיפים יין אדום ומצמצמים לחצי. טורפים פנימה חמאה קרה ותימין.", "מחזירים את הבקר לרגע לציפוי ברוטב ומגישים מיד."] },
+      "beef-squash-stew": { en: ["Brown the beef in batches, then soften onion in the same pot.", "Add stock and cumin; cover and simmer until the beef is nearly tender, about 75 minutes.", "Add squash and cook uncovered until just soft and the broth is rich, about 20 minutes more."], he: ["משחימים את הבקר בכמה סבבים ומרככים את הבצל באותו סיר.", "מוסיפים ציר וכמון, מכסים ומבשלים עד שהבקר כמעט רך, כ־75 דקות.", "מוסיפים דלורית ומבשלים ללא מכסה עד לריכוך קל ולהסמכת המרק, כ־20 דקות נוספות."] },
+      "pasta-bake": { en: ["For ravioli, fill pasta sheets with ricotta and spinach, seal firmly and boil until they float. Brown sage in butter for the sauce.", "For lasagna, layer pasta with sautéed mushrooms, spinach and a creamy cheese sauce in a baking dish.", "Bake the lasagna at 190°C (375°F) until bubbling and golden; serve ravioli immediately with sage butter."], he: ["לרביולי ממלאים דפי פסטה בריקוטה ותרד, סוגרים היטב ומבשלים עד שהם צפים. משחימים מרווה בחמאה לרוטב.", "ללזניה מסדרים שכבות פסטה עם פטריות מוקפצות, תרד ורוטב גבינות קרמי בתבנית.", "אופים לזניה ב־190 מעלות עד לבעבוע ולהזהבה; מגישים רביולי מיד עם חמאת מרווה."] },
+      pierogi: { en: ["Boil potatoes until tender, mash with farmer cheese and season with salt and pepper.", "Knead a soft flour, egg and water dough; roll thin, cut circles, fill and seal the edges firmly.", "Boil in batches until the pierogi float, then pan-fry with golden onion."], he: ["מבשלים תפוחי אדמה עד לריכוך, מועכים עם גבינת טוב טעם ומתבלים במלח ובפלפל.", "לשים בצק רך מקמח, ביצה ומים; מרדדים דק, קורצים עיגולים, ממלאים וסוגרים היטב.", "מבשלים בכמה סבבים עד שהכיסונים צפים ואז צורבים במחבת עם בצל זהוב."] },
+      "dessert-pastry": { en: ["Layer buttered phyllo sheets, brushing each lightly with melted butter; add chopped pistachios and halva between layers.", "Cut into portions before baking, then bake at 180°C (350°F) until crisp and deep golden.", "Pour warm honey syrup over the hot pastry and let it rest until absorbed."], he: ["מסדרים שכבות פילו משוחות בחמאה מומסת ומפזרים ביניהן פיסטוקים קצוצים וחלבה.", "חותכים למנות לפני האפייה ואופים ב־180 מעלות עד לפריכות ולהזהבה עמוקה.", "יוצקים סירופ דבש חמים על המאפה החם ומניחים לספיגה."] },
+      macaroons: { en: ["Whisk egg whites and sugar until foamy, then fold through shredded coconut and vanilla.", "Scoop small mounds onto a lined tray and bake at 170°C (340°F) until the edges are golden, 15–18 minutes.", "Cool completely; dip the bases in melted dark chocolate if desired."], he: ["טורפים חלבוני ביצה וסוכר עד לקצף קל ומקפלים פנימה קוקוס טחון ווניל.", "יוצרים תלוליות קטנות על תבנית מרופדת ואופים ב־170 מעלות עד שהשוליים מזהיבים, 15–18 דקות.", "מצננים לגמרי; אפשר לטבול את התחתיות בשוקולד מריר מומס."] },
+      "matzah-toffee": { en: ["Arrange matzah in a single layer on a lined tray. Simmer butter and brown sugar for three minutes, stirring constantly.", "Pour the bubbling toffee over matzah and bake at 180°C (350°F) for 8–10 minutes.", "Scatter chopped chocolate over the hot surface, spread as it melts, finish with salt and break into shards when cool."], he: ["מסדרים מצה בשכבה אחת על תבנית מרופדת. מבשלים חמאה וסוכר חום שלוש דקות תוך ערבוב.", "יוצקים את הטופי המבעבע על המצה ואופים ב־180 מעלות 8–10 דקות.", "מפזרים שוקולד קצוץ על המשטח החם, מורחים כשהוא נמס, מסיימים במלח ושוברים לחתיכות לאחר קירור."] },
+      "milk-punch": { en: ["Whisk milk with rum, cinnamon, vanilla and a pinch of nutmeg until evenly combined.", "For a warm punch, heat gently without boiling; for a chilled drink, refrigerate for an hour.", "Pour into small glasses and grate a little nutmeg over each serving."], he: ["טורפים חלב עם רום, קינמון, וניל וקורט אגוז מוסקט עד לאיחוד.", "למשקה חם מחממים בעדינות בלי להרתיח; לגרסה קרה מקררים שעה.", "מוזגים לכוסות קטנות ומגררים מעט אגוז מוסקט מעל כל מנה."] },
+      "apple-punch": { en: ["Combine apple juice, sliced apple, cinnamon, cloves and orange in a saucepan.", "Simmer gently for 15–20 minutes; do not boil hard.", "Strain into mugs and serve warm, with an apple slice in each cup."], he: ["מערבבים בסיר מיץ תפוחים, תפוח פרוס, קינמון, ציפורן ותפוז.", "מבשלים בעדינות 15–20 דקות בלי רתיחה חזקה.", "מסננים לספלים ומגישים חם עם פרוסת תפוח בכל כוס."] },
+      "mulled-wine": { en: ["Combine red wine, orange, figs, cinnamon and cloves in a saucepan.", "Warm over low heat for 15 minutes without boiling so the alcohol and aromas are not driven off.", "Strain into heatproof glasses and serve warm with a piece of softened fig."], he: ["מערבבים בסיר יין אדום, תפוז, תאנים, קינמון וציפורן.", "מחממים על אש נמוכה 15 דקות בלי להרתיח כדי לשמור על האלכוהול והניחוחות.", "מסננים לכוסות חסינות חום ומגישים חם עם חתיכת תאנה רכה."] },
+      "pomegranate-arugula": { en: ["Wash and dry the arugula. Remove pomegranate seeds and toast the almonds until fragrant.", "Whisk lemon juice with olive oil, salt and pepper.", "Toss the arugula lightly, top with pomegranate and almonds, and dress just before serving."], he: ["שוטפים ומייבשים רוקט. מפרידים גרגירי רימון וקולים שקדים עד שעולה ריח.", "טורפים מיץ לימון עם שמן זית, מלח ופלפל.", "מערבבים את הרוקט בעדינות, מוסיפים רימון ושקדים ומתבלים סמוך להגשה."] }
+    });
+    const recipeMethods = {
+      en: {
+        starters: ["Wash and prepare the vegetables, herbs and other ingredients. Cut everything into serving-size pieces.", "Cook or char ingredients that need heat until tender and lightly browned, then let them cool briefly.", "Arrange on a platter, drizzle with olive oil, finish with fresh herbs and serve."],
+        mains: ["Preheat the oven to 200°C (400°F) or prepare a medium grill. Season the main ingredients.", "Cook grains or vegetables separately as needed. Roast or grill the centerpiece until tender and fully cooked.", "Rest for five minutes, arrange on warm plates and finish with herbs and sauce."],
+        desserts: ["For a baked dessert, heat the oven to 180°C (350°F) and line a small pan. For a chilled dessert, prepare serving glasses.", "Whisk the dry ingredients together, then fold in the wet ingredients until just combined.", "Bake until set and lightly golden, or chill until firm for a no-bake version. Cool before serving.", "Finish with honey, citrus zest or fruit, then slice and serve."],
+        drinks: ["Wash the citrus and herbs. Juice or slice the citrus and gently bruise the herbs to release their aroma.", "Stir the juice with the remaining ingredients in a jug. Chill for at least ten minutes.", "Add sparkling water just before serving. Pour over ice and garnish with fresh herbs."]
+      },
+      he: {
+        starters: ["שוטפים ומכינים את הירקות, עשבי התיבול ושאר המצרכים. חותכים לגודל נוח להגשה.", "צולים או קולים את המצרכים שדורשים חימום עד שהם רכים ושחומים קלות, ומצננים מעט.", "מסדרים בצלחת הגשה, מזלפים שמן זית, מוסיפים עשבי תיבול טריים ומגישים."],
+        mains: ["מחממים תנור ל־200 מעלות או מכינים גריל בחום בינוני. מתבלים את המצרכים העיקריים.", "מבשלים בנפרד דגנים או ירקות לפי הצורך. צולים את המנה העיקרית עד שהיא רכה ומבושלת היטב.", "ממתינים חמש דקות, מסדרים בצלחות חמות ומסיימים בעשבי תיבול וברוטב."],
+        desserts: ["לקינוח אפוי מחממים תנור ל־180 מעלות ומרפדים תבנית קטנה. לקינוח קר מכינים כוסות הגשה.", "טורפים יחד את המצרכים היבשים ומקפלים פנימה את הרטובים עד לאיחוד.", "אופים עד להתייצבות ולהזהבה קלה, או מקררים עד להתייצבות בקינוח ללא אפייה. מצננים לפני ההגשה.", "מקשטים בדבש, בגרידת הדרים או בפירות, פורסים ומגישים."],
+        drinks: ["שוטפים את ההדרים ואת עשבי התיבול. סוחטים או פורסים את ההדרים ומועכים בעדינות את העלים.", "מערבבים את המיץ עם שאר המצרכים בקנקן ומקררים לפחות עשר דקות.", "מוסיפים סודה ממש לפני ההגשה, מוזגים על קרח ומקשטים בעשבי תיבול טריים."]
+      }
+    };
+    const shareParams = new URLSearchParams(window.location.search);
+    const validRecipeIds = new Set(recipeSeeds.map((recipe) => recipe.id));
+    const sharedManualProducts = (() => {
+      try {
+        const parsed = JSON.parse(shareParams.get("manual") || "[]");
+        return Array.isArray(parsed) ? parsed.filter((item) => item && typeof item.name === "string" && item.name.trim()).map((item, index) => ({ id: String(item.id || `shared-${index}`), name: item.name.slice(0, 80), quantity: Math.max(0.1, Number(item.quantity) || 1), unit: ["pc", "g", "ml", "pack"].includes(item.unit) ? item.unit : "pc" })) : [];
+      } catch { return []; }
+    })();
+    const initialHoliday = shareParams.get("holiday");
+    const initialCategory = shareParams.get("category");
+    const initialLanguage = shareParams.get("lang");
+    const state = {
+      lang: initialLanguage === "he" || initialLanguage === "en" ? initialLanguage : localStorage.getItem("feast-language") === "he" ? "he" : "en",
+      mode: shareParams.get("mode") === "feast" ? "feast" : "fit",
+      guests: Math.max(1, Math.min(20, Number(shareParams.get("guests")) || 2)),
+      holiday: holidayData.some((holiday) => holiday.id === initialHoliday) ? initialHoliday : "rosh-hashanah",
+      category: categoryKeys.includes(initialCategory) ? initialCategory : "all",
+      shopping: new Set((shareParams.get("recipes") || "").split(",").filter((recipeId) => validRecipeIds.has(recipeId))),
+      manualProducts: sharedManualProducts,
+      checked: new Set(), drawerOpen: false,
+      recipeDialogId: validRecipeIds.has(shareParams.get("recipe")) ? shareParams.get("recipe") : null,
+      recipeDialogTrigger: null, recipeEntranceDone: false
+    };
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+    const t = (key) => translations[state.lang][key] ?? featureTranslations[state.lang][key];
+    const currentHoliday = () => holidayData.find((holiday) => holiday.id === state.holiday);
+    const recipeList = () => recipeSeeds.filter((recipe) => recipe.holidayId === state.holiday && (state.mode === "feast" || !recipe.feastOnly) && (state.category === "all" || recipe.category === state.category));
+    const modeFactor = () => 1;
+    function quantityText(quantity, unit) {
+      const rounded = Math.round(quantity * 10) / 10;
+      const value = Number.isInteger(rounded) ? String(rounded) : String(rounded).replace(/\.0$/, "");
+      return `${value} ${unit}`;
+    }
+    function ingredientName(ingredient) { return ingredient[state.lang]; }
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+    }
+    function createShareUrl({ recipeId = null, includeShopping = false, includeFeast = false } = {}) {
+      const url = new URL(window.location.href);
+      const params = url.searchParams;
+      params.set("holiday", state.holiday);
+      params.set("category", state.category);
+      params.set("mode", includeFeast ? "feast" : state.mode);
+      params.set("guests", String(state.guests));
+      params.set("lang", state.lang);
+      if (recipeId) params.set("recipe", recipeId); else params.delete("recipe");
+      if (includeShopping) {
+        if (state.shopping.size) params.set("recipes", [...state.shopping].join(",")); else params.delete("recipes");
+        if (state.manualProducts.length) params.set("manual", JSON.stringify(state.manualProducts)); else params.delete("manual");
+      } else {
+        params.delete("recipes");
+        params.delete("manual");
+      }
+      return url.toString();
+    }
+    async function shareOrCopy({ title, text, url }, statusSelector) {
+      const status = $(statusSelector);
+      try {
+        if (navigator.share) {
+          await navigator.share({ title, text, url });
+          status.textContent = t("shareDone");
+          return;
+        }
+        const content = `${text}\n${url}`;
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(content);
+        } else {
+          const temporaryInput = document.createElement("textarea");
+          temporaryInput.value = content;
+          temporaryInput.style.position = "fixed";
+          temporaryInput.style.opacity = "0";
+          document.body.append(temporaryInput);
+          temporaryInput.select();
+          document.execCommand("copy");
+          temporaryInput.remove();
+        }
+        status.textContent = t("shareCopied");
+      } catch (error) {
+        if (error.name !== "AbortError") status.textContent = t("shareUnavailable");
+      }
+    }
+    function aggregatedShoppingLines() {
+      const selected = recipeSeeds.filter((recipe) => state.shopping.has(recipe.id));
+      const aggregated = new Map();
+      selected.forEach((recipe) => recipe.ingredients.forEach((ingredient) => {
+        const key = `${ingredient.en.toLowerCase()}::${ingredient.unit}`;
+        const item = aggregated.get(key) || { ingredient, quantity: 0 };
+        item.quantity += ingredient.qty * (state.guests / 2) * modeFactor();
+        aggregated.set(key, item);
+      }));
+      const recipeLines = [...aggregated.values()].map(({ ingredient, quantity }) => `${ingredientName(ingredient)}: ${quantityText(quantity, ingredient.unit)}`);
+      const manualLines = state.manualProducts.map((item) => `${item.name}: ${quantityText(item.quantity, item.unit)}`);
+      return [...recipeLines, ...manualLines];
+    }
+    function shareMenu() {
+      const recipes = recipeList();
+      const title = currentHoliday()[state.lang === "en" ? "en" : "he"];
+      const text = `${title}\n${recipes.map((recipe) => `• ${recipe.title[state.lang]}`).join("\n")}`;
+      shareOrCopy({ title: `${title} · ${t("recipeHeading")}`, text, url: createShareUrl() }, "[data-testid='share-status']");
+    }
+    function shareShoppingList() {
+      const text = aggregatedShoppingLines().join("\n") || t("emptyShopping");
+      shareOrCopy({ title: t("shoppingTitle"), text, url: createShareUrl({ includeShopping: true }) }, "[data-testid='shopping-share-status']");
+    }
+    function shareRecipe(recipeId) {
+      const recipe = recipeSeeds.find((item) => item.id === recipeId);
+      if (!recipe) return;
+      const title = recipe.title[state.lang];
+      const ingredients = recipe.ingredients.map((ingredient) => `${ingredientName(ingredient)} ${quantityText(ingredient.qty * (state.guests / 2) * modeFactor(), ingredient.unit)}`).join("\n");
+      shareOrCopy({ title, text: `${title}\n${ingredients}`, url: createShareUrl({ recipeId, includeFeast: recipe.feastOnly }) }, "[data-testid='recipe-share-status']");
+    }
+    function renderHolidayTabs() {
+      $("[data-testid='holiday-navigation']").innerHTML = holidayData.map((holiday) => `<button type="button" class="holiday-tab" data-testid="holiday-tab-${holiday.id}" data-holiday="${holiday.id}" aria-selected="${state.holiday === holiday.id}"><span class="holiday-icon" aria-hidden="true">${holiday.icon}</span><span>${holiday[state.lang === "en" ? "en" : "he"]}</span></button>`).join("");
+      $$(".holiday-tab").forEach((button) => button.addEventListener("click", () => { state.holiday = button.dataset.holiday; state.category = "all"; render(); }));
+      $("[data-testid='holiday-heading']").textContent = currentHoliday()[state.lang === "en" ? "en" : "he"];
+      $("[data-testid='holiday-subtitle']").textContent = currentHoliday()[state.lang === "en" ? "subEn" : "subHe"];
+    }
+    function renderCategories() {
+      const allButton = `<button type="button" class="category-filter" data-testid="category-filter-all" data-category="all" aria-pressed="${state.category === "all"}">${t("allCategories")}</button>`;
+      const categoryButtons = categoryKeys.map((key) => `<button type="button" class="category-filter" data-testid="category-filter-${key}" data-category="${key}" aria-pressed="${state.category === key}">${t(key)}</button>`).join("");
+      $("[data-testid='category-filters']").innerHTML = allButton + categoryButtons;
+      $$(".category-filter").forEach((button) => button.addEventListener("click", () => { state.category = button.dataset.category; renderRecipes(); renderSummary(); renderCategories(); }));
+    }
+    function renderRecipes() {
+      const recipes = recipeList();
+      const grid = $("[data-testid='recipe-grid']");
+      if (!recipes.length) { grid.innerHTML = `<div class="empty-state">${t("emptyRecipes")}</div>`; return; }
+      grid.innerHTML = recipes.map((recipe, index) => {
+        const calories = recipe.feastOnly ? recipe.feastCalories : recipe.fitCalories;
+        const macros = recipe.macros.map((macro) => Math.round(macro * modeFactor()));
+        const ingredients = recipe.ingredients.map((ingredient, ingredientIndex) => {
+          const quantity = ingredient.qty * (state.guests / 2) * modeFactor();
+          return `<li class="ingredient-line"><span>${ingredientName(ingredient)}</span><span class="ingredient-quantity" data-testid="ingredient-quantity" data-ingredient-index="${ingredientIndex}">${quantityText(quantity, ingredient.unit)}</span></li>`;
+        }).join("");
+        const title = recipe.title[state.lang];
+        const entranceStyle = state.recipeEntranceDone ? "animation: none;" : `animation-delay:${index * 45}ms`;
+        return `<article class="recipe-card" data-testid="recipe-card" data-recipe-id="${recipe.id}" style="${entranceStyle}"><div class="recipe-art"><span class="recipe-emoji" aria-hidden="true">${recipe.icon}</span><span class="recipe-category">${t(recipe.category)}</span></div><div class="recipe-content"><h3 class="recipe-title" data-testid="recipe-title">${title}</h3><p class="recipe-description">${recipe.description[state.lang]}</p><div class="recipe-stats"><span class="recipe-calories" data-testid="recipe-calories">${calories} ${t("calories")} / ${t("perServing")}</span><span class="macro-pill">P ${macros[0]}g</span><span class="macro-pill">C ${macros[1]}g</span><span class="macro-pill">F ${macros[2]}g</span></div><ul class="ingredient-list" aria-label="${t("ingredients")}">${ingredients}</ul><div class="recipe-footer"><span class="serving-note">${t("serving")} ${state.guests}</span><label class="add-recipe"><input type="checkbox" data-testid="add-to-shopping-list" data-recipe-id="${recipe.id}" ${state.shopping.has(recipe.id) ? "checked" : ""}><span>${state.shopping.has(recipe.id) ? t("added") : t("add")}</span></label></div></div></article>`;
+      }).join("");
+      state.recipeEntranceDone = true;
+      $$(".recipe-card").forEach((card) => {
+        card.tabIndex = 0;
+        card.setAttribute("role", "group");
+        card.setAttribute("aria-label", `${detailLabels[state.lang].open}: ${card.querySelector(".recipe-title").textContent}`);
+        card.addEventListener("click", (event) => {
+          if (event.target.closest("button, input, label, a")) return;
+          openRecipe(card.dataset.recipeId, card.querySelector(".recipe-open"));
+        });
+        card.addEventListener("keydown", (event) => {
+          if (event.target !== card || (event.key !== "Enter" && event.key !== " ")) return;
+          event.preventDefault();
+          openRecipe(card.dataset.recipeId, card.querySelector(".recipe-open"));
+        });
+      });
+      $$(".recipe-title").forEach((heading) => {
+        const title = heading.textContent;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "recipe-open";
+        button.dataset.testid = "open-recipe";
+        button.dataset.recipeId = heading.closest("[data-recipe-id]").dataset.recipeId;
+        button.setAttribute("aria-label", `${detailLabels[state.lang].open}: ${title}`);
+        const titleText = document.createElement("span");
+        titleText.className = "recipe-title-text";
+        titleText.textContent = title;
+        const arrow = document.createElement("span");
+        arrow.className = "recipe-arrow";
+        arrow.setAttribute("aria-hidden", "true");
+        arrow.textContent = "↗";
+        button.append(titleText, arrow);
+        button.addEventListener("pointerup", (event) => {
+          if (event.button === 0) openRecipe(button.dataset.recipeId, button);
+        });
+        button.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openRecipe(button.dataset.recipeId, button);
+          }
+        });
+        heading.replaceChildren(button);
+      });
+      $$(".recipe-card").forEach((card) => {
+        const shareButton = document.createElement("button");
+        shareButton.type = "button";
+        shareButton.className = "recipe-share-button";
+        shareButton.dataset.testid = "share-recipe-card";
+        shareButton.setAttribute("aria-label", `${t("shareRecipe")}: ${card.querySelector(".recipe-title").textContent}`);
+        shareButton.textContent = "↗";
+        shareButton.addEventListener("click", () => shareRecipe(card.dataset.recipeId));
+        card.querySelector(".recipe-footer").append(shareButton);
+      });
+      $$("[data-testid='add-to-shopping-list']").forEach((checkbox) => checkbox.addEventListener("change", () => {
+        if (checkbox.checked) state.shopping.add(checkbox.dataset.recipeId); else state.shopping.delete(checkbox.dataset.recipeId);
+        renderShoppingCount(); renderRecipes(); if (state.drawerOpen) renderShoppingDrawer();
+      }));
+    }
+    function renderRecipeDialog() {
+      const backdrop = $("[data-testid='recipe-backdrop']");
+      const dialog = $("[data-testid='recipe-dialog']");
+      const recipe = recipeSeeds.find((item) => item.id === state.recipeDialogId);
+      if (!recipe) {
+        backdrop.classList.remove("open");
+        backdrop.setAttribute("aria-hidden", "true");
+        dialog.setAttribute("aria-hidden", "true");
+        return;
+      }
+      const labels = detailLabels[state.lang];
+      const recipeTitle = recipe.title[state.lang];
+      const calories = recipe.feastOnly ? recipe.feastCalories : recipe.fitCalories;
+      const macros = recipe.macros.map((macro) => Math.round(macro * modeFactor()));
+      const ingredients = recipe.ingredients.map((ingredient) => {
+        const quantity = ingredient.qty * (state.guests / 2) * modeFactor();
+        return `<li class="detail-ingredient"><span>${ingredientName(ingredient)}</span><span class="detail-ingredient-quantity" data-testid="detail-ingredient-quantity">${quantityText(quantity, ingredient.unit)}</span></li>`;
+      }).join("");
+      const methodSteps = recipeMethodSteps[recipe.methodKey]?.[state.lang] || recipeMethods[state.lang][recipe.category];
+      const steps = methodSteps.map((step) => `<li>${step}</li>`).join("");
+      const holiday = currentHoliday()[state.lang === "en" ? "en" : "he"];
+      $("[data-testid='recipe-detail-content']").innerHTML = `<header class="recipe-dialog-header"><div><span class="eyebrow">${holiday} · ${t(recipe.category)}</span><h2 id="recipe-detail-title" data-testid="recipe-detail-title">${recipeTitle}</h2><p class="recipe-dialog-description">${recipe.description[state.lang]}</p></div><button type="button" class="recipe-dialog-close" data-testid="recipe-dialog-close" aria-label="${labels.close}">×</button></header><div class="recipe-dialog-content"><div class="recipe-dialog-facts"><span>${labels.prep}: ${recipe.prepMinutes} min</span><span>${labels.cook}: ${recipe.cookMinutes} min</span><span data-testid="recipe-detail-servings">${labels.serves}: ${state.guests}</span><span>${calories} ${t("calories")} / ${t("perServing")}</span><span>P ${macros[0]}g</span><span>C ${macros[1]}g</span><span>F ${macros[2]}g</span></div><div class="recipe-dialog-columns"><section><h3>${t("ingredients")}</h3><ul class="detail-ingredients" data-testid="recipe-detail-ingredients">${ingredients}</ul></section><section><h3>${labels.method}</h3><ol class="recipe-method" data-testid="recipe-method">${steps}</ol></section></div></div>`;
+      const dialogHeader = $(".recipe-dialog-header");
+      const closeButton = $("[data-testid='recipe-dialog-close']", dialogHeader);
+      const dialogActions = document.createElement("div");
+      dialogActions.className = "recipe-dialog-actions";
+      const shareButton = document.createElement("button");
+      shareButton.type = "button";
+      shareButton.className = "secondary-action";
+      shareButton.dataset.testid = "recipe-share-btn";
+      shareButton.setAttribute("aria-label", `${t("shareRecipe")}: ${recipeTitle}`);
+      shareButton.textContent = `↗ ${t("shareRecipe")}`;
+      shareButton.addEventListener("click", () => shareRecipe(recipe.id));
+      dialogActions.append(shareButton, closeButton);
+      dialogHeader.append(dialogActions);
+      const shareStatus = document.createElement("p");
+      shareStatus.className = "share-status";
+      shareStatus.dataset.testid = "recipe-share-status";
+      shareStatus.setAttribute("role", "status");
+      shareStatus.setAttribute("aria-live", "polite");
+      $(".recipe-dialog-description", dialogHeader).after(shareStatus);
+      backdrop.classList.add("open");
+      backdrop.setAttribute("aria-hidden", "false");
+      dialog.setAttribute("aria-hidden", "false");
+      $("[data-testid='recipe-dialog-close']").addEventListener("click", closeRecipeDialog);
+      $("[data-testid='recipe-dialog-close']").focus();
+    }
+    function openRecipe(recipeId, trigger) {
+      state.recipeDialogId = recipeId;
+      state.recipeDialogTrigger = trigger;
+      renderRecipeDialog();
+    }
+    function closeRecipeDialog() {
+      state.recipeDialogId = null;
+      const backdrop = $("[data-testid='recipe-backdrop']");
+      backdrop.classList.remove("open");
+      backdrop.setAttribute("aria-hidden", "true");
+      $("[data-testid='recipe-dialog']").setAttribute("aria-hidden", "true");
+      if (state.recipeDialogTrigger?.isConnected) state.recipeDialogTrigger.focus();
+      state.recipeDialogTrigger = null;
+    }
+    function renderSummary() {
+      const recipes = recipeList();
+      const perGuest = recipes.reduce((sum, recipe) => sum + (recipe.feastOnly ? recipe.feastCalories : recipe.fitCalories), 0);
+      const protein = recipes.reduce((sum, recipe) => sum + recipe.macros[0], 0) * modeFactor();
+      const carbs = recipes.reduce((sum, recipe) => sum + recipe.macros[1], 0) * modeFactor();
+      const fat = recipes.reduce((sum, recipe) => sum + recipe.macros[2], 0) * modeFactor();
+      $("[data-testid='macro-summary']").innerHTML = `<span>${t("perGuest")}: ${perGuest} ${t("calories")}</span><span>${t("total")} ${state.guests}: ${perGuest * state.guests} ${t("calories")}</span><span>${t("protein")}: ${Math.round(protein * state.guests)}g</span><span>${t("carbs")}: ${Math.round(carbs * state.guests)}g</span><span>${t("fat")}: ${Math.round(fat * state.guests)}g</span>`;
+    }
+    function renderShoppingCount() { $("[data-testid='shopping-count']").textContent = state.shopping.size + state.manualProducts.length; }
+    function renderShoppingDrawer() {
+      const container = $("[data-testid='shopping-items']");
+      const selected = recipeSeeds.filter((recipe) => state.shopping.has(recipe.id));
+      $("[data-testid='shopping-meta']").textContent = `${t("shoppingFor")} ${state.guests} ${t("people")} · ${selected.length} ${t("recipeCount")} · ${state.manualProducts.length} ${t("items")}`;
+      if (!selected.length && !state.manualProducts.length) { container.innerHTML = `<div class="shopping-empty">${t("emptyShopping")}</div>`; return; }
+      const aggregated = new Map();
+      selected.forEach((recipe) => recipe.ingredients.forEach((ingredient) => {
+        const key = `${ingredient.en.toLowerCase()}::${ingredient.unit}`;
+        const existing = aggregated.get(key) || { key, ingredient, quantity: 0, owner: recipe, sources: [] };
+        existing.quantity += ingredient.qty * (state.guests / 2) * modeFactor();
+        existing.sources.push(recipe.title[state.lang]);
+        aggregated.set(key, existing);
+      }));
+      const groups = new Map(selected.map((recipe) => [recipe.id, { recipe, items: [] }]));
+      aggregated.forEach((item) => groups.get(item.owner.id).items.push(item));
+      const recipeGroups = [...groups.values()].filter((group) => group.items.length).map(({ recipe, items }) => {
+        const rows = items.map(({ key, ingredient, quantity, sources }) => {
+          const checkedKey = `ingredient:${key}`;
+          const sourceNames = [...new Set(sources)].join(", ");
+          return `<label class="shopping-item ${state.checked.has(checkedKey) ? "checked" : ""}"><input type="checkbox" data-shopping-key="${checkedKey}" ${state.checked.has(checkedKey) ? "checked" : ""}><span class="shopping-name">${ingredientName(ingredient)}<small class="shopping-sources">${sources.length > 1 ? `${t("from")} ${sourceNames}` : ""}</small></span><span class="shopping-quantity">${quantityText(quantity, ingredient.unit)}</span></label>`;
+        }).join("");
+        return `<section class="shopping-group"><h3>${recipe.title[state.lang]}</h3>${rows}</section>`;
+      }).join("");
+      const manualRows = state.manualProducts.map((item) => {
+        const checkedKey = `manual:${item.id}`;
+        return `<label class="shopping-item ${state.checked.has(checkedKey) ? "checked" : ""}"><input type="checkbox" data-shopping-key="${checkedKey}" ${state.checked.has(checkedKey) ? "checked" : ""}><span class="shopping-name">${escapeHtml(item.name)}</span><span class="shopping-quantity">${quantityText(item.quantity, item.unit)}</span></label>`;
+      }).join("");
+      container.innerHTML = `${recipeGroups}${manualRows ? `<section class="shopping-group"><h3 class="manual-products-heading">${t("manualItems")}</h3>${manualRows}</section>` : ""}`;
+      $$('[data-shopping-key]', container).forEach((checkbox) => checkbox.addEventListener("change", () => {
+        if (checkbox.checked) state.checked.add(checkbox.dataset.shoppingKey); else state.checked.delete(checkbox.dataset.shoppingKey);
+        checkbox.closest(".shopping-item").classList.toggle("checked", checkbox.checked);
+      }));
+    }
+    function setDrawer(open) {
+      state.drawerOpen = open;
+      $("[data-testid='shopping-list-drawer']").classList.toggle("open", open);
+      $("[data-testid='shopping-list-drawer']").setAttribute("aria-hidden", String(!open));
+      $("[data-testid='shopping-backdrop']").classList.toggle("open", open);
+      if (open) renderShoppingDrawer();
+    }
+    function renderText() {
+      document.documentElement.lang = state.lang;
+      document.documentElement.dir = state.lang === "he" ? "rtl" : "ltr";
+      $$('[data-i18n]').forEach((element) => { element.textContent = t(element.dataset.i18n); });
+      $("[data-testid='mode-switch']").checked = state.mode === "feast";
+      $("[data-testid='lang-toggle']").textContent = t("languageButton");
+      $("[data-testid='lang-toggle']").setAttribute("aria-label", state.lang === "en" ? "Switch to Hebrew" : "Switch to English");
+      $("[data-testid='mode-switch']").setAttribute("aria-checked", String(state.mode === "feast"));
+      $("[data-testid='mode-switch']").setAttribute("aria-label", state.mode === "fit" ? t("fitMode") : t("feastMode"));
+      $("[data-testid='guest-counter-input']").setAttribute("aria-valuetext", `${state.guests} ${t("people")}`);
+      $("[data-testid='guest-counter-input']").value = state.guests;
+      $("[data-testid='manual-product-input']").placeholder = t("productPlaceholder");
+    }
+    function render() { renderText(); renderHolidayTabs(); renderCategories(); renderRecipes(); renderSummary(); renderShoppingCount(); if (state.drawerOpen) renderShoppingDrawer(); renderRecipeDialog(); }
+    $("[data-testid='lang-toggle']").addEventListener("click", () => { state.lang = state.lang === "en" ? "he" : "en"; localStorage.setItem("feast-language", state.lang); render(); });
+    $("[data-testid='mode-switch']").addEventListener("change", (event) => { state.mode = event.target.checked ? "feast" : "fit"; renderRecipes(); renderSummary(); if (state.drawerOpen) renderShoppingDrawer(); renderText(); renderRecipeDialog(); });
+    function setGuests(value) {
+      state.guests = Math.max(1, Math.min(20, Number(value) || 1));
+      $("[data-testid='guest-counter-input']").value = state.guests;
+      renderText(); renderRecipes(); renderSummary(); if (state.drawerOpen) renderShoppingDrawer(); renderRecipeDialog();
+    }
+    $("[data-testid='guest-increment']").addEventListener("click", () => setGuests(state.guests + 1));
+    $("[data-testid='guest-decrement']").addEventListener("click", () => setGuests(state.guests - 1));
+    $("[data-testid='guest-counter-input']").addEventListener("change", (event) => setGuests(event.target.value));
+    $("[data-testid='shopping-list-btn']").addEventListener("click", () => setDrawer(true));
+    $("[data-testid='shopping-drawer-close']").addEventListener("click", () => setDrawer(false));
+    $("[data-testid='shopping-backdrop']").addEventListener("click", () => setDrawer(false));
+    $("[data-testid='add-all-recipes']").addEventListener("click", () => {
+      recipeList().forEach((recipe) => state.shopping.add(recipe.id));
+      renderShoppingCount();
+      renderRecipes();
+      if (state.drawerOpen) renderShoppingDrawer();
+      $("[data-testid='share-status']").textContent = t("addAllDone");
+    });
+    $("[data-testid='share-menu-btn']").addEventListener("click", shareMenu);
+    $("[data-testid='shopping-share-btn']").addEventListener("click", shareShoppingList);
+    $("[data-testid='manual-product-form']").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const nameInput = $("[data-testid='manual-product-input']");
+      const name = nameInput.value.trim();
+      if (!name) { nameInput.focus(); return; }
+      state.manualProducts.push({
+        id: `manual-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+        name, quantity: Math.max(0.1, Math.min(999, Number($("[data-testid='manual-product-quantity']").value) || 1)),
+        unit: $("[data-testid='manual-product-unit']").value
+      });
+      event.currentTarget.reset();
+      $("[data-testid='manual-product-quantity']").value = "1";
+      renderShoppingCount();
+      renderShoppingDrawer();
+    });
+    $("[data-testid='recipe-backdrop']").addEventListener("click", (event) => { if (event.target === event.currentTarget) closeRecipeDialog(); });
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape") { setDrawer(false); closeRecipeDialog(); } });
+    render();
+  </script>
+</body>
+</html>
