@@ -1,4 +1,6 @@
-# Israeli Holiday Feast Guide
+# The Holy Day Table
+
+Israeli Holiday Feast Guide, with recipes and celebrations across the Hebrew calendar.
 
 Небольшое портфолио-приложение о праздничной израильской кухне и пример автоматизации браузера на Python + Playwright. Интерфейс находится в автономном `index.html`; тесты запускают его через локальный HTTP-сервер и проверяют поведение в настоящем браузере.
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1e5f74">
-  <title>Israeli Holiday Feast Guide</title>
+  <title>The Holy Day Table</title>
   <style>
     :root {
       color-scheme: light;
@@ -104,7 +104,8 @@
     .add-recipe { display: inline-flex; align-items: center; gap: 7px; color: var(--olive); font-size: 11px; font-weight: 800; cursor: pointer; }
     .add-recipe input { accent-color: var(--olive); width: 15px; height: 15px; margin: 0; }
     .empty-state { grid-column: 1 / -1; padding: 45px 20px; text-align: center; color: var(--muted); }
-    footer { padding-block: 20px 35px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    footer { padding-block: 20px 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .footer-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 18px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
     .drawer-backdrop { position: fixed; inset: 0; z-index: 5; display: none; background: #102d33a3; }
     .drawer-backdrop.open { display: block; }
     .shopping-drawer { position: fixed; z-index: 6; inset-block: 0; inset-inline-end: 0; width: min(440px, 100%); padding: 24px; overflow-y: auto; background: var(--paper); box-shadow: 0 0 35px #102d3330; transform: translateX(105%); visibility: hidden; transition: transform .25s ease, visibility .25s; }
@@ -162,7 +163,7 @@
 <body>
   <header class="masthead">
     <div class="topbar">
-      <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span data-i18n="brand">The Holiday Table</span></div>
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span data-i18n="brand">The Holy Day Table</span></div>
       <div class="top-actions"><button type="button" class="language-button" data-testid="lang-toggle" aria-label="Switch language">עברית · HE</button></div>
     </div>
     <div class="hero">
@@ -214,7 +215,7 @@
     </section>
   </main>
 
-  <footer><span data-i18n="footer">Made for long meals, open doors and one more helping.</span></footer>
+  <footer><span data-i18n="footer">Made for long meals, open doors and one more helping.</span><div class="footer-legal"><span data-testid="footer-credit"></span><span>© <span data-testid="copyright-year"></span> Daniel Gaba. <span data-testid="copyright-rights"></span></span></div></footer>
   <div class="drawer-backdrop" data-testid="shopping-backdrop"></div>
   <aside class="shopping-drawer" data-testid="shopping-list-drawer" aria-hidden="true" aria-labelledby="shopping-title" role="dialog">
     <div class="drawer-heading"><h2 id="shopping-title" data-i18n="shoppingTitle">Your shopping list</h2><div class="drawer-actions"><button type="button" class="secondary-action" data-testid="shopping-share-btn"><span aria-hidden="true">↗</span><span data-i18n="shareList">Share list</span></button><button type="button" class="drawer-close" data-testid="shopping-drawer-close" aria-label="Close shopping list">×</button></div></div>
@@ -234,7 +235,7 @@
 
   <script>
     const translations = {
-      en: { brand: "The Holiday Table", eyebrow: "A year of Israeli celebrations", headline: "Gather around the holiday table.", heroCopy: "Recipes for the rituals, flavors and generous tables that bring us together, from the first spring barbecue to a honey-sweet new year.", heroNote: "“Good food is the beginning of every good story.”", moodLabel: "THE TABLE MOOD", fitMode: "Fit & Festive", feastMode: "Full Feast", guestsLabel: "GUESTS", people: "people", shoppingButton: "Shopping list", chooseHoliday: "CHOOSE A HOLIDAY", recipeHeading: "Recipes for your table", footer: "Made for long meals, open doors and one more helping.", shoppingTitle: "Your shopping list", emptyShopping: "Choose a recipe to start your list.", emptyRecipes: "No recipes in this category yet.", add: "Add to list", added: "Added", starters: "Starters", mains: "Mains", desserts: "Desserts", drinks: "Drinks & Cocktails", all: "All recipes", perServing: "per serving", perGuest: "Per guest", total: "Total for", calories: "kcal", protein: "Protein", carbs: "Carbs", fat: "Fat", healthy: "Light, bright and nourishing", rich: "Traditional and generous", ingredients: "Ingredients", serving: "Scaled for", item: "item", items: "items", checked: "checked", shoppingFor: "Shopping for", recipeCount: "recipes", from: "From", languageButton: "עברית · HE", close: "Close shopping list", allCategories: "All", languageName: "English" },
+      en: { brand: "The Holy Day Table", eyebrow: "A year of Israeli celebrations", headline: "Gather around the holiday table.", heroCopy: "Recipes for the rituals, flavors and generous tables that bring us together, from the first spring barbecue to a honey-sweet new year.", heroNote: "“Good food is the beginning of every good story.”", moodLabel: "THE TABLE MOOD", fitMode: "Fit & Festive", feastMode: "Full Feast", guestsLabel: "GUESTS", people: "people", shoppingButton: "Shopping list", chooseHoliday: "CHOOSE A HOLIDAY", recipeHeading: "Recipes for your table", footer: "Made for long meals, open doors and one more helping.", shoppingTitle: "Your shopping list", emptyShopping: "Choose a recipe to start your list.", emptyRecipes: "No recipes in this category yet.", add: "Add to list", added: "Added", starters: "Starters", mains: "Mains", desserts: "Desserts", drinks: "Drinks & Cocktails", all: "All recipes", perServing: "per serving", perGuest: "Per guest", total: "Total for", calories: "kcal", protein: "Protein", carbs: "Carbs", fat: "Fat", healthy: "Light, bright and nourishing", rich: "Traditional and generous", ingredients: "Ingredients", serving: "Scaled for", item: "item", items: "items", checked: "checked", shoppingFor: "Shopping for", recipeCount: "recipes", from: "From", languageButton: "עברית · HE", close: "Close shopping list", allCategories: "All", languageName: "English" },
       he: { brand: "שולחן החג", eyebrow: "שנה של חגיגות ישראליות", headline: "מתכנסים סביב שולחן החג.", heroCopy: "מתכונים למסורות, לטעמים ולשולחנות הנדיבים שמחברים בינינו, מהברביקיו הראשון של האביב ועד לשנה טובה ומתוקה בדבש.", heroNote: "״אוכל טוב הוא התחלה של כל סיפור טוב.״", moodLabel: "האווירה בשולחן", fitMode: "קליל וחגיגי", feastMode: "סעודה מלאה", guestsLabel: "סועדים", people: "אנשים", shoppingButton: "רשימת קניות", chooseHoliday: "בחרו חג", recipeHeading: "מתכונים לשולחן שלכם", footer: "לארוחות ארוכות, לדלת פתוחה ולעוד מנה אחת.", shoppingTitle: "רשימת הקניות שלכם", emptyShopping: "בחרו מתכון כדי להתחיל את הרשימה.", emptyRecipes: "אין עדיין מתכונים בקטגוריה הזו.", add: "הוספה לרשימה", added: "נוסף", starters: "ראשונות", mains: "עיקריות", desserts: "קינוחים", drinks: "משקאות וקוקטיילים", all: "כל המתכונים", perServing: "למנה", perGuest: "לאורח", total: "סה״כ ל־", calories: "קלוריות", protein: "חלבון", carbs: "פחמימות", fat: "שומן", healthy: "קליל, רענן ומזין", rich: "מסורתי ונדיב", ingredients: "מצרכים", serving: "מותאם ל־", item: "פריט", items: "פריטים", checked: "סומנו", shoppingFor: "רשימת קניות ל־", recipeCount: "מתכונים", from: "מתוך", languageButton: "EN · English", close: "סגירת רשימה", allCategories: "הכול", languageName: "עברית" }
     };
     const detailLabels = {
@@ -244,6 +245,10 @@
     const featureTranslations = {
       en: { addAllShown: "Add all shown to list", shareMenu: "Share menu", shareList: "Share list", shareRecipe: "Share recipe", manualProduct: "Add a product", productPlaceholder: "e.g. paper napkins", addManual: "Add product", unitPieces: "pcs", unitGrams: "g", unitMilliliters: "ml", unitPacks: "packs", manualItems: "Manual items", shareCopied: "Share link copied", shareDone: "Ready to share", shareUnavailable: "Could not share this item", addAllDone: "Visible recipes added", manualRequired: "Enter a product name" },
       he: { addAllShown: "הוספת כל המנות לרשימה", shareMenu: "שיתוף התפריט", shareList: "שיתוף הרשימה", shareRecipe: "שיתוף המתכון", manualProduct: "הוספת מוצר", productPlaceholder: "למשל: מפיות נייר", addManual: "הוספת מוצר", unitPieces: "יח׳", unitGrams: "גרם", unitMilliliters: "מ״ל", unitPacks: "אריזות", manualItems: "מוצרים ידניים", shareCopied: "קישור השיתוף הועתק", shareDone: "מוכן לשיתוף", shareUnavailable: "לא ניתן לשתף כרגע", addAllDone: "המנות שמוצגות נוספו", manualRequired: "יש להזין שם מוצר" }
+    };
+    const footerTranslations = {
+      en: { credit: "Developed by Daniel Gaba.", rights: "All rights reserved." },
+      he: { credit: "פותח על ידי Daniel Gaba.", rights: "כל הזכויות שמורות." }
     };
     const holidayData = [
       { id: "rosh-hashanah", icon: "🍎", en: "Rosh Hashanah", he: "ראש השנה", subEn: "Pomegranate, honey and a sweet beginning to the year.", subHe: "רימון, דבש והתחלה מתוקה לשנה החדשה." },
@@ -1152,6 +1157,10 @@
       document.documentElement.lang = state.lang;
       document.documentElement.dir = state.lang === "he" ? "rtl" : "ltr";
       $$('[data-i18n]').forEach((element) => { element.textContent = t(element.dataset.i18n); });
+      const footerText = footerTranslations[state.lang];
+      $(`[data-testid='footer-credit']`).textContent = footerText.credit;
+      $(`[data-testid='copyright-year']`).textContent = new Date().getFullYear();
+      $(`[data-testid='copyright-rights']`).textContent = footerText.rights;
       $("[data-testid='mode-switch']").checked = state.mode === "feast";
       $("[data-testid='lang-toggle']").textContent = t("languageButton");
       $("[data-testid='lang-toggle']").setAttribute("aria-label", state.lang === "en" ? "Switch to Hebrew" : "Switch to English");
