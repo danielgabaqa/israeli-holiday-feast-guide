@@ -76,6 +76,13 @@
     .category-filters { display: flex; flex-wrap: wrap; gap: 5px; }
     .category-filter { border: 0; background: transparent; border-radius: 3px; color: var(--muted); padding: 9px 12px; font-size: 12px; font-weight: 700; }
     .category-filter[aria-pressed="true"] { background: #e4ece7; color: var(--olive); }
+    .discovery-bar { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-top: 22px; }
+    .search-field { display: grid; gap: 7px; width: min(100%, 440px); }
+    .search-input-wrap { display: flex; align-items: center; gap: 9px; min-height: 42px; border: 1px solid var(--line); border-radius: 4px; padding-inline: 12px 7px; background: var(--paper); color: var(--muted); }
+    .search-input-wrap input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 13px; }
+    .search-input-wrap input:focus-visible { outline: 0; }
+    .search-input-wrap button { border: 0; background: transparent; color: var(--muted); font-size: 18px; }
+    .search-result-count { margin: 0 0 12px; color: var(--muted); font-size: 12px; }
     .overview { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-block: 25px 15px; }
     .overview h2 { margin: 0; font: 500 23px var(--serif); }
     .macro-summary { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; color: var(--muted); font-size: 11px; }
@@ -103,6 +110,17 @@
     .serving-note { color: var(--muted); font-size: 10px; }
     .add-recipe { display: inline-flex; align-items: center; gap: 7px; color: var(--olive); font-size: 11px; font-weight: 800; cursor: pointer; }
     .add-recipe input { accent-color: var(--olive); width: 15px; height: 15px; margin: 0; }
+    .meal-plan-toggle { min-height: 30px; padding: 4px 7px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--teal); font-size: 11px; font-weight: 700; }
+    .meal-plan-toggle[aria-pressed="true"] { border-color: var(--olive); background: #e4ece7; color: var(--olive); }
+    .meal-plan-recipe { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .meal-plan-recipe-title { color: var(--teal-deep); font: 16px/1.3 var(--serif); }
+    .meal-plan-recipe-actions { display: flex; gap: 6px; }
+    .cook-step { display: flex; align-items: flex-start; gap: 10px; }
+    .cook-step input { flex: 0 0 auto; margin: 3px 0 0; accent-color: var(--olive); }
+    .cook-step-complete .cook-step-text { color: #8a9692; text-decoration: line-through; }
+    .cooking-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 14px; }
+    .cooking-tools input { width: 64px; min-height: 36px; border: 1px solid var(--line); border-radius: 3px; padding: 0 8px; }
+    .cooking-progress { color: var(--muted); font-size: 11px; }
     .empty-state { grid-column: 1 / -1; padding: 45px 20px; text-align: center; color: var(--muted); }
     footer { padding-block: 20px 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
     .footer-legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 18px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
@@ -157,6 +175,7 @@
     @media (max-width: 850px) { .recipe-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero { grid-template-columns: 1fr; gap: 20px; } .hero-note { justify-self: start; } }
     @media (max-width: 600px) { .topbar, .hero, main, footer { width: min(100% - 30px, 1200px); } .topbar { height: 60px; } .brand { font-size: 12px; } .hero { padding-block: 34px 31px; } h1 { font-size: 43px; } .hero-copy { font-size: 14px; } .control-row { align-items: flex-start; gap: 16px; } .control-group { flex-wrap: wrap; } .shopping-open { margin-inline-start: auto; } .occasion-strip { align-items: flex-start; flex-direction: column; } .category-filters { width: 100%; overflow-x: auto; flex-wrap: nowrap; } .category-filter { flex: 0 0 auto; } .overview { align-items: flex-start; flex-direction: column; } .macro-summary { justify-content: flex-start; } .recipe-grid { grid-template-columns: 1fr; } .recipe-art { min-height: 100px; } .recipe-title { min-height: unset; } .recipe-description { min-height: unset; } }
     @media (max-width: 600px) { .recipe-dialog-header { padding: 20px 18px 16px; } .recipe-dialog-header h2 { font-size: 27px; } .recipe-dialog-content { padding: 17px 18px 22px; } .recipe-dialog-columns { grid-template-columns: 1fr; gap: 22px; } }
+    @media (max-width: 600px) { .discovery-bar { align-items: flex-start; flex-direction: column; gap: 6px; } .search-field { width: 100%; } .search-result-count { align-self: flex-end; } .meal-plan-recipe { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   </style>
 </head>
@@ -191,6 +210,7 @@
           <span class="guest-suffix" data-i18n="people">people</span>
         </div>
       </div>
+      <button type="button" class="secondary-action" data-testid="meal-plan-btn"><span aria-hidden="true">▦</span><span data-i18n="mealPlan">My meal plan</span><span class="shopping-count" data-testid="meal-plan-count">0</span></button>
       <button type="button" class="secondary-action" data-testid="add-all-recipes"><span aria-hidden="true">＋</span><span data-i18n="addAllShown">Add all shown to list</span></button>
       <button type="button" class="shopping-open" data-testid="shopping-list-btn"><span aria-hidden="true">▤</span><span data-i18n="shoppingButton">Shopping list</span><span class="shopping-count" data-testid="shopping-count">0</span></button>
     </section>
@@ -203,6 +223,11 @@
     <section class="occasion-strip">
       <div><h2 class="occasion-title" data-testid="holiday-heading"></h2><p class="occasion-subtitle" data-testid="holiday-subtitle"></p></div>
       <div class="category-filters" data-testid="category-filters" aria-label="Recipe category filters"></div>
+    </section>
+
+    <section class="discovery-bar" aria-label="Recipe search and results">
+      <label class="search-field"><span class="section-kicker" data-i18n="searchLabel">SEARCH RECIPES</span><span class="search-input-wrap"><span aria-hidden="true">⌕</span><input type="search" data-testid="recipe-search-input" data-i18n-placeholder="searchPlaceholder" placeholder="Dish, ingredient or holiday"><button type="button" data-testid="clear-search" data-i18n-aria="clearSearch" aria-label="Clear search">×</button></span></label>
+      <p class="search-result-count" data-testid="search-result-count" aria-live="polite"></p>
     </section>
 
     <section aria-labelledby="recipe-section-title">
@@ -227,6 +252,12 @@
     <p class="share-status" data-testid="shopping-share-status" role="status" aria-live="polite"></p>
     <div data-testid="shopping-items"></div>
   </aside>
+  <div class="drawer-backdrop" data-testid="meal-plan-backdrop"></div>
+  <aside class="shopping-drawer meal-plan-drawer" data-testid="meal-plan-drawer" aria-hidden="true" aria-labelledby="meal-plan-title" role="dialog">
+    <div class="drawer-heading"><h2 id="meal-plan-title" data-i18n="mealPlan">My meal plan</h2><button type="button" class="drawer-close" data-testid="meal-plan-close" aria-label="Close meal plan">×</button></div>
+    <p class="drawer-meta" data-testid="meal-plan-meta"></p>
+    <div data-testid="meal-plan-items"></div>
+  </aside>
   <div class="recipe-backdrop" data-testid="recipe-backdrop" aria-hidden="true">
     <section class="recipe-dialog" data-testid="recipe-dialog" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="recipe-detail-title" tabindex="-1">
       <div data-testid="recipe-detail-content"></div>
@@ -246,9 +277,17 @@
       en: { addAllShown: "Add all shown to list", shareMenu: "Share menu", shareList: "Share list", shareRecipe: "Share recipe", manualProduct: "Add a product", productPlaceholder: "e.g. paper napkins", addManual: "Add product", unitPieces: "pcs", unitGrams: "g", unitMilliliters: "ml", unitPacks: "packs", manualItems: "Manual items", shareCopied: "Share link copied", shareDone: "Ready to share", shareUnavailable: "Could not share this item", addAllDone: "Visible recipes added", manualRequired: "Enter a product name" },
       he: { addAllShown: "הוספת כל המנות לרשימה", shareMenu: "שיתוף התפריט", shareList: "שיתוף הרשימה", shareRecipe: "שיתוף המתכון", manualProduct: "הוספת מוצר", productPlaceholder: "למשל: מפיות נייר", addManual: "הוספת מוצר", unitPieces: "יח׳", unitGrams: "גרם", unitMilliliters: "מ״ל", unitPacks: "אריזות", manualItems: "מוצרים ידניים", shareCopied: "קישור השיתוף הועתק", shareDone: "מוכן לשיתוף", shareUnavailable: "לא ניתן לשתף כרגע", addAllDone: "המנות שמוצגות נוספו", manualRequired: "יש להזין שם מוצר" }
     };
+    const workflowTranslations = {
+      en: { searchLabel: "SEARCH RECIPES", searchPlaceholder: "Dish, ingredient or holiday", clearSearch: "Clear search", resultCount: "recipes shown", mealPlan: "My meal plan", addToPlan: "Add to meal plan", removeFromPlan: "Remove from meal plan", emptyMealPlan: "Add dishes from the menu to build a plan.", plannedCount: "planned dishes", cookingMode: "Cooking mode", startTimer: "Start timer", stopTimer: "Stop timer", timerReady: "Timer ready", timerDone: "Time is up", stepProgress: "steps complete" },
+      he: { searchLabel: "חיפוש מתכונים", searchPlaceholder: "מנה, מצרך או חג", clearSearch: "ניקוי החיפוש", resultCount: "מתכונים מוצגים", mealPlan: "התפריט שלי", addToPlan: "הוספה לתפריט", removeFromPlan: "הסרה מהתפריט", emptyMealPlan: "הוסיפו מנות מהתפריט כדי לתכנן ארוחה.", plannedCount: "מנות בתכנון", cookingMode: "מצב בישול", startTimer: "הפעלת טיימר", stopTimer: "עצירת הטיימר", timerReady: "הטיימר מוכן", timerDone: "הזמן הסתיים", stepProgress: "שלבים הושלמו" }
+    };
     const footerTranslations = {
       en: { credit: "Developed by Daniel Gaba.", rights: "All rights reserved." },
       he: { credit: "פותח על ידי Daniel Gaba.", rights: "כל הזכויות שמורות." }
+    };
+    const cookingTranslations = {
+      en: { startCooking: "Start cooking", stopCooking: "Exit cooking mode", timerMinutes: "Timer minutes" },
+      he: { startCooking: "התחלת בישול", stopCooking: "יציאה ממצב בישול", timerMinutes: "דקות לטיימר" }
     };
     const holidayData = [
       { id: "rosh-hashanah", icon: "🍎", en: "Rosh Hashanah", he: "ראש השנה", subEn: "Pomegranate, honey and a sweet beginning to the year.", subHe: "רימון, דבש והתחלה מתוקה לשנה החדשה." },
@@ -858,23 +897,49 @@
     const initialHoliday = shareParams.get("holiday");
     const initialCategory = shareParams.get("category");
     const initialLanguage = shareParams.get("lang");
+    const storedMealPlan = (() => {
+      try {
+        const saved = JSON.parse(localStorage.getItem("holy-day-meal-plan") || "[]");
+        return Array.isArray(saved) ? saved.filter((recipeId) => validRecipeIds.has(recipeId)) : [];
+      } catch { return []; }
+    })();
+    const storedCookingProgress = (() => {
+      try {
+        const saved = JSON.parse(localStorage.getItem("holy-day-cooking-progress") || "{}");
+        return saved && typeof saved === "object" && !Array.isArray(saved) ? saved : {};
+      } catch { return {}; }
+    })();
     const state = {
       lang: initialLanguage === "he" || initialLanguage === "en" ? initialLanguage : localStorage.getItem("feast-language") === "he" ? "he" : "en",
       mode: shareParams.get("mode") === "feast" ? "feast" : "fit",
       guests: Math.max(1, Math.min(20, Number(shareParams.get("guests")) || 2)),
       holiday: holidayData.some((holiday) => holiday.id === initialHoliday) ? initialHoliday : "rosh-hashanah",
       category: categoryKeys.includes(initialCategory) ? initialCategory : "all",
+      query: shareParams.get("q") || "",
       shopping: new Set((shareParams.get("recipes") || "").split(",").filter((recipeId) => validRecipeIds.has(recipeId))),
       manualProducts: sharedManualProducts,
-      checked: new Set(), drawerOpen: false,
+      mealPlan: new Set(storedMealPlan),
+      cookingProgress: storedCookingProgress,
+      cookingTimer: { recipeId: null, endsAt: 0, intervalId: null },
+      cookingModeRecipeId: null, checked: new Set(), drawerOpen: false, mealPlanDrawerOpen: false,
       recipeDialogId: validRecipeIds.has(shareParams.get("recipe")) ? shareParams.get("recipe") : null,
       recipeDialogTrigger: null, recipeEntranceDone: false
     };
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
-    const t = (key) => translations[state.lang][key] ?? featureTranslations[state.lang][key];
+    const t = (key) => translations[state.lang][key] ?? featureTranslations[state.lang][key] ?? workflowTranslations[state.lang][key] ?? cookingTranslations[state.lang][key];
     const currentHoliday = () => holidayData.find((holiday) => holiday.id === state.holiday);
-    const recipeList = () => recipeSeeds.filter((recipe) => recipe.holidayId === state.holiday && (state.mode === "feast" || !recipe.feastOnly) && (state.category === "all" || recipe.category === state.category));
+    function recipeList() {
+      const query = state.query.trim().toLocaleLowerCase();
+      return recipeSeeds.filter((recipe) => {
+        if (recipe.holidayId !== state.holiday || (state.mode !== "feast" && recipe.feastOnly)) return false;
+        if (state.category !== "all" && recipe.category !== state.category) return false;
+        if (!query) return true;
+        const holiday = holidayData.find((item) => item.id === recipe.holidayId);
+        const searchableText = [recipe.title.en, recipe.title.he, recipe.description.en, recipe.description.he, holiday.en, holiday.he, ...recipe.ingredients.flatMap((ingredient) => [ingredient.en, ingredient.he])].join(" ").toLocaleLowerCase();
+        return searchableText.includes(query);
+      });
+    }
     const modeFactor = () => 1;
     function quantityText(quantity, unit) {
       const rounded = Math.round(quantity * 10) / 10;
@@ -893,6 +958,7 @@
       params.set("mode", includeFeast ? "feast" : state.mode);
       params.set("guests", String(state.guests));
       params.set("lang", state.lang);
+      if (state.query) params.set("q", state.query); else params.delete("q");
       if (recipeId) params.set("recipe", recipeId); else params.delete("recipe");
       if (includeShopping) {
         if (state.shopping.size) params.set("recipes", [...state.shopping].join(",")); else params.delete("recipes");
@@ -973,8 +1039,14 @@
     }
     function renderRecipes() {
       const recipes = recipeList();
+      const resultCount = document.querySelector('[data-testid="search-result-count"]');
+      if (resultCount) resultCount.textContent = `${recipes.length} ${t("resultCount")}`;
       const grid = $("[data-testid='recipe-grid']");
-      if (!recipes.length) { grid.innerHTML = `<div class="empty-state">${t("emptyRecipes")}</div>`; return; }
+      if (!recipes.length) {
+        const message = state.query ? (state.lang === "en" ? "No matching recipes. Try another search." : "לא נמצאו מתכונים. נסו חיפוש אחר.") : t("emptyRecipes");
+        grid.innerHTML = `<div class="empty-state">${message}</div>`;
+        return;
+      }
       grid.innerHTML = recipes.map((recipe, index) => {
         const calories = recipe.feastOnly ? recipe.feastCalories : recipe.fitCalories;
         const macros = recipe.macros.map((macro) => Math.round(macro * modeFactor()));
@@ -1038,10 +1110,59 @@
         shareButton.addEventListener("click", () => shareRecipe(card.dataset.recipeId));
         card.querySelector(".recipe-footer").append(shareButton);
       });
+      $$(".recipe-card").forEach((card) => {
+        const recipeId = card.dataset.recipeId;
+        const planButton = document.createElement("button");
+        planButton.type = "button";
+        planButton.className = "meal-plan-toggle";
+        planButton.dataset.testid = "meal-plan-toggle";
+        planButton.dataset.recipeId = recipeId;
+        planButton.setAttribute("aria-pressed", String(state.mealPlan.has(recipeId)));
+        planButton.textContent = state.mealPlan.has(recipeId) ? t("removeFromPlan") : t("addToPlan");
+        planButton.addEventListener("click", () => toggleMealPlan(recipeId));
+        card.querySelector(".recipe-footer").append(planButton);
+      });
       $$("[data-testid='add-to-shopping-list']").forEach((checkbox) => checkbox.addEventListener("change", () => {
         if (checkbox.checked) state.shopping.add(checkbox.dataset.recipeId); else state.shopping.delete(checkbox.dataset.recipeId);
         renderShoppingCount(); renderRecipes(); if (state.drawerOpen) renderShoppingDrawer();
       }));
+    }
+    function persistCookingStep(recipeId, stepIndex, completed) {
+      const steps = new Set(Array.isArray(state.cookingProgress[recipeId]) ? state.cookingProgress[recipeId] : []);
+      if (completed) steps.add(stepIndex); else steps.delete(stepIndex);
+      state.cookingProgress[recipeId] = [...steps].sort((left, right) => left - right);
+      try { localStorage.setItem("holy-day-cooking-progress", JSON.stringify(state.cookingProgress)); } catch {}
+    }
+    function timerText(totalSeconds) {
+      const minutes = Math.floor(totalSeconds / 60).toString().padStart(2, "0");
+      const seconds = (totalSeconds % 60).toString().padStart(2, "0");
+      return `${minutes}:${seconds}`;
+    }
+    function stopCookingTimer() {
+      if (state.cookingTimer.intervalId) window.clearInterval(state.cookingTimer.intervalId);
+      state.cookingTimer = { recipeId: null, endsAt: 0, intervalId: null };
+      const display = document.querySelector('[data-testid="cooking-timer-display"]');
+      const button = document.querySelector('[data-testid="cooking-timer-toggle"]');
+      if (display) display.textContent = t("timerReady");
+      if (button) button.textContent = t("startTimer");
+    }
+    function startCookingTimer(recipeId, durationMinutes) {
+      if (state.cookingTimer.intervalId) window.clearInterval(state.cookingTimer.intervalId);
+      state.cookingTimer = { recipeId, endsAt: Date.now() + durationMinutes * 60 * 1000, intervalId: null };
+      const tick = () => {
+        if (state.cookingTimer.recipeId !== recipeId) return;
+        const remaining = Math.max(0, Math.ceil((state.cookingTimer.endsAt - Date.now()) / 1000));
+        const display = document.querySelector('[data-testid="cooking-timer-display"]');
+        const button = document.querySelector('[data-testid="cooking-timer-toggle"]');
+        if (display && state.recipeDialogId === recipeId) display.textContent = remaining ? timerText(remaining) : t("timerDone");
+        if (!remaining) {
+          window.clearInterval(state.cookingTimer.intervalId);
+          state.cookingTimer.intervalId = null;
+          if (button && state.recipeDialogId === recipeId) button.textContent = t("startTimer");
+        }
+      };
+      tick();
+      state.cookingTimer.intervalId = window.setInterval(tick, 1000);
     }
     function renderRecipeDialog() {
       const backdrop = $("[data-testid='recipe-backdrop']");
@@ -1062,7 +1183,13 @@
         return `<li class="detail-ingredient"><span>${ingredientName(ingredient)}</span><span class="detail-ingredient-quantity" data-testid="detail-ingredient-quantity">${quantityText(quantity, ingredient.unit)}</span></li>`;
       }).join("");
       const methodSteps = recipeMethodSteps[recipe.methodKey]?.[state.lang] || recipeMethods[state.lang][recipe.category];
-      const steps = methodSteps.map((step) => `<li>${step}</li>`).join("");
+      const cookingActive = state.cookingModeRecipeId === recipe.id;
+      const completedSteps = new Set(Array.isArray(state.cookingProgress[recipe.id]) ? state.cookingProgress[recipe.id] : []);
+      const steps = methodSteps.map((step, index) => {
+        if (!cookingActive) return `<li>${step}</li>`;
+        const completed = completedSteps.has(index);
+        return `<li class="cook-step ${completed ? "cook-step-complete" : ""}"><label class="cook-step"><input type="checkbox" data-testid="cooking-step" data-step-index="${index}" ${completed ? "checked" : ""}><span class="cook-step-text">${step}</span></label></li>`;
+      }).join("");
       const holiday = currentHoliday()[state.lang === "en" ? "en" : "he"];
       $("[data-testid='recipe-detail-content']").innerHTML = `<header class="recipe-dialog-header"><div><span class="eyebrow">${holiday} · ${t(recipe.category)}</span><h2 id="recipe-detail-title" data-testid="recipe-detail-title">${recipeTitle}</h2><p class="recipe-dialog-description">${recipe.description[state.lang]}</p></div><button type="button" class="recipe-dialog-close" data-testid="recipe-dialog-close" aria-label="${labels.close}">×</button></header><div class="recipe-dialog-content"><div class="recipe-dialog-facts"><span>${labels.prep}: ${recipe.prepMinutes} min</span><span>${labels.cook}: ${recipe.cookMinutes} min</span><span data-testid="recipe-detail-servings">${labels.serves}: ${state.guests}</span><span>${calories} ${t("calories")} / ${t("perServing")}</span><span>P ${macros[0]}g</span><span>C ${macros[1]}g</span><span>F ${macros[2]}g</span></div><div class="recipe-dialog-columns"><section><h3>${t("ingredients")}</h3><ul class="detail-ingredients" data-testid="recipe-detail-ingredients">${ingredients}</ul></section><section><h3>${labels.method}</h3><ol class="recipe-method" data-testid="recipe-method">${steps}</ol></section></div></div>`;
       const dialogHeader = $(".recipe-dialog-header");
@@ -1084,6 +1211,67 @@
       shareStatus.setAttribute("role", "status");
       shareStatus.setAttribute("aria-live", "polite");
       $(".recipe-dialog-description", dialogHeader).after(shareStatus);
+      const methodList = $(`[data-testid='recipe-method']`);
+      const methodSection = methodList.closest("section");
+      const cookingTools = document.createElement("div");
+      cookingTools.className = "cooking-tools";
+      const cookingToggle = document.createElement("button");
+      cookingToggle.type = "button";
+      cookingToggle.className = "secondary-action";
+      cookingToggle.dataset.testid = "cooking-mode-toggle";
+      cookingToggle.setAttribute("aria-pressed", String(cookingActive));
+      cookingToggle.textContent = cookingActive ? t("stopCooking") : t("startCooking");
+      cookingToggle.addEventListener("click", () => {
+        state.cookingModeRecipeId = cookingActive ? null : recipe.id;
+        renderRecipeDialog();
+      });
+      const timerLabel = document.createElement("label");
+      timerLabel.className = "sr-only";
+      timerLabel.htmlFor = "cooking-timer-minutes";
+      timerLabel.textContent = t("timerMinutes");
+      const timerMinutes = document.createElement("input");
+      timerMinutes.id = "cooking-timer-minutes";
+      timerMinutes.type = "number";
+      timerMinutes.min = "1";
+      timerMinutes.max = "240";
+      timerMinutes.value = String(Math.max(1, recipe.cookMinutes || 10));
+      timerMinutes.dataset.testid = "cooking-timer-minutes";
+      timerMinutes.setAttribute("aria-label", t("timerMinutes"));
+      const timerButton = document.createElement("button");
+      timerButton.type = "button";
+      timerButton.className = "secondary-action";
+      timerButton.dataset.testid = "cooking-timer-toggle";
+      const timerRunning = state.cookingTimer.recipeId === recipe.id && Boolean(state.cookingTimer.intervalId);
+      timerButton.textContent = timerRunning ? t("stopTimer") : t("startTimer");
+      const timerDisplay = document.createElement("span");
+      timerDisplay.className = "cooking-progress";
+      timerDisplay.dataset.testid = "cooking-timer-display";
+      timerDisplay.setAttribute("aria-live", "polite");
+      if (state.cookingTimer.recipeId === recipe.id && state.cookingTimer.endsAt > Date.now()) {
+        timerDisplay.textContent = timerText(Math.ceil((state.cookingTimer.endsAt - Date.now()) / 1000));
+      } else {
+        timerDisplay.textContent = t("timerReady");
+      }
+      timerButton.addEventListener("click", () => {
+        if (state.cookingTimer.recipeId === recipe.id && state.cookingTimer.intervalId) stopCookingTimer();
+        else startCookingTimer(recipe.id, Math.max(1, Math.min(240, Number(timerMinutes.value) || recipe.cookMinutes || 10)));
+        const running = state.cookingTimer.recipeId === recipe.id && Boolean(state.cookingTimer.intervalId);
+        timerButton.textContent = running ? t("stopTimer") : t("startTimer");
+      });
+      const cookingProgress = document.createElement("span");
+      cookingProgress.className = "cooking-progress";
+      cookingProgress.dataset.testid = "cooking-step-progress";
+      const completedStepCount = completedSteps.size;
+      cookingProgress.textContent = `${completedStepCount}/${methodSteps.length} ${t("stepProgress")}`;
+      cookingTools.append(cookingToggle, timerLabel, timerMinutes, timerButton, timerDisplay, cookingProgress);
+      methodSection.insertBefore(cookingTools, methodList);
+      methodSection.querySelectorAll('[data-testid="cooking-step"]').forEach((checkbox) => checkbox.addEventListener("change", () => {
+        const stepIndex = Number(checkbox.dataset.stepIndex);
+        persistCookingStep(recipe.id, stepIndex, checkbox.checked);
+        checkbox.closest(".cook-step").classList.toggle("cook-step-complete", checkbox.checked);
+        const completedCount = methodSection.querySelectorAll('[data-testid="cooking-step"]:checked').length;
+        cookingProgress.textContent = `${completedCount}/${methodSteps.length} ${t("stepProgress")}`;
+      }));
       backdrop.classList.add("open");
       backdrop.setAttribute("aria-hidden", "false");
       dialog.setAttribute("aria-hidden", "false");
@@ -1091,12 +1279,15 @@
       $("[data-testid='recipe-dialog-close']").focus();
     }
     function openRecipe(recipeId, trigger) {
+      if (state.cookingTimer.recipeId && state.cookingTimer.recipeId !== recipeId) stopCookingTimer();
       state.recipeDialogId = recipeId;
       state.recipeDialogTrigger = trigger;
       renderRecipeDialog();
     }
     function closeRecipeDialog() {
       state.recipeDialogId = null;
+      state.cookingModeRecipeId = null;
+      stopCookingTimer();
       const backdrop = $("[data-testid='recipe-backdrop']");
       backdrop.classList.remove("open");
       backdrop.setAttribute("aria-hidden", "true");
@@ -1113,6 +1304,43 @@
       $("[data-testid='macro-summary']").innerHTML = `<span>${t("perGuest")}: ${perGuest} ${t("calories")}</span><span>${t("total")} ${state.guests}: ${perGuest * state.guests} ${t("calories")}</span><span>${t("protein")}: ${Math.round(protein * state.guests)}g</span><span>${t("carbs")}: ${Math.round(carbs * state.guests)}g</span><span>${t("fat")}: ${Math.round(fat * state.guests)}g</span>`;
     }
     function renderShoppingCount() { $("[data-testid='shopping-count']").textContent = state.shopping.size + state.manualProducts.length; }
+    function renderMealPlanCount() {
+      $(`[data-testid='meal-plan-count']`).textContent = state.mealPlan.size;
+    }
+    function persistMealPlan() {
+      try { localStorage.setItem("holy-day-meal-plan", JSON.stringify([...state.mealPlan])); } catch {}
+    }
+    function toggleMealPlan(recipeId) {
+      if (state.mealPlan.has(recipeId)) state.mealPlan.delete(recipeId);
+      else state.mealPlan.add(recipeId);
+      persistMealPlan();
+      renderMealPlanCount();
+      renderRecipes();
+      if (state.mealPlanDrawerOpen) renderMealPlanDrawer();
+    }
+    function renderMealPlanDrawer() {
+      const container = $(`[data-testid='meal-plan-items']`);
+      const recipes = recipeSeeds.filter((recipe) => state.mealPlan.has(recipe.id));
+      $(`[data-testid='meal-plan-meta']`).textContent = `${recipes.length} ${t("plannedCount")}`;
+      if (!recipes.length) {
+        container.innerHTML = `<p class="shopping-empty">${t("emptyMealPlan")}</p>`;
+        return;
+      }
+      container.innerHTML = recipes.map((recipe) => `<section class="meal-plan-recipe"><span class="meal-plan-recipe-title">${recipe.title[state.lang]}</span><div class="meal-plan-recipe-actions"><button type="button" class="secondary-action" data-testid="meal-plan-open" data-recipe-id="${recipe.id}" aria-label="${detailLabels[state.lang].open}: ${recipe.title[state.lang]}">↗</button><button type="button" class="meal-plan-toggle" data-testid="meal-plan-remove" data-recipe-id="${recipe.id}">${t("removeFromPlan")}</button></div></section>`).join("");
+      $$(`[data-testid='meal-plan-open']`, container).forEach((button) => button.addEventListener("click", () => {
+        const recipeId = button.dataset.recipeId;
+        setMealPlanDrawer(false);
+        openRecipe(recipeId, null);
+      }));
+      $$(`[data-testid='meal-plan-remove']`, container).forEach((button) => button.addEventListener("click", () => toggleMealPlan(button.dataset.recipeId)));
+    }
+    function setMealPlanDrawer(open) {
+      state.mealPlanDrawerOpen = open;
+      $(`[data-testid='meal-plan-drawer']`).classList.toggle("open", open);
+      $(`[data-testid='meal-plan-drawer']`).setAttribute("aria-hidden", String(!open));
+      $(`[data-testid='meal-plan-backdrop']`).classList.toggle("open", open);
+      if (open) renderMealPlanDrawer();
+    }
     function renderShoppingDrawer() {
       const container = $("[data-testid='shopping-items']");
       const selected = recipeSeeds.filter((recipe) => state.shopping.has(recipe.id));
@@ -1157,6 +1385,9 @@
       document.documentElement.lang = state.lang;
       document.documentElement.dir = state.lang === "he" ? "rtl" : "ltr";
       $$('[data-i18n]').forEach((element) => { element.textContent = t(element.dataset.i18n); });
+      $$('[data-i18n-placeholder]').forEach((element) => { element.placeholder = t(element.dataset.i18nPlaceholder); });
+      $$('[data-i18n-aria]').forEach((element) => { element.setAttribute("aria-label", t(element.dataset.i18nAria)); });
+      $(`[data-testid='recipe-search-input']`).value = state.query;
       const footerText = footerTranslations[state.lang];
       $(`[data-testid='footer-credit']`).textContent = footerText.credit;
       $(`[data-testid='copyright-year']`).textContent = new Date().getFullYear();
@@ -1170,9 +1401,24 @@
       $("[data-testid='guest-counter-input']").value = state.guests;
       $("[data-testid='manual-product-input']").placeholder = t("productPlaceholder");
     }
-    function render() { renderText(); renderHolidayTabs(); renderCategories(); renderRecipes(); renderSummary(); renderShoppingCount(); if (state.drawerOpen) renderShoppingDrawer(); renderRecipeDialog(); }
+    function render() { renderText(); renderHolidayTabs(); renderCategories(); renderRecipes(); renderSummary(); renderShoppingCount(); renderMealPlanCount(); if (state.drawerOpen) renderShoppingDrawer(); if (state.mealPlanDrawerOpen) renderMealPlanDrawer(); renderRecipeDialog(); }
     $("[data-testid='lang-toggle']").addEventListener("click", () => { state.lang = state.lang === "en" ? "he" : "en"; localStorage.setItem("feast-language", state.lang); render(); });
     $("[data-testid='mode-switch']").addEventListener("change", (event) => { state.mode = event.target.checked ? "feast" : "fit"; renderRecipes(); renderSummary(); if (state.drawerOpen) renderShoppingDrawer(); renderText(); renderRecipeDialog(); });
+    document.querySelector('[data-testid="recipe-search-input"]').addEventListener("input", (event) => {
+      state.query = event.target.value;
+      renderRecipes();
+      renderSummary();
+    });
+    document.querySelector('[data-testid="clear-search"]').addEventListener("click", () => {
+      state.query = "";
+      renderText();
+      renderRecipes();
+      renderSummary();
+      document.querySelector('[data-testid="recipe-search-input"]').focus();
+    });
+    document.querySelector('[data-testid="meal-plan-btn"]').addEventListener("click", () => setMealPlanDrawer(true));
+    document.querySelector('[data-testid="meal-plan-close"]').addEventListener("click", () => setMealPlanDrawer(false));
+    document.querySelector('[data-testid="meal-plan-backdrop"]').addEventListener("click", () => setMealPlanDrawer(false));
     function setGuests(value) {
       state.guests = Math.max(1, Math.min(20, Number(value) || 1));
       $("[data-testid='guest-counter-input']").value = state.guests;

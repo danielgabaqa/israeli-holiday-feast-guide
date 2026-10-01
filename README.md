@@ -2,27 +2,29 @@
 
 Israeli Holiday Feast Guide, with recipes and celebrations across the Hebrew calendar.
 
-Небольшое портфолио-приложение о праздничной израильской кухне и пример автоматизации браузера на Python + Playwright. Интерфейс находится в автономном `index.html`; тесты запускают его через локальный HTTP-сервер и проверяют поведение в настоящем браузере.
+This portfolio project combines an Israeli holiday recipe guide with browser automation examples using Python and Playwright. The app is a standalone `index.html`; the E2E suite serves it locally and exercises it in a real browser.
 
-## Что умеет приложение
+## Features
 
-- Переключает английский и иврит; вместе с языком меняются `lang`, направление документа и расположение элементов для RTL.
-- Показывает девять праздников: День независимости, Ту бе-Ав, Рош ха-Шана, Суккот, Ханука, Пурим, Песах, Шавуот и Ту би-Шват.
-- Фильтрует блюда по типам: закуски, основные блюда, десерты, напитки и коктейли.
-- Открывает подробный рецепт по нажатию на название карточки: ингредиенты с масштабированием, время, макросы и шаги приготовления.
-- Переключает обычное меню Fit & Festive на расширенное Full Feast с дополнительными блюдами и напитками, а также изменённой калорийностью и порциями.
-- Масштабирует ингредиенты и макросы по числу гостей от 1 до 20.
-- Собирает выбранные ингредиенты в интерактивный список покупок, разделённый по рецептам.
+- Switch between English and Hebrew; the document language, text direction, and RTL layout update together.
+- Browse recipes for nine holidays: Yom Ha'atzmaut, Tu B'Av, Rosh Hashanah, Sukkot, Hanukkah, Purim, Pesach, Shavuot, and Tu BiShvat.
+- Filter recipes by category: starters, mains, desserts, and drinks.
+- Search by dish name, description, ingredient, or holiday, with a live result count.
+- Open recipe details with ingredients, serving adjustments, cooking times, nutrition estimates, and method steps.
+- Switch from Fit & Festive to Full Feast, which adds recipes without changing the ingredients or values of recipes already shown.
+- Build a meal plan and use cooking mode with saved step completion and a countdown timer.
+- Scale ingredient quantities and nutrition totals for 1 to 20 guests.
+- Create an interactive shopping list grouped by recipe.
 
-Калорийность и макросы здесь демонстрационные оценки для портфолио, а не медицинские или диетологические рекомендации.
+Calories and macronutrients are illustrative portfolio data, not medical or dietary advice.
 
-## Архитектура приложения
+## Application Architecture
 
-`index.html` содержит семантическую разметку, CSS и JavaScript. В JavaScript хранятся данные праздников, переводов и рецептов; состояние интерфейса хранится в объекте `state`. Функция `render()` обновляет подписи, вкладки, фильтры, карточки, макросы и счётчик списка покупок после изменения состояния.
+`index.html` contains the semantic markup, CSS, and JavaScript. Holiday, translation, and recipe data are defined in the script, while interface state is held in the `state` object. The `render()` function updates labels, tabs, filters, recipe cards, nutrition summaries, and shopping-list counts.
 
-### Языки и RTL
+### Languages and RTL
 
-Переключатель обновляет `document.documentElement.lang` и `dir`. Для английского это `lang="en" dir="ltr"`, для иврита — `lang="he" dir="rtl"`. CSS использует логические свойства (`margin-inline`, `inset-inline-end`, `border-inline-start`) вместо физических `left` и `right`, поэтому компоненты зеркально адаптируются. Направление языка сохраняется в `localStorage`, а тест проверяет как DOM-атрибуты, так и вычисленное направление меню.
+The language toggle updates `document.documentElement.lang` and `dir`: English uses `lang="en" dir="ltr"`, and Hebrew uses `lang="he" dir="rtl"`. Logical CSS properties such as `margin-inline`, `inset-inline-end`, and `border-inline-start` let components adapt to either direction. The selected language is stored in `localStorage`; the i18n tests check document attributes and layout direction.
 
 ```js
 document.documentElement.lang = state.lang;
@@ -30,54 +32,56 @@ document.documentElement.dir = state.lang === "he" ? "rtl" : "ltr";
 localStorage.setItem("feast-language", state.lang);
 ```
 
-### Режим питания и пересчёт порций
+### Menu Modes and Serving Adjustments
 
-Fit & Festive использует облегчённое значение калорийности рецепта. Full Feast выбирает традиционное более высокое значение и умножает количества ингредиентов и макросы на коэффициент 1.2. Для гостевого счётчика ингредиенты пересчитываются от исходной порции на двух человек:
+Full Feast adds holiday recipes to the regular menu without changing the portions of recipes already shown. Each recipe has its own illustrative calorie and macronutrient values. Guest count is the only ingredient multiplier:
 
 ```text
-количество = исходное количество × число гостей / 2 × коэффициент режима
+quantity = base quantity x guest count / 2
 ```
 
-Калорийность блюда указана на одну порцию; сводка умножает её на число гостей. Белки, углеводы и жиры складываются для отображаемых рецептов и также масштабируются на гостей. Например, 200 г муки на 2 гостей превращаются в 1 000 г на 10 гостей в Fit & Festive.
+Calories are listed per serving; the summary multiplies them by the guest count. Protein, carbohydrates, and fat are totaled across the displayed recipes and scaled by the number of guests. For example, 200 g of flour for two guests becomes 1,000 g for ten guests in either menu mode.
 
-### Список покупок
+### Shopping List and Meal Plan
 
-У выбранных карточек есть checkbox. В состоянии приложения хранятся ID рецептов, поэтому изменение языка, количества гостей или режима не теряет выбор. Drawer строится из выбранных рецептов; количества пересчитываются по текущим настройкам, ингредиенты сгруппированы по рецепту, а отметки checkbox остаются интерактивными, пока открыт список.
+Recipe cards can be added to the shopping list or meal plan. The app stores recipe IDs, so changing the language, guest count, or menu mode does not discard selections. Shopping-list quantities use the current guest count and are grouped by recipe. Meal-plan selections and completed cooking steps persist in `localStorage`.
 
-## Автоматизация: pytest + Playwright
+The search, empty-results state, filters, meal-plan persistence, removing a planned recipe, cooking-step completion, timer controls, and language switching are useful E2E practice scenarios. Interactive controls use stable `data-testid` attributes.
 
-Зависимости перечислены в `requirements.txt`. Тесты используют pytest-playwright и синхронный API Playwright. `tests/conftest.py` запускает стандартный Python HTTP-сервер на свободном локальном порту, ждёт готовности `/index.html` и завершает сервер после тестового прогона. Fixture `holiday_page` создаёт отдельный браузерный context для каждого теста: `localStorage` и другие состояния не протекают между сценариями.
+## E2E Automation: pytest + Playwright
 
-### Page Object Model
+Dependencies are listed in `requirements.txt`. The tests use pytest-playwright and the synchronous Playwright API. `tests/conftest.py` starts Python's built-in HTTP server on an available local port, waits for `/index.html`, and shuts the server down after the test run. The `holiday_page` fixture creates a separate browser context for each test so `localStorage` and other state do not leak between scenarios.
 
-- `pages/base_page.py` содержит общие действия: открыть страницу, получить локатор по test ID и дождаться видимости.
-- `pages/holiday_feast_page.py` описывает пользовательские действия приложения: выбрать праздник и категорию, изменить число гостей, добавить рецепт и открыть список.
-- Файлы `tests/test_*.py` оставляют в себе сценарии и проверки, а не детали CSS-разметки.
+### Page Object Model (POM)
 
-Тесты находят интерактивные элементы через `data-testid`, например `holiday-tab-tu-bav` и `guest-counter-input`. Эти селекторы не зависят от декоративных CSS-классов или текста перевода, поэтому локализация и редизайн реже ломают тесты. Проверки видимости, состояний и текста используют Playwright `expect`, который автоматически ждёт результат до таймаута.
+- `pages/base_page.py` contains shared actions such as opening the page, locating elements by test ID, and waiting for visibility.
+- `pages/holiday_feast_page.py` models app actions such as selecting a holiday or category, changing the guest count, adding a recipe, and opening the shopping list.
+- Files in `tests/test_*.py` focus on scenarios and assertions rather than CSS implementation details.
 
-### Что проверяется
+Tests locate interactive elements by `data-testid`, for example `holiday-tab-tu-bav` and `guest-counter-input`. These selectors are independent of decorative CSS classes and translated text, making tests less fragile during localization and redesign. Playwright `expect` assertions automatically wait for visibility, state, and text conditions until the configured timeout.
 
-- `test_i18n.py`: английский по умолчанию, переход на иврит, RTL-направление, перевод заголовка, возврат и сохранение выбора после перезагрузки.
-- `test_mode_switch.py`: исходное облегчённое состояние и изменения калорийности и состава порции в Full Feast.
-- `test_portion_calculator.py`: пропорция на 10 гостей, макросы, границы 1 и 20, ограничение кнопок-счётчиков.
-- `test_shopping_list.py`: несколько рецептов, пересчёт ингредиентов в drawer и отметка купленного продукта.
-- `test_holiday_navigation.py`: параметризованный проход по всем девяти праздникам и четырём категориям для каждого.
+### Existing Test Coverage
 
-### Как проходит запуск pytest
+- `test_i18n.py`: English by default, switching to Hebrew, RTL direction, translated headings, switching back, and persistence after reload.
+- `test_mode_switch.py`: the initial menu and Full Feast mode.
+- `test_portion_calculator.py`: quantities for ten guests, nutrition totals, guest-count boundaries, and counter limits.
+- `test_shopping_list.py`: multiple recipes, ingredient quantities in the drawer, and checking off purchased products.
+- `test_holiday_navigation.py`: parameterized navigation across all nine holidays and their categories.
 
-1. Pytest находит сценарии в `tests/` и создаёт fixture `app_url` один раз на сессию.
-2. Fixture запускает локальный сервер, а pytest-playwright создаёт браузер.
-3. `holiday_page` выделяет чистый browser context и открывает приложение через Page Object.
-4. Тест вызывает понятные действия POM, например `select_holiday("tu-bav")`.
-5. Локаторы `data-testid` взаимодействуют с реальными элементами; `expect` ждёт нужное состояние и сообщает о расхождении.
-6. После теста context закрывается; после всей сессии останавливается HTTP-сервер.
+### What Happens During a pytest Run
 
-Проверки границ важны, потому что обычное значение не обнаружит ошибку в минимуме/максимуме. Переключение туда-обратно и перезагрузка проверяют сохранение языка. Изменение гостей при открытом списке проверяет, что drawer не показывает устаревшие количества.
+1. Pytest discovers scenarios in `tests/` and creates the `app_url` fixture once per session.
+2. The fixture starts a local server, and pytest-playwright launches a browser.
+3. `holiday_page` creates an isolated browser context and opens the app through a Page Object.
+4. A test calls readable POM actions such as `select_holiday("tu-bav")`.
+5. `data-testid` locators interact with real elements; `expect` waits for the expected state and reports mismatches.
+6. The browser context closes after each test, and the HTTP server shuts down after the session.
 
-## Запуск
+Boundary checks help catch minimum and maximum errors that ordinary values can miss. Toggling the language and reloading checks persistence. Changing the guest count while the shopping list is open checks that the drawer does not show stale quantities.
 
-Требуется Python 3.10 или новее. В корне проекта выполните:
+## Setup and Run
+
+Python 3.10 or newer is required. From the project root:
 
 ```bash
 python3 -m venv .venv
@@ -87,42 +91,42 @@ python -m playwright install chromium
 python -m pytest
 ```
 
-Для запуска только одного набора:
+To run a single test module:
 
 ```bash
 python -m pytest tests/test_shopping_list.py -v
 ```
 
-Приложение можно открыть напрямую в браузере из `index.html`. Для E2E не запускайте отдельный сервер вручную: fixture сама поднимает и останавливает его.
+Open `index.html` directly in a browser to use the app. For E2E tests, do not start a server manually; the fixture starts and stops it.
 
-## Рассказ для собеседования
+## Interview Notes
 
-**Короткая презентация на 1–2 минуты:**
+**Short project overview:**
 
-> Я сделал интерактивный гид по израильским праздникам и отдельный E2E-набор на Python и Playwright. В приложении есть переключение английского и иврита с проверкой RTL, девять праздников с фильтрами рецептов, два режима питания, калькулятор порций и список покупок. Автотесты построены по Page Object Model: общие действия отделены от сценариев, локаторы опираются на `data-testid`, а фикстуры создают чистый браузерный контекст и временный локальный сервер. Я проверяю не только happy path, но и границы счётчика, сохранение языка, пересчёт макросов и обновление списка покупок. Это показывает, как связать пользовательские требования с повторяемыми функциональными проверками.
+> I built an interactive guide to Israeli holidays alongside an E2E suite using Python and Playwright. The app supports English and Hebrew with RTL layout, nine holidays and recipe filters, two menu modes, serving calculations, and a shopping list. The tests use the Page Object Model: shared actions are separate from scenarios, locators use `data-testid`, and fixtures provide an isolated browser context and temporary local server. The suite covers more than happy paths, including counter boundaries, language persistence, nutrition calculations, and shopping-list updates. This demonstrates how to turn user requirements into repeatable browser checks.
 
-**Какие виды тестирования демонстрирует проект:**
+**Testing concepts demonstrated:**
 
-- Функциональное: фильтры, режимы, переключение языка и список покупок.
-- i18n/L10n: перевод, HTML `lang`, RTL/LTR и направление интерфейса.
-- UI/UX: доступность ключевых элементов, выбранные состояния, видимость drawer и наличие карточек.
-- Boundary testing: нижняя и верхняя границы числа гостей и ограничение кнопок.
-- E2E automation: полный путь браузера от локального HTTP-сервера до assertions.
-- Параметризованное тестирование: одинаковые проверки для всех праздников и категорий.
-- Кросс-браузерный E2E: тот же набор можно запускать отдельно в Chromium, Firefox и WebKit; в этой проверке выполнен Chromium.
+- Functional testing: filters, menu modes, language switching, and the shopping list.
+- i18n/L10n: translations, HTML `lang`, RTL/LTR, and layout direction.
+- UI behavior: key controls, selected states, drawer visibility, and recipe cards.
+- Boundary testing: guest-count limits and counter constraints.
+- E2E automation: a complete browser flow from the local HTTP server to assertions.
+- Parameterized testing: consistent checks across holidays and categories.
+- Cross-browser potential: the suite can be configured to run with Chromium, Firefox, and WebKit.
 
-**Вопрос: зачем `data-testid`, если есть CSS-селекторы?**
+**Why use `data-testid` when CSS selectors are available?**
 
-Ответ: test ID обозначает контракт для автоматизации. Он не привязан к визуальной структуре или локализованному тексту. CSS-селекторы остаются уместны для проверки визуальных деталей, но для пользовательских сценариев test ID устойчивее.
+Test IDs provide a stable automation contract independent of visual structure and localized text. CSS selectors are still useful for visual checks, but test IDs are usually more robust for user workflows.
 
-**Вопрос: как проверять RTL в Playwright?**
+**How can RTL be checked in Playwright?**
 
-Ответ: я проверяю `html[dir="rtl"]` и язык документа, затем проверяю вычисленное CSS-направление важного контейнера через `getComputedStyle`. Это ловит ситуацию, когда атрибут переключился, но layout фактически не наследует направление.
+Check `html[dir="rtl"]` and the document language, then inspect the computed direction of an important container with `getComputedStyle`. This catches cases where the attribute changes but the layout does not inherit the direction.
 
-**Вопрос: как устроено масштабирование?**
+**How are serving quantities calculated?**
 
-Ответ: у каждого ингредиента есть базовое количество на двух гостей. Приложение умножает его на `guests / 2`; режим Full Feast добавляет коэффициент щедрой порции. Тесты сравнивают конкретное ожидаемое количество, а также проверяют границы 1 и 20.
+Each ingredient has a base quantity for two guests. The app multiplies it by `guests / 2`; Full Feast adds recipes without changing quantities for existing recipes. Tests can compare expected amounts and check the limits of 1 and 20 guests.
 
-**Вопрос: что бы вы добавили для production?**
+**What would you add before production?**
 
-Ответ: реальные проверенные рецептурные и нутриционные данные, агрегацию одинаковых продуктов между рецептами с нормализацией единиц, тесты доступности, CI с несколькими браузерами и визуальную проверку адаптивных экранов. Сейчас значения макросов намеренно демонстрационные.
+Verified recipe and nutrition data, aggregation of duplicate ingredients with unit normalization, accessibility tests, multi-browser CI, and visual checks across responsive layouts. Nutrition values are currently illustrative.
